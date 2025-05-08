@@ -1,4 +1,15 @@
-<h1 align="center">
+<!-- Not show on Github! -->
+<!-- <p style="font-size: 36px; text-align: center; font-family: Arial, sans-serif;"> -->
+<!--     [> <b>Quarto Template</b>  <] -->
+<!--     Quarto Template -->
+<!-- </p>  -->
+<!-- Not show on Github! -->
+
+<!-- <h1 align="center"> -->
+<!--     Quarto Template -->
+<!-- </h1> -->
+
+<h1  align="center" style="margin-bottom: 70px;">
     Quarto Template
     <br>
     <img
@@ -6,11 +17,12 @@
         src="https://img.shields.io/badge/quarto-v1.7.30-90bbe3?style=for-the-badge&colorA=363A4F&logo=quarto&logoColor=D9E0EE">
     <img
         alt="Code Size"
-        src="https://img.shields.io/github/languages/code-size/syw-robotics/quarto_template?colorA=363A4F&colorB=c6a7d6&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
+        src="https://img.shields.io/github/languages/code-size/syw-robotics/quarto_template?colorA=363A4F&colorB=d0aee2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
 </h1>
+
+
 <br>
 
-![highvim-cover](./assets.README/highvim-cover.png)
 
 ##  🪷 Introduction
 
