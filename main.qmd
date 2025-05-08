@@ -1,0 +1,113 @@
+---
+title: "Quarto Presentation Demonstration"
+subtitle: "A Single File Template for Quarto Presentation"
+author: "Siyuan Wang"
+date: 2025-01-01
+toc: true
+number-sections: false
+highlight-style: pygments
+abstract: 
+  This is a template for Quarto presentation. 
+  It includes basic elements like bullet points, equations, citations, and code blocks.
+  You can also use it to generate PowerPoint and PDF documents.
+format: 
+
+  html:
+    code-fold: true
+    html-math-method: katex
+    theme: lux # default, pandoc, cosmo, spacelab, lux, minty, flatly, darkly
+    # for more themes: https://quarto.org/docs/output-formats/html-themes.html
+    # theme: # switch light and dark theme
+    #   light: flatly
+    #   dark: darkly
+    max-width: 1500px
+    bibliography: assets/references.bib
+
+  pdf:
+    geometry:
+      - top=30mm
+      - left=20mm
+    # hyperlink
+    links-as-notes: true
+    reference-location: section # block, section, margin, document # if show hyperlink in the footnote
+    # Citation
+    link-bibliography: true
+    link-citations: true
+    bibliography: assets/references.bib
+
+
+  pptx:
+    incremental: true
+    reference-doc: assets/syw_pre_master.pptx
+---
+
+<br>
+
+# Basic Elements
+
+<br>
+
+## Bullet Points
+
+> hello world
+
+- apple
+  - banana
+    - orange
+
+
+## Pics & Videos
+
+- Add a picture
+
+<img src="assets/2025-05-08-15-26-07.png" alt="xinbaodao" style="zoom:50%;" /> 
+
+![XinBaoDao Dance- original size](assets/2025-05-08-15-26-07.png)
+
+<br>
+
+- Embed a video
+
+{{< video ./assets/xinbaodao.mp4 >}}
+
+<br>
+
+## Equations, Citations
+
+
+- Einstein's theory of special relatively that expresses the equivalence of mass and energy:
+
+    $E = mc^{2}$
+
+- Input an inline equation: $\mathbb {E}(x) = \int xf(x)dx$
+
+
+- Cite a reference like [@peng_amp_2021].
+
+<br>
+
+## Codeblock 
+
+
+```{python}
+print("hello world")
+print("This is a python code block")
+```
+
+<br>
+
+## Powerpoint & PDF Usage
+
+**PPT:**
+
+- refer to [this](https://quarto.org/docs/presentations/powerpoint.html)
+
+<br>
+
+**PDF:**
+
+- refer to [this](https://quarto.org/docs/reference/formats/pdf.html)
+
+<br>
+
+<br>
