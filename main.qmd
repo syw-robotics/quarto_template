@@ -1,0 +1,292 @@
+---
+title: "Revealjs Presentation"
+subtitle: "Built with Quarto"
+author: "Siyuan Wang"
+institute: "Sothern University of Science and Technology"
+date: last-modified
+# date: 03/07/2025
+date-format: long # full, long, medium, short, iso
+# mainfont: "Latin Modern Sans"
+# mainfont: "Noto Serif CJK SC"
+bibliography: assets/references.bib
+format: 
+    revealjs: 
+        # theme: [default, assets/custom.scss] # default, simple, serif, dark, night, ,
+        theme: assets/custom.scss
+        smaller: true
+        scrollable: true # recommended to be true
+        auto-stretch: false # recommended to be false when scrollable
+        # center-title-slide: true
+        footer: "Footer text"
+        # logo: "assets/SUSTech-logo.png"
+        # reference-location: document # Put the footnotes or references at the end of the document
+        slide-number: c/t
+        toc: true
+        toc-depth: 2
+        toc-title: Contents
+        transition: fade # fade, slide
+        chalkboard: true  # see: https://prerelease.quarto.org/docs/presentations/revealjs/presenting.html#chalkboard
+        center: false # center every slide
+---
+
+
+
+
+## Hello World! 你好, 世界!
+### This is a subtitle
+
+- apple ^[apple reference]
+  - banana ^[banana reference]
+    - orange ^[orange reference]
+
+```{mermaid}
+graph LR
+A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
+:::{.callout-warning}
+## Callout Warning
+This is the content of the callout block.
+:::
+
+:::{.callout-note}
+## Callout Note
+This is the content of the callout block.
+:::
+
+:::{.callout-important}
+## Callout Important
+This is the content of the callout block.
+:::
+
+:::{.callout-tip}
+## Callout Tip
+This is the content of the callout block.
+:::
+
+:::{.callout-caution}
+## Callout Caution
+This is the content of the callout block.
+:::
+
+::: aside
+Here are some footnotes
+:::
+
+## Alerts & Cross-refs {#sec-crossref}
+
+To emphasize specific words or text, you can:
+
+- Use the default `.alert` class, e.g. [important note]{.alert}.
+- Use the `.fg` class for custom colour, e.g. [important note]{.fg style="--col: #e64173"}.
+- Use the `.bg` class for custom background, e.g. [important note]{.bg style="--col: #e64173"}.
+
+
+## Test cross-reference 
+
+Click below:
+
+[@sec-crossref]
+
+## Speaker notes and Incremental
+> Open speaker's mode to see the notes
+
+### Ordered and Unordered Lists
+::: {.incremental}
+
+Here we have an unordered list.
+
+- first item
+    - sub-item
+      - second item
+:::
+
+::: {.incremental}
+And next we have an ordered one.
+
+1. first item
+    i. sub-item
+    ii. second sub-item
+2. second item
+:::
+
+
+::: {.notes}
+Speaker notes go here.
+:::
+
+## This page has no footer {footer=false}
+
+This page has no footer
+
+## This page has custom footer 
+
+This page has customized footer
+
+::: footer
+Hello! Watch Me!
+:::
+
+## Pics & Videos & HTML
+
+- Add a picture
+Here is an image:
+
+![XinBaoDao Dance](assets/xinbaodao.png){#ff fig-align="left" width="200px"}
+
+
+Figure that can cite: [@fig-test]
+
+::: {#fig-test}
+![XinBaoDao Dance](assets/xinbaodao.png){#ff fig-align="center" width="600px"}
+:::
+
+<br>
+
+- Embed a video
+
+{{< video ./assets/xinbaodao.mp4 title="XinBaoDao Dance" width="400" >}}
+
+<br>
+
+- Embed a HTML
+
+```{=html}
+<iframe width="880" height="500" src="https://quarto.org/docs/presentations/revealjs/demo/" title="Quarto Documentation"></iframe>
+```
+
+```{=html}
+<iframe width="880" height="700" src="https://www.trex-game.skipser.com/" ></iframe>
+```
+
+<br>
+
+## SubFigs
+
+As shownn the [@fig-xinbaodao], [@fig-xinbaodao1], [@fig-xinbaodao2]
+
+::: {#fig-xinbaodao layout-ncol=2}
+
+![xinbaodao1](assets/xinbaodao.png){#fig-xinbaodao1}
+
+![xinbaodao2](assets/xinbaodao.png){#fig-xinbaodao2}
+
+Famous XinBaoDao
+:::
+
+## Code Blocks
+
+- Normal Code Block
+```{.python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+- Code Block with highlight
+
+```{.python code-line-numbers="6-8"}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+```{.python code-line-numbers="2,6,8"}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+## Executable Code
+
+```{python}
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+## Equations, Citations
+
+
+- Einstein's theory of special relatively that expresses the equivalence of mass and energy:
+
+    $E = mc^{2}$
+
+- Input an inline equation: $\mathbb {E}(x) = \int xf(x)dx$
+
+
+- Cite a reference like [@peng_amp_2021].
+
+## Tabsets
+
+::: {.panel-tabset}
+
+### Tab A
+
+Content for `Tab A`
+
+### Tab B
+
+Content for `Tab B`
+:::
+
+
+## Tow Columns
+
+::: {.column width="50%"}
+- Column 1
+  - apple
+    - banana
+:::
+
+::: {.column width="50%"}
+- Column 2
+  - orange
+    - watermelon
+:::
+
+
+
+<br>
+
+## References
+
+::: {#references}
+:::
+
+<br>
+
+<br>
