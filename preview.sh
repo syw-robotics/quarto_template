@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
-quarto render main.qmd
+quarto preview main.qmd
