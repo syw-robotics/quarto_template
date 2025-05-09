@@ -13,8 +13,8 @@
     Quarto Template
     <br>
     <img
-        alt="Neovim Version Capability"
-        src="https://img.shields.io/badge/quarto-v1.7.30-90bbe3?style=for-the-badge&colorA=363A4F&logo=quarto&logoColor=D9E0EE">
+        alt="Quarto Version Capability"
+        src="https://img.shields.io/badge/quarto-v1.8.2-90bbe3?style=for-the-badge&colorA=363A4F&logo=quarto&logoColor=D9E0EE">
     <img
         alt="Code Size"
         src="https://img.shields.io/github/languages/code-size/syw-robotics/quarto_template?colorA=363A4F&colorB=d0aee2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
@@ -26,9 +26,12 @@
 
 ##  🪷 Introduction
 
-- This repo hosts my simple [Quarto](https://neovim.io/) template configured for html, pdf and pptx. 
+- This repo hosts my simple [Quarto](https://neovim.io/) template configured for documentation (`html`, `pdf` and `pptx`). 
+- **Check the `revealjs` template for presentation at [here](https://github.com/syw-robotics/quarto_template/tree/pre)**
+
+## 🪴 Features
 - `main.tex` is the only file that needs to edit.
-- Media resources are stored in `assets` folder.
+- Resources are stored in `assets` folder.
 - Add bibliography in `assets/references.bib` file.
 
 ## 📃 Scripts
