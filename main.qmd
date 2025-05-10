@@ -22,23 +22,32 @@ format:
         # reference-location: document # Put the footnotes or references at the end of the document
         slide-number: c/t
         toc: true
-        toc-depth: 2
+        toc-depth: 1
         toc-title: Contents
         transition: fade # fade, slide
-        chalkboard: true  # see: https://prerelease.quarto.org/docs/presentations/revealjs/presenting.html#chalkboard
+        transition-speed: fast # fast, default, slow
+        chalkboard: false  # see: https://prerelease.quarto.org/docs/presentations/revealjs/presenting.html#chalkboard
+        crossrefs-hover: true # whether show cross-references on hover
         center: false # center every slide
+        controls: false # whether show navigation control buttons
 ---
 
 
+
+# Meet Revealjs & Quarto {background-color="#7F7F7F"}
 
 
 ## Hello World! 你好, 世界!
 ### This is a subtitle
 
+This is an example of footnotes:
+
 - apple ^[apple reference]
   - banana ^[banana reference]
     - orange ^[orange reference]
 
+
+Mermain Graph:
 ```{mermaid}
 graph LR
 A[Hard edge] -->|Link text| B(Round edge)
@@ -46,6 +55,13 @@ A[Hard edge] -->|Link text| B(Round edge)
     C -->|One| D[Result one]
     C -->|Two| E[Result two]
 ```
+
+::: aside
+Here are some footnotes (This is created with an `aside` tag)
+:::
+
+## Callout Blocks
+### Here are some types of callout blocks
 
 :::{.callout-warning}
 ## Callout Warning
@@ -72,9 +88,6 @@ This is the content of the callout block.
 This is the content of the callout block.
 :::
 
-::: aside
-Here are some footnotes
-:::
 
 ## Alerts & Cross-refs {#sec-crossref}
 
@@ -92,7 +105,7 @@ Click below:
 [@sec-crossref]
 
 ## Speaker notes and Incremental
-> Open speaker's mode to see the notes
+> Open speaker's mode (press `s` key) to see the notes
 
 ### Ordered and Unordered Lists
 ::: {.incremental}
@@ -120,11 +133,15 @@ Speaker notes go here.
 
 ## This page has no footer {footer=false}
 
-This page has no footer
+### This page has no footer
+
+<br>
+
+> Add {footer=false} to the page header
 
 ## This page has custom footer 
 
-This page has customized footer
+### This page has customized footer
 
 ::: footer
 Hello! Watch Me!
@@ -132,16 +149,16 @@ Hello! Watch Me!
 
 ## Pics & Videos & HTML
 
-- Add a picture
-Here is an image:
+- Simple figure
 
-![XinBaoDao Dance](assets/xinbaodao.png){#ff fig-align="left" width="200px"}
+::: {layout-align="center"}
+![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="200px"}
+:::
 
+- Figure that can cite as: [@fig-test]
 
-Figure that can cite: [@fig-test]
-
-::: {#fig-test}
-![XinBaoDao Dance](assets/xinbaodao.png){#ff fig-align="center" width="600px"}
+::: {#fig-test} 
+![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="400px"}
 :::
 
 <br>
@@ -282,7 +299,7 @@ Content for `Tab B`
 
 <br>
 
-## References
+# References
 
 ::: {#references}
 :::
