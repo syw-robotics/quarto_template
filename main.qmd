@@ -56,19 +56,33 @@ format:
     - orange
 
 
-## Pics & Videos
+## Pics & Videos & HTML
 
 - Add a picture
 
-<img src="assets/2025-05-08-15-26-07.png" alt="xinbaodao" style="zoom:50%;" /> 
+This is [@fig-xinbaodao]
 
-![XinBaoDao Dance- original size](assets/2025-05-08-15-26-07.png)
+::: {#fig-xinbaodao}
+![XinBaoDao Dance](./assets/xinbaodao.png){fig-align="left" width="400px"}
+:::
 
 <br>
 
 - Embed a video
 
 {{< video ./assets/xinbaodao.mp4 >}}
+
+<br>
+
+- Embed a HTML
+
+```{=html}
+<iframe width="880" height="500" src="https://quarto.org/docs/presentations/revealjs/demo/" title="Quarto Documentation"></iframe>
+```
+
+```{=html}
+<iframe width="880" height="700" src="https://www.trex-game.skipser.com/" ></iframe>
+```
 
 <br>
 
