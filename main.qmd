@@ -6,8 +6,6 @@ institute: "Sothern University of Science and Technology"
 date: last-modified
 # date: 03/07/2025
 date-format: long # full, long, medium, short, iso
-# mainfont: "Latin Modern Sans"
-# mainfont: "Noto Serif CJK SC"
 bibliography: assets/references.bib
 format: 
     revealjs: 
