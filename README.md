@@ -26,8 +26,9 @@
 
 ##  🪷 Introduction
 
-- This repo hosts my simple [Quarto](https://neovim.io/) template configured for documentation (`html`, `pdf` and `pptx`). 
+- This repo hosts my simple [Quarto](https://neovim.io/) template configured for documentation (`html` and `pdf`). 
 - **Check the `revealjs` template for presentation at [here](https://github.com/syw-robotics/quarto_template/tree/pre)**
+- Quarto can also export to `pptx`, but this is not elegent. Hence, I put a `pptx` slide master [at here](https://github.com/syw-robotics/quarto_template/blob/doc/assets/syw_pre_master.pptx) as a better alternative (`Latin modern Sans` font is required).
 
 ## 🪴 Features
 - `main.tex` is the only file that needs to edit.
@@ -39,6 +40,6 @@
 - `clear.sh`:
     - clear exported files. 
 - `export.sh`
-    - run `./export.sh html`, `./export.sh pdf`, `./export.sh pptx` to export html, pdf and pptx respectively.
+    - run `./export.sh html`, `./export.sh pdf` to export html or pdf respectively.
 - `preview.sh`
     - preview rendered html.

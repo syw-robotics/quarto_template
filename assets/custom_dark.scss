@@ -1,0 +1,161 @@
+/*-- scss:defaults --*/
+
+$jet: #131516;
+$accent_blue: #107895;
+$accent_red: #a40000;
+
+
+// ===== Dark =====
+$body-bg: #3e3e3e;
+$body-color: #e1e1d7;
+// ===== Light =====
+// $body-bg: #fff;
+// $body-color: #191919 !default;
+
+$link-color: #b46f6f !default;
+// $selection-bg: #404040 !default;	
+$selection-bg: #b46f64 !default;
+
+// ===== Fonts =====
+@import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
+$font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
+$presentation-heading-font: "Latin Modern Sans", sans-serif !default;
+
+$presentation-heading-color: $jet !default;
+$presentation-heading-font-weight: lighter;
+$presentation-font-size-root: 40px;
+// Slide Title
+$presentation-h1-font-size: 1.4em;
+$presentation-h2-font-size: 1.2em;
+$presentation-h3-font-size: 0.8em;
+
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+
+/*-- scss:rules --*/
+.reveal h2 {
+  font-weight: lighter;
+  // text-align: center;
+  margin-top: 0.8em;
+}
+.reveal h3 {
+  color: $accent_red;
+  // font-style: italic;
+  // text-align: center;
+  font-weight: lighter;
+  font-size: 0.9em;
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+}
+.reveal h4 {
+  color: $accent_red;
+  // font-style: italic;
+  // text-align: center;
+  font-weight: normal;
+  margin-top: 1.25em;
+}
+
+.reveal a {
+  line-height: 1.5em;
+}
+
+.reveal p {
+  // font-weight: 300;
+  font-weight: lighter;
+  margin-top: 1.25em;
+}
+
+
+// unordered lists
+.reveal ul {
+  // font-weight: 300;
+  font-weight: lighter;
+  padding-left: 16px;
+
+  li::marker {
+    color: $accent_red
+  }
+}
+
+// ordered lists
+.reveal ol {
+  // font-weight: 300;
+  font-weight: lighter;
+  padding-left: 16px;
+
+  li::marker {
+    color: $accent_red;
+  }
+}
+
+// alerts etc.
+.alert {
+  color: $accent_red;
+}
+
+.fg {
+  color: var(--col, $jet);
+}
+
+.bg {
+  background-color: var(--col, #fff);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+#title-slide {
+  text-align: center;
+
+  .title {
+    color: $body-color;
+    margin-top: 2.5em;
+    font-size: 2.5em;
+    font-weight: 700;
+  }
+
+  .subtitle {
+    color: $accent_red;
+    // font-style: italic;
+    font-size: 1.3em;
+    margin-top: 1.2em;
+    margin-bottom: 2.5em;
+    font-weight: 500;
+  }
+
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    // font-style: italic;
+    font-size: 80%;
+    color: #7F7F7F;
+    margin-top: 1em;
+  }
+
+  .date {
+    font-size: 80%;
+    color: #7F7F7F;
+    margin-top: 1em;
+  }
+
+  .author,
+  .quarto-title-author-name {
+    color: $body-color;
+  }
+
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+
+    .quarto-title-author {
+      padding-left: 0em;
+      padding-right: 0em;
+      width: 100%;
+    }
+  }
+
+}
+
+

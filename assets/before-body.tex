@@ -1,0 +1,54 @@
+$if(has-frontmatter)$
+\frontmatter
+$endif$
+
+$if(title)$
+    \cleardoublepage
+    \thispagestyle{empty}
+
+    {\centering \hbox{}\vskip 0cm plus 1fill
+
+    {\huge\bfseries $title$ \par}
+    $if(subtitle)$
+    \vspace{3ex}
+    {\large\bfseries $subtitle$ \par}
+    $endif$
+
+    \vspace{10ex}
+
+    $for(by-author)$
+        {\large\bfseries $by-author.name.literal$ \par}
+        \vspace{3ex}
+        % \vskip 0cm plus 2fill
+        % {\bfseries\large Doctor of Philosophy \par}
+        \vspace{10ex}
+            $for(by-author.affiliations)$%
+                $if(it.department)$%
+                    {\bfseries\small $it.department$ \par}
+                    \vspace{3ex}
+                $endif$%
+                {\bfseries\small $it.name$ \par}
+            $endfor$
+        \vspace{3ex}
+        {\bfseries\small $date$ \par}
+    $endfor$
+
+    \vspace{30ex}
+    % {\small Submitted in total fulfilment of the requirements
+    % of the degree of Doctor of Philosophy \par}
+    % }
+    }
+$endif$
+
+$if(abstract)$
+    % ===== Start a New Page =====
+    \cleardoublepage
+    \thispagestyle{empty}
+    % ===== Start a New Page =====
+    \begin{center}
+        {\bfseries\large Abstract}
+    \end{center}
+    \vspace{3ex}
+    $abstract$
+    \vspace{10ex}
+$endif$
