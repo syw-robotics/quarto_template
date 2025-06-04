@@ -1,3 +1,11 @@
+// ===== Fonts from the internet =====
+// @import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
+@import url('https://gitee.com/seahipage/lmweb/raw/master/style/latinmodern-sans.css');
+
+// ===== Fonts from local files =====
+// @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+
+
 /*-- scss:defaults --*/
 
 $jet: #131516;
@@ -15,8 +23,6 @@ $link-color: #404040 !default;
 $selection-bg: #9cc8d4 !default;	
 
 // ===== Fonts =====
-// @import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
-@import url('https://gitee.com/seahipage/lmweb/raw/master/style/latinmodern-sans.css');
 $font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
 $presentation-heading-font: "Latin Modern Sans", sans-serif !default;
 

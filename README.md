@@ -32,3 +32,16 @@
     - clear exported files. 
 - `preview.sh`
     - preview rendered html.
+- `local_fonts.sh.sh`
+    - `./assets/custom.scss` defines the theme. By default, the font adopts `Latin Modern Sans` (acquired from the internet, no need for local installation).
+    - If the displaying machine does not access the internet, uncomment the `6th line` in `./assets/custom.scss`, then run `./local_fonts.sh`
+
+    The default font config in `./assets/custom.scss` is like this:
+    ```scss
+    // ===== Fonts from the internet =====
+    @import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
+
+    // ===== Fonts from local files =====
+    // @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+
+    ```

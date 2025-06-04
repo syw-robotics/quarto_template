@@ -163,7 +163,7 @@ Hello! Watch Me!
 
 - Embed a video
 
-{{< video ./assets/xinbaodao.mp4 title="XinBaoDao Dance" width="400" >}}
+<video src="./assets/xinbaodao.mp4" width="600" controls style="display: block; margin-left: auto; margin-right: auto;"></video>
 
 <br>
 
