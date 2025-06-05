@@ -40,6 +40,10 @@ figcaption {
 }
 
 /*-- scss:rules --*/
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
 .reveal h2 {
   font-weight: lighter;
   // text-align: center;
@@ -145,14 +149,16 @@ figcaption {
   }
 
   .date {
-    font-size: 80%;
+    font-size: 70%;
     color: #7F7F7F;
     margin-top: 1em;
   }
 
   .author,
   .quarto-title-author-name {
+    font-size: 90%;
     color: $body-color;
+    margin-top: 1.5em;
   }
 
   .quarto-title-authors {
