@@ -20,6 +20,7 @@
 
 - This repo hosts my [Quarto](https://neovim.io/) `revealjs` template for presentation. 
 - **Check the template configured for documentation (`html` and `pdf`) at [here](https://github.com/syw-robotics/quarto_template/tree/doc).** 
+- [**Click to preview this template**](https://syw-robotics.github.io/quarto_template/main.html)
 
 ## :potted_plant: Features
 - `main.tex` is the only file that needs to edit.
