@@ -45,8 +45,12 @@ This is an example of footnotes:
     - orange ^[orange reference]
 
 
-Mermain Graph:
+@fig-mermaid is a mermaid example:
+
 ```{mermaid}
+%%| label: fig-mermaid
+%%| fig-cap: "This is a simple mermaid graph."
+%%| fig-width: 12
 graph LR
 A[Hard edge] -->|Link text| B(Round edge)
     B --> C{Decision}
@@ -147,7 +151,7 @@ Hello! Watch Me!
 
 ## Pics & Videos & HTML
 
-- Simple figure
+- Simple figure without caption
 
 ::: {layout-align="center"}
 ![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="200px"}
