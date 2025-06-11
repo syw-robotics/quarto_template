@@ -40,14 +40,54 @@ figcaption {
 }
 
 /*-- scss:rules --*/
+
+// slide logo at the bottom-left
+.reveal .slide-logo {
+  left: 50px !important;
+  max-height: 4% !important;
+  height: 100% !important;
+  bottom: 0px !important;;
+  z-index: -999 !important;
+}
+
+// no slide number on the title slide
 .reveal .slide-number > a[href*='title-slide'] {
   display: none;
+}
+
+// slide number at the bottom-right
+.reveal .slide-number {
+  bottom: 14px !important;
+  right: 50px !important;
+  top: unset !important;
+  font-size: 0.6em !important;
+  z-index: -999 !important;
+}
+
+// footer-default
+.reveal .footer-default {
+  font-size: 0.7em !important;
+  max-height: 3% !important;
+  height: 100% !important;
+}
+
+// footer
+.reveal .footer {
+  font-size: 0.7em !important;
+  max-height: 3% !important;
+  height: 100% !important;
+}
+
+// menu-button
+.reveal .slide-menu-button {
+  left: 15px !important;
+  bottom: 10px !important;;
 }
 
 .reveal h2 {
   font-weight: lighter;
   // text-align: center;
-  margin-top: 0.8em;
+  // margin-top: 0.8em;
 }
 .reveal h3 {
   color: $accent_red;

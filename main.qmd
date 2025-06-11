@@ -19,7 +19,7 @@ format:
         # logo: "assets/SUSTech-logo.png"
         # reference-location: document # Put the footnotes or references at the end of the document
         slide-number: c/t
-        toc: true
+        toc: true  # recommended to be false, and set an additional toc slide manually
         toc-depth: 1
         toc-title: Contents
         transition: fade # fade, slide
@@ -28,12 +28,14 @@ format:
         crossrefs-hover: true # whether show cross-references on hover
         center: false # center every slide
         controls: false # whether show navigation control buttons
+        # width: 1200 # set width to 1200 for 4:3 aspect ratio
+        width: 1600 # set width to 1600 for 16:9 aspect ratio
+        height: 900 # set height to 900, do not change
 ---
 
 
 
-# Meet Revealjs & Quarto {background-color="#7F7F7F"}
-
+# Meet Revealjs & Quarto {background-color="#7F7F7F" footer="false" visibility="uncounted"}
 
 ## Hello World! 你好, 世界!
 ### This is a subtitle
@@ -153,9 +155,7 @@ Hello! Watch Me!
 
 - Simple figure without caption
 
-::: {layout-align="center"}
 ![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="200px"}
-:::
 
 - Figure that can cite as: [@fig-test]
 
@@ -172,6 +172,8 @@ Hello! Watch Me!
 <br>
 
 - Embed a HTML
+
+<br>
 
 ```{=html}
 <iframe width="880" height="500" src="https://quarto.org/docs/presentations/revealjs/demo/" title="Quarto Documentation"></iframe>
@@ -301,7 +303,7 @@ Content for `Tab B`
 
 <br>
 
-# References
+## References
 
 ::: {#references}
 :::
