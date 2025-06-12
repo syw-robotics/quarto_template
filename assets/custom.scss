@@ -1,9 +1,13 @@
 // ===== Fonts from the internet =====
-// @import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
-@import url('https://gitee.com/seahipage/lmweb/raw/master/style/latinmodern-sans.css');
+// == Latin Modern Sans ==
+@import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
+// @import url('https://gitee.com/seahipage/lmweb/raw/master/style/latinmodern-sans.css');
 
 // ===== Fonts from local files =====
+// == Latin Modern Sans ==
 // @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+// == Gelasio ==
+// @import url('./fonts/gelasio/gelasio.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
 
 
 /*-- scss:defaults --*/
@@ -24,7 +28,7 @@ $selection-bg: #9cc8d4 !default;
 
 // ===== Fonts =====
 $font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
-$presentation-heading-font: "Latin Modern Sans", sans-serif !default;
+// $font-family-sans-serif: "Gelasio", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;
@@ -57,24 +61,24 @@ figcaption {
 
 // slide number at the bottom-right
 .reveal .slide-number {
-  bottom: 14px !important;
+  bottom: 7px !important;
   right: 50px !important;
   top: unset !important;
-  font-size: 0.6em !important;
+  font-size: 0.5em !important;
   z-index: -999 !important;
 }
 
 // footer-default
 .reveal .footer-default {
-  font-size: 0.7em !important;
-  max-height: 3% !important;
+  font-size: 0.5em !important;
+  max-height: 2% !important;
   height: 100% !important;
 }
 
 // footer
 .reveal .footer {
-  font-size: 0.7em !important;
-  max-height: 3% !important;
+  font-size: 0.5em !important;
+  max-height: 2% !important;
   height: 100% !important;
 }
 

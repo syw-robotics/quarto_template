@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Gelasio';
+    src: url('./Gelasio-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gelasio';
+    src: url('./Gelasio-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gelasio';
+    src: url('./Gelasio-BoldItalic.ttf');
+    font-weight: bold;
+    font-style: oblique;
+}
+
+@font-face {
+    font-family: 'Gelasio';
+    src: url('./Gelasio-Italic.ttf');
+    font-weight: normal;
+    font-style: oblique;
+}
+
