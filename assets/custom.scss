@@ -8,6 +8,8 @@
 // @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
 // == Gelasio ==
 // @import url('./fonts/gelasio/gelasio.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+// == Nunito ==
+// @import url('./fonts/nunito/nunito.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
 
 
 /*-- scss:defaults --*/
@@ -29,6 +31,7 @@ $selection-bg: #9cc8d4 !default;
 // ===== Fonts =====
 $font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
 // $font-family-sans-serif: "Gelasio", sans-serif !default;
+// $font-family-sans-serif: "Nunito", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;

@@ -7,6 +7,7 @@ if [ $# -ne 1 ]; then
   echo -e "\033[32m Available args: lm, gel\033[0m"
   echo -e "\033[32m   - lm: Latin Modern Sans\033[0m"
   echo -e "\033[32m   - gel: Gelasio\033[0m"
+  echo -e "\033[32m   - nu: Nunito\033[0m"
   exit 1
 fi
 
@@ -29,6 +30,14 @@ if [ "$1" == "gel" ]; then
   echo -e "\033[32m === Moved Gelasio to main_files === \n"
   exit 0
 fi
+
+# if arg is nu
+if [ "$1" == "nu" ]; then
+  cp -r ./assets/fonts/nunito/ ./main_files/libs/revealjs/dist/theme/fonts/
+  echo -e "\033[32m === Moved Nuito to main_files === \n"
+  exit 0
+fi
+
 
 
 echo -e "\033[32m === Moved latinmodern-sans to main_files === \n\033[0m"
