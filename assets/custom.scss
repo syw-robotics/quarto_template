@@ -1,7 +1,6 @@
 // ===== Fonts from the internet =====
 // == Latin Modern Sans ==
 @import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
-// @import url('https://gitee.com/seahipage/lmweb/raw/master/style/latinmodern-sans.css');
 
 // ===== Fonts from local files =====
 // == Latin Modern Sans ==
@@ -10,9 +9,17 @@
 // @import url('./fonts/gelasio/gelasio.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
 // == Nunito ==
 // @import url('./fonts/nunito/nunito.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+// == Monterrat ==
+// @import url('./fonts/montserrat/montserrat.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
 
 
 /*-- scss:defaults --*/
+
+// ===== Fonts =====
+$font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
+// $font-family-sans-serif: "Gelasio", sans-serif !default;
+// $font-family-sans-serif: "Nunito", sans-serif !default;
+// $font-family-sans-serif: "Montserrat", sans-serif !default;
 
 $jet: #131516;
 $accent_blue: #107895;
@@ -24,14 +31,10 @@ $accent_red: #a40000;
 // ===== Light =====
 $body-bg: #fff;
 $body-color: #191919 !default;
+
 // $link-color: #107895;
 $link-color: #404040 !default;
 $selection-bg: #9cc8d4 !default;	
-
-// ===== Fonts =====
-$font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
-// $font-family-sans-serif: "Gelasio", sans-serif !default;
-// $font-family-sans-serif: "Nunito", sans-serif !default;
 
 $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;
@@ -174,7 +177,8 @@ figcaption {
     color: $body-color;
     margin-top: 2.5em;
     font-size: 2.2em;
-    font-weight: 700;
+    // font-weight: 700;
+    font-weight: 500;
   }
 
   .subtitle {

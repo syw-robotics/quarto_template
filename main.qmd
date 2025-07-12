@@ -30,7 +30,7 @@ format:
         controls: false # whether show navigation control buttons
         # width: 1200 # set width to 1200 for 4:3 aspect ratio
         width: 1600 # set width to 1600 for 16:9 aspect ratio
-        height: 900 # set height to 900, do not change
+        height: 900 # set height to 900, do not change this
 ---
 
 
