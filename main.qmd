@@ -198,6 +198,92 @@ As shownn the [@fig-xinbaodao], [@fig-xinbaodao1], [@fig-xinbaodao2]
 Famous XinBaoDao
 :::
 
+## Tables
+
+### Table Usage
+
+[@tbl-letters] is a regular table
+
+| Default | Left | Right | Center |
+|---------|:-----|------:|:------:|
+| 12      | 12   |    12 |   12   |
+| 123     | 123  |   123 |  123   |
+| 1       | 1    |     1 |   1    |
+: Demonstration of pipe table syntax {#tbl-letters}
+
+
+
+[@tbl-fruit] can adjust width
+
+| fruit  | price  |
+|--------|--------|
+| apple  | 2.05   |
+| pear   | 1.37   |
+| orange | 3.09   |
+: Fruit prices {#tbl-fruit tbl-colwidths="[75,25]" } 
+
+
+
+[@tbl-planets] creates table with python code chunk
+```{python}
+#| label: tbl-planets
+#| tbl-cap: Astronomical object
+
+from IPython.display import Markdown
+from tabulate import tabulate
+table = [["Sun","696,000",1.989e30],
+         ["Earth","6,371",5.972e24],
+         ["Moon","1,737",7.34e22],
+         ["Mars","3,390",6.39e23]]
+Markdown(tabulate(
+  table, 
+  headers=["Astronomical object","R (km)", "mass (kg)"]
+))
+```
+
+
+### Subtables
+
+::: {#tbl-panel layout-ncol=2}
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: First Table {#tbl-first}
+
+| Col1 | Col2 | Col3 |
+|------|------|------|
+| A    | B    | C    |
+| E    | F    | G    |
+| A    | G    | G    |
+
+: Second Table {#tbl-second}
+
+Main Caption
+:::
+
+See @tbl-panel for details, especially @tbl-second.
+
+
+[@tbl-planets] creates table with python code chunk with subfigures
+```{python}
+#| label: tbl-example
+#| tbl-cap: "Example"
+#| tbl-subcap: 
+#|   - "MPG"
+#|   - "Taxis"
+#| layout-ncol: 2
+
+import seaborn as sns
+from IPython.display import Markdown, display
+mpg = sns.load_dataset("mpg").head(10)
+taxis = sns.load_dataset("taxis").head(10)
+
+display(Markdown(mpg.to_markdown(index = False)))
+display(Markdown(taxis.to_markdown(index = False)))
+```
 ## Code Blocks
 
 - Normal Code Block

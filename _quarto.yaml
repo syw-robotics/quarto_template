@@ -1,3 +1,6 @@
+tbl-cap-location: top
+fig-cap-location: margin
+lightbox: true  # lightbox figure
 include-after-body:
   - text: |
       <script src="assets/include_after_body.js"></script>

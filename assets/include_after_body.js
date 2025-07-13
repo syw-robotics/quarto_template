@@ -5,7 +5,7 @@ Reveal.addEventListener('ready', (event) => {
     document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
   } else {
     document.querySelector("div.slide-menu-button").style.display = "block"; // Show menu-button
-    // document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
+    document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
   }
 });
 Reveal.addEventListener('slidechanged', (event) => {
@@ -15,7 +15,7 @@ Reveal.addEventListener('slidechanged', (event) => {
     document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
   } else {
     document.querySelector("div.slide-menu-button").style.display = "block"; // Show menu-button
-    // document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
+    document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
     document.querySelector("div.has-logo > img.slide-logo").style.display = null;
   }
 });
