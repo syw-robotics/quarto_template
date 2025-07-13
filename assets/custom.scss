@@ -128,8 +128,13 @@ figcaption {
 
 .reveal .slide blockquote {
   border-left: 3px solid $text-muted;
-  // border-radius: 5px;
-  padding-left: 0.5em;
+  padding-left: 1em;
+  margin: 1em 0;
+  
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
 }
 
 // unordered lists
