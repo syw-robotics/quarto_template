@@ -1,25 +1,36 @@
-// ===== Fonts from the internet =====
-// == Latin Modern Sans ==
-@import url('https://lalten.github.io/lmweb/style/latinmodern-sans.css');
+// ===== Fonts =====
+// User font interface: change only these two lines for most presentations.
+$presentation-english-font: "Latin Modern Sans" !default;
+$presentation-chinese-font: "LXGW WenKai" !default;
 
-// ===== Fonts from local files =====
-// == Latin Modern Sans ==
-// @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
-// == Gelasio ==
-// @import url('./fonts/gelasio/gelasio.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
-// == Nunito ==
-// @import url('./fonts/nunito/nunito.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
-// == Monterrat ==
-// @import url('./fonts/montserrat/montserrat.css'); // Turn this on when the display machine can not access the internet, then run `./local_fonts.sh`
+// == English font options ==
+// $presentation-english-font: "Latin Modern Sans" !default;
+// $presentation-english-font: "Gelasio" !default;
+// $presentation-english-font: "Nunito" !default;
+// $presentation-english-font: "Montserrat" !default;
+// == Chinese font options ==
+// $presentation-chinese-font: "LXGW WenKai" !default;
+// $presentation-chinese-font: "Source Han Sans SC" !default;
+// $presentation-chinese-font: "Noto Sans CJK SC" !default;
+
+
+// Local font imports are selected from the two user-facing font variables.
+// Keep these paths in sync with export_portable_html.sh.
+@if $presentation-english-font == "Latin Modern Sans" { @import url('./fonts/latinmodern-sans/latinmodern-sans.css'); }
+@if $presentation-english-font == "Gelasio" { @import url('./fonts/gelasio/gelasio.css'); }
+@if $presentation-english-font == "Nunito" { @import url('./fonts/nunito/nunito.css'); }
+@if $presentation-english-font == "Montserrat" { @import url('./fonts/montserrat/montserrat.css'); }
+@if $presentation-chinese-font == "LXGW WenKai" { @import url('./fonts/lxgw-wenkai/lxgw-wenkai.css'); }
+@if $presentation-chinese-font == "Source Han Sans SC" { @import url('./fonts/source-han-sans-sc/source-han-sans-sc.css'); }
+@if $presentation-chinese-font == "Noto Sans CJK SC" { @import url('./fonts/noto-sans-cjk-sc/noto-sans-cjk-sc.css'); }
 
 
 /*-- scss:defaults --*/
 
-// ===== Fonts =====
-$font-family-sans-serif: "Latin Modern Sans", sans-serif !default;
-// $font-family-sans-serif: "Gelasio", sans-serif !default;
-// $font-family-sans-serif: "Nunito", sans-serif !default;
-// $font-family-sans-serif: "Montserrat", sans-serif !default;
+$font-family-sans-serif:
+  $presentation-english-font,
+  $presentation-chinese-font,
+  sans-serif !default;
 
 $jet: #131516;
 $accent_blue: #107895;
@@ -137,6 +148,29 @@ figcaption {
   }
 }
 
+.reveal .slide.scrollable aside:not(.notes),
+.reveal .slide.scrollable div.aside {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.2em;
+  margin-top: 0;
+  font-size: 0.55em;
+  color: $text-muted;
+
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .aside-footnotes {
+    display: block;
+    margin-top: 0.4em;
+    margin-left: 0;
+    padding-left: 1.2em;
+  }
+}
+
 // unordered lists
 .reveal ul {
   // font-weight: 300;
@@ -229,5 +263,3 @@ figcaption {
   }
 
 }
-
-
