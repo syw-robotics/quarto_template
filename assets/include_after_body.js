@@ -1,21 +1,23 @@
-Reveal.addEventListener('ready', (event) => {
-  if (event.indexh === 0) {
-    document.querySelector("div.slide-menu-button").style.display = "none";
-    document.querySelector("div.footer-default").style.display = "none";
-    document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
-  } else {
-    document.querySelector("div.slide-menu-button").style.display = "block"; // Show menu-button
-    document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
-  }
-});
-Reveal.addEventListener('slidechanged', (event) => {
-  if (event.indexh === 0) {
-    document.querySelector("div.slide-menu-button").style.display = "none";
-    document.querySelector("div.footer-default").style.display = "none";
-    document.querySelector("div.has-logo > img.slide-logo").style.display = "none";
-  } else {
-    document.querySelector("div.slide-menu-button").style.display = "block"; // Show menu-button
-    document.querySelector("div.slide-menu-button").style.display = "none";  // Hide menu-button when logo is shown
-    document.querySelector("div.has-logo > img.slide-logo").style.display = null;
-  }
-});
+(() => {
+  const isPrintExport = () => (
+    /print-pdf|view=print/i.test(window.location.search)
+    || document.documentElement.classList.contains("reveal-print")
+  );
+
+  const setDisplay = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.style.display = value;
+  };
+
+  const updateChrome = (event) => {
+    if (isPrintExport()) return;
+
+    const isTitleSlide = event.indexh === 0;
+    setDisplay("div.slide-menu-button", "none");
+    setDisplay("div.footer-default", isTitleSlide ? "none" : "");
+    setDisplay("div.has-logo > img.slide-logo", isTitleSlide ? "none" : "");
+  };
+
+  Reveal.addEventListener("ready", updateChrome);
+  Reveal.addEventListener("slidechanged", updateChrome);
+})();

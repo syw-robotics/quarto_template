@@ -2,11 +2,10 @@
 
 for file in *.qmd; do
   name=$(basename "$file" .qmd)
-  rm  "$name.html"
+  rm -f "$name.html" "$name.pdf"
   # remove the corresponding folder
-  rm -r "${name}_files"
+  rm -rf "${name}_files"
 
 done
 
 echo -e "\033[32m === Auxiliary Files Cleaned === \n\033[0m"
-

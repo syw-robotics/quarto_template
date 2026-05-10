@@ -33,6 +33,13 @@
     - clear exported files. 
 - `preview.sh`
     - preview rendered html.
+- `export_pdf.sh`
+    - render the Quarto `revealjs` deck and export a selectable-text PDF through the same Revealjs print view used by the HTML output.
+    - requires `quarto`, `node`, and a Chrome/Chromium-compatible browser in `PATH`.
+    - usage: `./export_pdf.sh` or `./export_pdf.sh your-slide.qmd`.
+    - if the browser is not auto-detected, set it explicitly: `CHROME_BIN=microsoft-edge ./export_pdf.sh`.
+    - the PDF exporter implementation lives in `pdf_export/export_reveal_pdf.mjs`; the project root keeps only the `export_pdf.sh` entry script.
+    - the exporter preserves internal cross-reference links, selectable text, custom footers, Revealjs slide numbers, and expands tabsets so each tab is included in the PDF.
 - `local_fonts.sh.sh`
     - `./assets/custom.scss` defines the theme. By default, the font adopts `Latin Modern Sans` (acquired from the internet, no need for local installation).
     - If the displaying machine does not access the internet, uncomment the `6th line` in `./assets/custom.scss`, then run `./local_fonts.sh`
