@@ -47,9 +47,25 @@
     - `export_pdf.sh` runs this step automatically after rendering.
     - to present offline, copy the rendered `.html` file together with its matching `*_files` directory and any project assets you reference, such as `assets/`.
 
-    Font selection is controlled in `./assets/custom.scss`:
+## Tips for `custom.scss` config
+
+- Font selection is controlled in `./assets/custom.scss`:
     ```scss
     $presentation-english-font: "Latin Modern Sans" !default;
     $presentation-chinese-font: "LXGW WenKai" !default;
     ```
     `assets/custom.scss` imports the matching local font CSS automatically.
+
+- Slide footnote markers created with `^[...]` use superscript by default.
+
+    To change them globally, set:
+    ```scss
+    $presentation-footnote-mode: "sup" !default; // sup, bracket, badge, hidden
+    ```
+
+    To change one slide only, add `{.footnote-bracket}`, `{.footnote-badge}`, or `{.footnote-hidden}` to that slide header.
+
+    e.g.
+    ```markdown
+    ## Slide Title {.footnote-bracket}
+    ```

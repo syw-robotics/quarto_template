@@ -96,7 +96,7 @@ for output_dir in "${output_dirs[@]}"; do
 done
 
 # Create a self-contained folder with the HTML file, its *_files assets, and
-# small project assets needed by the rendered document.
+# project assets referenced by the rendered document.
 output_dir="${output_dirs[0]}"
 base="${output_dir%_files}"
 html_file="${base}.html"
@@ -108,5 +108,10 @@ cp "$html_file" "$export_dir/"
 cp -R "$output_dir" "$export_dir/"
 mkdir -p "${export_dir}/assets"
 cp "${script_dir}/assets/include_after_body.js" "${export_dir}/assets/"
+for asset_dir in images videos; do
+  if [[ -d "${script_dir}/assets/${asset_dir}" ]]; then
+    cp -R "${script_dir}/assets/${asset_dir}" "${export_dir}/assets/"
+  fi
+done
 
 echo -e "\033[32m === Packaged into ${export_dir#"$script_dir"/} === \n\033[0m"

@@ -16,7 +16,7 @@ format:
         auto-stretch: false # recommended to be false when scrollable
         # center-title-slide: true
         footer: "Footer text"
-        # logo: "assets/SUSTech-logo.png"
+        # logo: "assets/images/SUSTech-logo.png"
         # reference-location: document # Put the footnotes or references at the end of the document
         slide-number: c/t
         toc: true  # recommended to be false, and set an additional toc slide manually
@@ -155,19 +155,19 @@ Hello! Watch Me!
 
 - Simple figure without caption
 
-![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="200px"}
+![XinBaoDao Dance](assets/images/xinbaodao.png){fig-align="center" width="200px"}
 
 - Figure that can cite as: [@fig-test]
 
 ::: {#fig-test} 
-![XinBaoDao Dance](assets/xinbaodao.png){fig-align="center" width="400px"}
+![XinBaoDao Dance](assets/images/xinbaodao.png){fig-align="center" width="400px"}
 :::
 
 <br>
 
 - Embed a video
 
-<video src="./assets/xinbaodao.mp4" width="600" controls style="display: block; margin-left: auto; margin-right: auto;"></video>
+<video src="./assets/videos/xinbaodao.mp4" width="600" controls autoplay muted loop playsinline data-prevent-swipe style="display: block; margin-left: auto; margin-right: auto;" ></video>
 
 <br>
 
@@ -191,9 +191,9 @@ As shownn the [@fig-xinbaodao], [@fig-xinbaodao1], [@fig-xinbaodao2]
 
 ::: {#fig-xinbaodao layout-ncol=2}
 
-![xinbaodao1](assets/xinbaodao.png){#fig-xinbaodao1}
+![xinbaodao1](assets/images/xinbaodao.png){#fig-xinbaodao1}
 
-![xinbaodao2](assets/xinbaodao.png){#fig-xinbaodao2}
+![xinbaodao2](assets/images/xinbaodao.png){#fig-xinbaodao2}
 
 Famous XinBaoDao
 :::
