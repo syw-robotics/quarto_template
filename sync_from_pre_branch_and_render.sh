@@ -26,6 +26,7 @@ fi
 
 rm -rf "$docs_dir"
 mkdir -p "$docs_dir"
+touch "${docs_dir}/.nojekyll"
 
 cleanup_theme_build() {
   local theme="$1"
@@ -142,11 +143,12 @@ cat > "${docs_dir}/index.html" <<'EOF'
 <body>
   <main>
     <h1>Quarto RevealJS Themes</h1>
-    <p>Open the same presentation rendered with each bundled local theme.</p>
+    <p>Check the same presentation rendered with each theme.</p>
+    <br>
     <div class="grid">
       <a href="./default/"><strong>Default</strong><span>Academic default with red accents.</span></a>
-      <a href="./claude/"><strong>Claude</strong><span>Warm editorial palette and serif typography.</span></a>
-      <a href="./sustech/"><strong>SUSTech</strong><span>Green and orange university style.</span></a>
+      <a href="./claude/"><strong>Claude</strong><span>Claude palette and serif typography.</span></a>
+      <a href="./sustech/"><strong>SUSTech</strong><span>Green and orange SUSTech university style.</span></a>
       <a href="./minimal/"><strong>Minimal</strong><span>Neutral compact technical style.</span></a>
     </div>
   </main>
