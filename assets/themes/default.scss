@@ -1,0 +1,23 @@
+// Default theme. Edit these variables or choose another theme in this folder.
+$theme-font-en: "Latin Modern Sans";
+$theme-font-cn: "LXGW WenKai";
+
+@import "base/fonts";
+
+/*-- scss:defaults --*/
+$theme-bg: #fff;
+$theme-fg: #191919;
+$theme-heading: #131516;
+$theme-muted: #7f7f7f;
+$theme-link: #404040;
+$theme-accent: #a40000;
+$theme-accent-alt: #107895;
+$theme-code: $theme-accent-alt;
+$theme-selection: #9cc8d4;
+$theme-inline-bg: rgba($theme-accent, 0.12);
+$theme-footnote-mode: "bracket";
+
+@import "base/defaults";
+
+/*-- scss:rules --*/
+@import "base/rules";

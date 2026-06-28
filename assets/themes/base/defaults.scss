@@ -1,0 +1,35 @@
+$theme-bg: #fff !default;
+$theme-fg: #191919 !default;
+$theme-heading: #131516 !default;
+$theme-muted: #7f7f7f !default;
+$theme-link: #404040 !default;
+$theme-accent: #a40000 !default;
+$theme-accent-alt: #107895 !default;
+$theme-alert: $theme-accent !default;
+$theme-code: $theme-link !default;
+$theme-selection: #9cc8d4 !default;
+$theme-inline-bg: rgba($theme-accent, 0.12) !default;
+$theme-blockquote-border: $theme-muted !default;
+$theme-title-subtitle: $theme-accent !default;
+$theme-title-meta: $theme-muted !default;
+$theme-title-weight: 500 !default;
+$theme-heading-weight: lighter !default;
+$theme-body-weight: lighter !default;
+$theme-footnote-mode: "bracket" !default; // sup, bracket, badge, hidden
+
+$font-family-sans-serif:
+  $theme-font-en,
+  $theme-font-cn,
+  sans-serif !default;
+
+$body-bg: $theme-bg !default;
+$body-color: $theme-fg !default;
+$link-color: $theme-link !default;
+$selection-bg: $theme-selection !default;
+$presentation-heading-color: $theme-heading !default;
+$presentation-heading-font-weight: $theme-heading-weight !default;
+$presentation-font-size-root: 40px !default;
+$presentation-h1-font-size: 1.5em !default;
+$presentation-h2-font-size: 1.1em !default;
+$presentation-h3-font-size: 0.8em !default;
+$text-muted: $theme-muted !default;

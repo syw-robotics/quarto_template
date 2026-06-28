@@ -1,0 +1,100 @@
+.reveal h2 {
+  font-weight: $theme-heading-weight;
+}
+
+.reveal h3 {
+  color: $theme-accent;
+  font-weight: $theme-heading-weight;
+  font-size: 0.9em;
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+}
+
+.reveal h4 {
+  color: $theme-accent;
+  font-weight: normal;
+  margin-top: 1.25em;
+}
+
+.reveal a {
+  line-height: 1.5em;
+}
+
+.reveal code:not(.sourceCode) {
+  color: $theme-code;
+}
+
+.reveal p {
+  font-weight: $theme-body-weight;
+  margin-top: 1.25em;
+}
+
+.reveal .slide blockquote {
+  border-left: 3px solid $theme-blockquote-border;
+  padding-left: 1em;
+  margin: 1em 0;
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.reveal .slide.scrollable aside:not(.notes),
+.reveal .slide.scrollable div.aside {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.2em;
+  margin-top: 0;
+  font-size: 0.55em;
+  color: $theme-muted;
+
+  p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .aside-footnotes {
+    display: block;
+    margin-top: 0.4em;
+    margin-left: 0;
+    padding-left: 1.2em;
+  }
+}
+
+.reveal ul,
+.reveal ol {
+  font-weight: $theme-body-weight;
+  padding-left: 16px;
+
+  li::marker {
+    color: $theme-accent;
+  }
+}
+
+.reveal .alert,
+.reveal .alert code,
+.reveal code.alert {
+  color: $theme-alert !important;
+}
+
+.reveal .alert code,
+.reveal code.alert {
+  border-color: rgba($theme-alert, 0.3);
+}
+
+.fg {
+  color: var(--col, #{$theme-heading});
+}
+
+.bg {
+  background-color: var(--col, #{$theme-inline-bg});
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.reveal #references .csl-entry {
+  font-size: 0.8em;
+}

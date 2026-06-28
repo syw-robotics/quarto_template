@@ -1,0 +1,42 @@
+// SUSTech-style theme using green and orange accents.
+$theme-font-en: "Montserrat";
+$theme-font-cn: "Noto Sans CJK SC";
+
+@import "base/fonts";
+
+/*-- scss:defaults --*/
+$theme-bg: #ffffff;
+$theme-fg: #1b2321;
+$theme-heading: #003f3c;
+$theme-muted: #64716e;
+$theme-link: #00665f;
+$theme-accent: #008c7a;
+$theme-accent-alt: #f28c28;
+$theme-alert: $theme-accent-alt;
+$theme-code: #008c7a;
+$theme-selection: #b8ddd7;
+$theme-inline-bg: #fff0df;
+$theme-blockquote-border: #008c7a;
+$theme-title-subtitle: #f28c28;
+$theme-heading-weight: 600;
+$theme-body-weight: 400;
+$theme-title-weight: 700;
+$theme-footnote-mode: "bracket";
+
+@import "base/defaults";
+
+/*-- scss:rules --*/
+@import "base/rules";
+
+// Use orange as the secondary emphasis color throughout slide content.
+.reveal h3,
+.reveal h4,
+.reveal ul li::marker,
+.reveal ol li::marker {
+  color: $theme-accent-alt;
+}
+
+// Match quote emphasis to the orange secondary accent.
+.reveal .slide blockquote {
+  border-left-color: $theme-accent-alt;
+}

@@ -1,0 +1,36 @@
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+
+.reveal .slide-logo {
+  left: 50px !important;
+  max-height: 4% !important;
+  height: 100% !important;
+  bottom: 0 !important;
+  z-index: -999 !important;
+}
+
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
+.reveal .slide-number {
+  bottom: 7px !important;
+  right: 50px !important;
+  top: unset !important;
+  font-size: 0.5em !important;
+  z-index: -999 !important;
+}
+
+.reveal .footer-default,
+.reveal .footer {
+  font-size: 0.5em !important;
+  max-height: 2% !important;
+  height: 100% !important;
+}
+
+.reveal .slide-menu-button {
+  left: 15px !important;
+  bottom: 10px !important;
+}

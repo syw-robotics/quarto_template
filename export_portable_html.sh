@@ -5,27 +5,61 @@ set -euo pipefail
 # Resolve paths relative to this script so it can be run from any directory.
 script_dir="$(cd "$(dirname "$0")" && pwd -P)"
 source_dir="${script_dir}/assets/fonts"
-theme_file="${script_dir}/assets/custom.scss"
+input="${1:-main.qmd}"
+
+input_file="$(cd "$(dirname "$input")" && pwd -P)/$(basename "$input")"
+if [[ ! -f "$input_file" ]]; then
+  echo "Error: input file not found: ${input}" >&2
+  exit 1
+fi
+
+input_dir="$(cd "$(dirname "$input_file")" && pwd -P)"
+
+theme_value="$(
+  sed -nE '
+    /^[[:space:]]*#/d
+    s/^[[:space:]]*theme:[[:space:]]*([^#]+).*/\1/p
+  ' "$input_file" |
+    head -n 1
+)"
+theme_rel="$(printf '%s\n' "$theme_value" | grep -oE '([[:alnum:]_.-]+/)*[[:alnum:]_.-]+\.scss' | head -n 1 || true)"
+
+if [[ -z "$theme_rel" ]]; then
+  theme_file="${script_dir}/assets/themes/default.scss"
+elif [[ "$theme_rel" = /* ]]; then
+  theme_file="$theme_rel"
+elif [[ -f "${input_dir}/${theme_rel}" ]]; then
+  theme_file="${input_dir}/${theme_rel}"
+else
+  theme_file="${script_dir}/${theme_rel}"
+fi
+
+if [[ ! -f "$theme_file" ]]; then
+  echo "Error: theme file not found: ${theme_file}" >&2
+  exit 1
+fi
 
 if [[ ! -d "$source_dir" ]]; then
   echo -e "\033[31m === Error: assets/fonts directory not found === \n\033[0m" >&2
   exit 1
 fi
 
-# Font family names used in custom.scss must map to local directories under
-# assets/fonts/. Keep this list in sync with the auto-import block in custom.scss.
+# Font family names used in theme SCSS files must map to local directories under
+# assets/fonts/. Keep this list in sync with assets/themes/base/fonts.scss.
 declare -A FONT_DIRS=(
   ["Latin Modern Sans"]="latinmodern-sans"
   ["Gelasio"]="gelasio"
+  ["Newsreader"]="newsreader"
   ["Nunito"]="nunito"
   ["Montserrat"]="montserrat"
+  ["PT Serif"]="pt-serif"
   ["LXGW WenKai"]="lxgw-wenkai"
   ["Source Han Sans SC"]="source-han-sans-sc"
   ["Noto Sans CJK SC"]="noto-sans-cjk-sc"
 )
 
 # Read a simple SCSS variable assignment such as:
-# $presentation-english-font: "Latin Modern Sans" !default;
+# $theme-font-en: "Latin Modern Sans";
 read_font_var() {
   local var_name="$1"
   local value
@@ -43,8 +77,8 @@ read_font_var() {
   printf '%s\n' "$value"
 }
 
-english_font="$(read_font_var "presentation-english-font")"
-chinese_font="$(read_font_var "presentation-chinese-font")"
+english_font="$(read_font_var "theme-font-en")"
+chinese_font="$(read_font_var "theme-font-cn")"
 
 # Convert the selected font family names into existing local font directories.
 mapfile -t active_dirs < <(
@@ -56,50 +90,33 @@ mapfile -t active_dirs < <(
   done | sort -u
 )
 
+# Source Han Sans SC is a local alias CSS that reuses the bundled
+# Noto Sans CJK SC font files.
+if printf '%s\n' "${active_dirs[@]}" | grep -qx "source-han-sans-sc"; then
+  mapfile -t active_dirs < <(
+    printf '%s\n' "${active_dirs[@]}" "noto-sans-cjk-sc" | sort -u
+  )
+fi
+
 if [[ ${#active_dirs[@]} -eq 0 ]]; then
   echo -e "\033[31m === Error: no matching font directories found for '$english_font' / '$chinese_font' === \n\033[0m" >&2
   exit 1
 fi
 
-# Generate a compact import file with only the selected fonts. This is copied
-# next to the bundled font directories for portable HTML/PDF exports.
-active_css="${source_dir}/_active_fonts.css"
-: > "$active_css"
-for dir in "${active_dirs[@]}"; do
-  css_file="${source_dir}/${dir}/${dir}.css"
-  if [[ -f "$css_file" ]]; then
-    echo "@import url('./${dir}/${dir}.css');" >> "$active_css"
-  fi
-done
 echo "Active fonts: ${active_dirs[*]}"
 
-# Quarto writes rendered revealjs assets to directories named *_files.
-mapfile -t output_dirs < <(find "$script_dir" -maxdepth 1 -type d -name '*_files' -print | sort)
+# Quarto writes rendered revealjs assets next to the HTML as <name>_files.
+input_base="$(basename "${input_file%.*}")"
+html_file="${script_dir}/${input_base}.html"
+output_dir="${script_dir}/${input_base}_files"
 
-if [[ ${#output_dirs[@]} -eq 0 ]]; then
-  echo -e "\033[31m === Error: no Quarto *_files directory found. Run \`./preview.sh\` first === \n\033[0m" >&2
+if [[ ! -f "$html_file" || ! -d "$output_dir" ]]; then
+  echo -e "\033[31m === Error: rendered output not found for ${input_base}. Run \`quarto render ${input}\` first === \n\033[0m" >&2
   exit 1
 fi
 
-# Place the selected font CSS and font files where the rendered revealjs theme
-# expects relative ./fonts/... URLs to resolve.
-for output_dir in "${output_dirs[@]}"; do
-  target_dir="${output_dir}/libs/revealjs/dist/theme/fonts"
-  mkdir -p "$target_dir"
-
-  cp "$active_css" "$target_dir/"
-  for font_dir in "${active_dirs[@]}"; do
-    cp -R "${source_dir}/${font_dir}" "$target_dir/"
-  done
-
-  echo -e "\033[32m === Bundled fonts into ${target_dir#"$script_dir"/} === \n\033[0m"
-done
-
 # Create a self-contained folder with the HTML file, its *_files assets, and
 # project assets referenced by the rendered document.
-output_dir="${output_dirs[0]}"
-base="${output_dir%_files}"
-html_file="${base}.html"
 export_dir="${script_dir}/exported_html"
 
 rm -rf "$export_dir"
@@ -108,10 +125,15 @@ cp "$html_file" "$export_dir/"
 cp -R "$output_dir" "$export_dir/"
 mkdir -p "${export_dir}/assets"
 cp "${script_dir}/assets/include_after_body.js" "${export_dir}/assets/"
+mkdir -p "${export_dir}/assets/fonts"
+for font_dir in "${active_dirs[@]}"; do
+  cp -R "${source_dir}/${font_dir}" "${export_dir}/assets/fonts/"
+done
 for asset_dir in images videos; do
   if [[ -d "${script_dir}/assets/${asset_dir}" ]]; then
     cp -R "${script_dir}/assets/${asset_dir}" "${export_dir}/assets/"
   fi
 done
 
+echo -e "\033[32m === Bundled fonts into exported_html/assets/fonts === \n\033[0m"
 echo -e "\033[32m === Packaged into ${export_dir#"$script_dir"/} === \n\033[0m"

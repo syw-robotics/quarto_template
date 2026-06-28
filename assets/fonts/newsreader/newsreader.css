@@ -1,0 +1,21 @@
+@font-face {
+  font-family: Newsreader;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(Newsreader-1.woff2) format('woff2');
+}
+@font-face {
+  font-family: Newsreader;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(Newsreader-2.woff2) format('woff2');
+}
+@font-face {
+  font-family: Newsreader;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(Newsreader-3.woff2) format('woff2');
+}

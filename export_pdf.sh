@@ -40,7 +40,7 @@ fi
 
 # Bundle the selected local fonts into the rendered *_files directory before
 # opening the HTML in the browser, so PDF export does not depend on the network.
-"${script_dir}/export_portable_html.sh"
+"${script_dir}/export_portable_html.sh" "$input"
 
 # Auto-detect a usable browser if CHROME_BIN was not provided.
 if [[ -z "$browser" ]]; then

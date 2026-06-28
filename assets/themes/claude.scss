@@ -1,0 +1,45 @@
+// Warm editorial theme inspired by Claude's calm product palette.
+$theme-font-en: "PT Serif";
+$theme-font-cn: "Source Han Sans SC";
+
+@import "base/fonts";
+
+/*-- scss:defaults --*/
+$theme-bg: #fbf7ef;
+$theme-fg: #2b2620;
+$theme-heading: #211c17;
+$theme-muted: #7a6f63;
+$theme-link: #7c4a2d;
+$theme-accent: #c96442;
+$theme-accent-alt: #4f6f64;
+$theme-code: $theme-accent-alt;
+$theme-selection: #ead4c2;
+$theme-inline-bg: #f0dfd0;
+$theme-blockquote-border: #c96442;
+$theme-title-subtitle: #9b5338;
+$theme-heading-weight: 600;
+$theme-body-weight: 400;
+$theme-title-weight: 600;
+$theme-footnote-mode: "bracket";
+
+@import "base/defaults";
+
+/*-- scss:rules --*/
+@import "base/rules";
+
+// Claude-specific polish layered on top of the shared base rules.
+// Keep the editorial serif spacing neutral and a little more open.
+.reveal .slide {
+  letter-spacing: 0;
+}
+
+.reveal p,
+.reveal li {
+  line-height: 1.38;
+}
+
+// Use a quiet divider instead of a boxed heading treatment.
+.reveal h2 {
+  border-bottom: 2px solid rgba($theme-accent, 0.22);
+  padding-bottom: 0.18em;
+}

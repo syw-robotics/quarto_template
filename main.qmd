@@ -9,8 +9,7 @@ date-format: long # full, long, medium, short, iso
 bibliography: assets/references.bib
 format: 
     revealjs: 
-        # theme: [default, assets/custom.scss] # default, simple, serif, dark, night, ,
-        theme: assets/custom.scss
+        theme: assets/themes/default.scss # default, claude, sustech, minimal
         smaller: true
         scrollable: true # recommended to be true
         auto-stretch: false # recommended to be false when scrollable

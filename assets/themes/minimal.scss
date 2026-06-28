@@ -1,0 +1,34 @@
+// Neutral compact theme for dense technical presentations.
+$theme-font-en: "PT Serif";
+$theme-font-cn: "Noto Sans CJK SC";
+
+@import "base/fonts";
+
+/*-- scss:defaults --*/
+$theme-bg: #ffffff;
+$theme-fg: #202124;
+$theme-heading: #202124;
+$theme-muted: #6f7378;
+$theme-link: #255c99;
+$theme-accent: #2f5f8f;
+$theme-accent-alt: #5c6b73;
+$theme-code: $theme-accent;
+$theme-selection: #d7e4f2;
+$theme-inline-bg: #edf2f7;
+$theme-blockquote-border: #9aa0a6;
+$theme-title-subtitle: #4d5963;
+$theme-heading-weight: 400;
+$theme-body-weight: 400;
+$theme-title-weight: 500;
+$theme-footnote-mode: "sup";
+
+@import "base/defaults";
+
+/*-- scss:rules --*/
+@import "base/rules";
+
+// Remove the default subtitle indent for a denser technical layout.
+.reveal h3,
+.reveal h4 {
+  margin-left: 0;
+}

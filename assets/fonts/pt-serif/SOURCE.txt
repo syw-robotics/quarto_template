@@ -1,0 +1,8 @@
+PT Serif font files downloaded from Google Fonts CSS:
+https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap
+
+Local files:
+- PTSerif-Regular.ttf
+- PTSerif-Bold.ttf
+- PTSerif-Italic.ttf
+- PTSerif-BoldItalic.ttf
