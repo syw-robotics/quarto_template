@@ -52,18 +52,18 @@
 - `assets/themes/default.scss` is the default theme entry.
 - More theme details are available in [`assets/themes/README.md`](assets/themes/README.md).
 - Theme entries are in `assets/themes/`:
-    - `assets/themes/default.scss`
-    - `assets/themes/claude.scss`
-    - `assets/themes/sustech.scss`
-    - `assets/themes/minimal.scss`
+    - [`assets/themes/default.scss`](https://syw-robotics.github.io/quarto_template/default/)
+    - [`assets/themes/claude.scss`](https://syw-robotics.github.io/quarto_template/claude/)
+    - [`assets/themes/sustech.scss`](https://syw-robotics.github.io/quarto_template/sustech/)
+    - [`assets/themes/minimal.scss`](https://syw-robotics.github.io/quarto_template/minimal/)
 
 
 | Theme | Preview | Fonts | Character |
 | --- | --- | --- | --- |
-| `default.scss` | ![Default theme preview](assets/themes/previews/default.png) | Latin Modern Sans + LXGW WenKai | Clean default academic style with red accents and bracket footnotes. |
-| `claude.scss` | ![Claude theme preview](assets/themes/previews/claude.png) | Newsreader + Source Han Sans SC | Warm style inspired by Claude/Anthropic colors, with serif Latin typography and soft rust accents. |
-| `minimal.scss` | ![Minimal theme preview](assets/themes/previews/minimal.png) | PT Serif + Noto Sans CJK SC | Neutral compact style for dense technical presentations. |
-| `sustech.scss` | ![SUSTech theme preview](assets/themes/previews/sustech.png) | Montserrat + Noto Sans CJK SC | SUSTech university style with green and orange accents. |
+| [`default.scss`](https://syw-robotics.github.io/quarto_template/default/) | [![Default theme preview](assets/themes/previews/default.png)](https://syw-robotics.github.io/quarto_template/default/) | Latin Modern Sans + LXGW WenKai | Clean default academic style with red accents and bracket footnotes. |
+| [`claude.scss`](https://syw-robotics.github.io/quarto_template/claude/) | [![Claude theme preview](assets/themes/previews/claude.png)](https://syw-robotics.github.io/quarto_template/claude/) | Newsreader + Source Han Sans SC | Warm style inspired by Claude/Anthropic colors, with serif Latin typography and soft rust accents. |
+| [`minimal.scss`](https://syw-robotics.github.io/quarto_template/minimal/) | [![Minimal theme preview](assets/themes/previews/minimal.png)](https://syw-robotics.github.io/quarto_template/minimal/) | PT Serif + Noto Sans CJK SC | Neutral compact style for dense technical presentations. |
+| [`sustech.scss`](https://syw-robotics.github.io/quarto_template/sustech/) | [![SUSTech theme preview](assets/themes/previews/sustech.png)](https://syw-robotics.github.io/quarto_template/sustech/) | Montserrat + Noto Sans CJK SC | SUSTech university style with green and orange accents. |
 
 
 - To switch themes, change the Revealjs theme entry in your `.qmd` file:

@@ -34,10 +34,10 @@ dependency automatically.
 
 | Theme | Preview | Fonts | Character |
 | --- | --- | --- | --- |
-| `default.scss` | ![Default theme preview](previews/default.png) | Latin Modern Sans + LXGW WenKai | Clean default academic style with red accents and bracket footnotes. |
-| `claude.scss` | ![Claude theme preview](previews/claude.png) | Newsreader + Source Han Sans SC | Warm style inspired by Claude/Anthropic colors, with serif Latin typography and soft rust accents. |
-| `minimal.scss` | ![Minimal theme preview](previews/minimal.png) | Latin Modern Sans + Noto Sans CJK SC | Neutral compact style for dense technical presentations. |
-| `sustech.scss` | ![SUSTech theme preview](previews/sustech.png) | Montserrat + Noto Sans CJK SC | SUSTech university style with green and orange accents. |
+| [`default.scss`](https://syw-robotics.github.io/quarto_template/default/) | [![Default theme preview](previews/default.png)](https://syw-robotics.github.io/quarto_template/default/) | Latin Modern Sans + LXGW WenKai | Clean default academic style with red accents and bracket footnotes. |
+| [`claude.scss`](https://syw-robotics.github.io/quarto_template/claude/) | [![Claude theme preview](previews/claude.png)](https://syw-robotics.github.io/quarto_template/claude/) | Newsreader + Source Han Sans SC | Warm style inspired by Claude/Anthropic colors, with serif Latin typography and soft rust accents. |
+| [`minimal.scss`](https://syw-robotics.github.io/quarto_template/minimal/) | [![Minimal theme preview](previews/minimal.png)](https://syw-robotics.github.io/quarto_template/minimal/) | Latin Modern Sans + Noto Sans CJK SC | Neutral compact style for dense technical presentations. |
+| [`sustech.scss`](https://syw-robotics.github.io/quarto_template/sustech/) | [![SUSTech theme preview](previews/sustech.png)](https://syw-robotics.github.io/quarto_template/sustech/) | Montserrat + Noto Sans CJK SC | SUSTech university style with green and orange accents. |
 
 ## Structure
 
