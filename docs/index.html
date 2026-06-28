@@ -1,65 +1,3 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-page_dir="$(cd "$(dirname "$0")" && pwd -P)"
-source_dir="${SOURCE_DIR:-${page_dir}/../quarto_revealjs_template}"
-source_qmd="${SOURCE_QMD:-main.qmd}"
-docs_dir="${page_dir}/docs"
-
-themes=(default claude sustech minimal)
-
-if [[ ! -d "$source_dir" ]]; then
-  echo "Error: source repo not found: ${source_dir}" >&2
-  exit 1
-fi
-
-if [[ ! -f "${source_dir}/${source_qmd}" ]]; then
-  echo "Error: source deck not found: ${source_dir}/${source_qmd}" >&2
-  exit 1
-fi
-
-if [[ ! -x "${source_dir}/export_portable_html.sh" ]]; then
-  echo "Error: export_portable_html.sh is missing or not executable." >&2
-  exit 1
-fi
-
-rm -rf "$docs_dir"
-mkdir -p "$docs_dir"
-
-cleanup_theme_build() {
-  local theme="$1"
-  rm -rf \
-    "${source_dir}/__page_build_${theme}.qmd" \
-    "${source_dir}/__page_build_${theme}.html" \
-    "${source_dir}/__page_build_${theme}_files"
-}
-
-for theme in "${themes[@]}"; do
-  echo "=== Rendering theme: ${theme} ==="
-
-  cleanup_theme_build "$theme"
-
-  sed -E \
-    "s#^([[:space:]]*theme:).*#\\1 assets/themes/${theme}.scss#" \
-    "${source_dir}/${source_qmd}" > "${source_dir}/__page_build_${theme}.qmd"
-
-  (
-    cd "$source_dir"
-    quarto render "__page_build_${theme}.qmd"
-    ./export_portable_html.sh "__page_build_${theme}.qmd"
-  )
-
-  mkdir -p "${docs_dir}/${theme}"
-  cp -R "${source_dir}/exported_html/." "${docs_dir}/${theme}/"
-  mv \
-    "${docs_dir}/${theme}/__page_build_${theme}.html" \
-    "${docs_dir}/${theme}/index.html"
-
-  cleanup_theme_build "$theme"
-done
-
-cat > "${docs_dir}/index.html" <<'EOF'
 <!doctype html>
 <html lang="en">
 <head>
@@ -152,10 +90,3 @@ cat > "${docs_dir}/index.html" <<'EOF'
   </main>
 </body>
 </html>
-EOF
-
-echo -e "\n\033[32mBuilt theme gallery in docs/:\033[0m"
-for theme in "${themes[@]}"; do
-  echo "  docs/${theme}/index.html"
-done
-echo "  docs/index.html"

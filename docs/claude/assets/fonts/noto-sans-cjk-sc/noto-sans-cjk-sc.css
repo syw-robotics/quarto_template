@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Noto Sans CJK SC';
+    src: url('./NotoSansCJKsc-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans CJK SC';
+    src: url('./NotoSansCJKsc-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans CJK SC';
+    src: url('./NotoSansCJKsc-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}
