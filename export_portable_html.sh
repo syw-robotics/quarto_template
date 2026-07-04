@@ -107,8 +107,8 @@ echo "Active fonts: ${active_dirs[*]}"
 
 # Quarto writes rendered revealjs assets next to the HTML as <name>_files.
 input_base="$(basename "${input_file%.*}")"
-html_file="${script_dir}/${input_base}.html"
-output_dir="${script_dir}/${input_base}_files"
+html_file="${input_dir}/${input_base}.html"
+output_dir="${input_dir}/${input_base}_files"
 
 if [[ ! -f "$html_file" || ! -d "$output_dir" ]]; then
   echo -e "\033[31m === Error: rendered output not found for ${input_base}. Run \`quarto render ${input}\` first === \n\033[0m" >&2
@@ -117,7 +117,7 @@ fi
 
 # Create a self-contained folder with the HTML file, its *_files assets, and
 # project assets referenced by the rendered document.
-export_dir="${script_dir}/exported_html"
+export_dir="${input_dir}/exported_html"
 
 rm -rf "$export_dir"
 mkdir -p "$export_dir"
@@ -136,4 +136,4 @@ for asset_dir in images videos; do
 done
 
 echo -e "\033[32m === Bundled fonts into exported_html/assets/fonts === \n\033[0m"
-echo -e "\033[32m === Packaged into ${export_dir#"$script_dir"/} === \n\033[0m"
+echo -e "\033[32m === Packaged into ${export_dir} === \n\033[0m"

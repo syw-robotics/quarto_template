@@ -1,0 +1,313 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  qpre [render] <slides.md|slides.qmd> [quarto args...]
+  qpre preview <slides.md|slides.qmd> [quarto args...]
+  qpre pdf <slides.md|slides.qmd>
+  qpre portable-html <slides.md|slides.qmd>
+  qpre clear
+
+Environment:
+  QPRE_TEMPLATE_DIR   Override the template directory that contains assets/.
+
+Examples:
+  qpre talk.md
+  qpre preview talk.md --port 6111
+  qpre pdf talk.md
+EOF
+}
+
+fail() {
+  echo "Error: $*" >&2
+  exit 1
+}
+
+require_command() {
+  command -v "$1" >/dev/null 2>&1 || fail "$1 is not available in PATH."
+}
+
+copy_tree_fast() {
+  local source_path="$1"
+  local target_path="$2"
+  local target_parent
+
+  target_parent="$(dirname "$target_path")"
+  mkdir -p "$target_parent"
+
+  # Prefer copy-on-write clones when the filesystem supports them, then normal
+  # copy. Avoid hard links so editing copied assets never mutates the template.
+  cp -a --reflink=always "$source_path" "$target_path" 2>/dev/null ||
+    cp -R "$source_path" "$target_path"
+}
+
+copy_file_fast() {
+  local source_path="$1"
+  local target_path="$2"
+  local target_parent
+
+  target_parent="$(dirname "$target_path")"
+  mkdir -p "$target_parent"
+
+  cp -a --reflink=always "$source_path" "$target_path" 2>/dev/null ||
+    cp "$source_path" "$target_path"
+}
+
+command_name="render"
+if [[ $# -gt 0 ]]; then
+  case "$1" in
+    render|preview|pdf|portable-html|clear)
+      command_name="$1"
+      shift
+      ;;
+    -h|--help|help)
+      usage
+      exit 0
+      ;;
+  esac
+fi
+
+[[ $# -ge 1 ]] || {
+  usage >&2
+  exit 1
+}
+
+input="$1"
+shift
+
+[[ -f "$input" ]] || fail "input file not found: ${input}"
+case "$input" in
+  *.md|*.qmd) ;;
+  *) fail "input must be a .md or .qmd file." ;;
+esac
+
+require_command quarto
+
+script_path="${BASH_SOURCE[0]}"
+if command -v readlink >/dev/null 2>&1; then
+  resolved_path="$(readlink -f "$script_path" 2>/dev/null || true)"
+  [[ -n "$resolved_path" ]] && script_path="$resolved_path"
+fi
+script_dir="$(cd "$(dirname "$script_path")" && pwd -P)"
+template_dir="${QPRE_TEMPLATE_DIR:-$(cd "${script_dir}/.." && pwd -P)}"
+[[ -d "${template_dir}/assets" ]] || fail "template assets not found under ${template_dir}."
+
+input_abs="$(cd "$(dirname "$input")" && pwd -P)/$(basename "$input")"
+input_dir="$(dirname "$input_abs")"
+input_name="$(basename "$input_abs")"
+input_stem="${input_name%.*}"
+output_html="${input_dir}/${input_stem}.html"
+
+# Font family names used in theme SCSS files must map to local directories under
+# assets/fonts/. Keep this list in sync with assets/themes/base/fonts.scss.
+declare -A FONT_DIRS=(
+  ["Latin Modern Sans"]="latinmodern-sans"
+  ["Gelasio"]="gelasio"
+  ["Newsreader"]="newsreader"
+  ["Nunito"]="nunito"
+  ["Montserrat"]="montserrat"
+  ["PT Serif"]="pt-serif"
+  ["LXGW WenKai"]="lxgw-wenkai"
+  ["Source Han Sans SC"]="source-han-sans-sc"
+  ["Noto Sans CJK SC"]="noto-sans-cjk-sc"
+)
+
+resolve_theme_file() {
+  local input_file="$1"
+  local input_base_dir="$2"
+  local theme_value theme_rel theme_file
+
+  theme_value="$(
+    sed -nE '
+      /^[[:space:]]*#/d
+      s/^[[:space:]]*theme:[[:space:]]*([^#]+).*/\1/p
+    ' "$input_file" |
+      head -n 1
+  )"
+  theme_rel="$(printf '%s\n' "$theme_value" | grep -oE '([[:alnum:]_.-]+/)*[[:alnum:]_.-]+\.scss' | head -n 1 || true)"
+
+  if [[ -z "$theme_rel" ]]; then
+    theme_file="${template_dir}/assets/themes/default.scss"
+  elif [[ "$theme_rel" = /* ]]; then
+    theme_file="$theme_rel"
+  elif [[ -f "${input_base_dir}/${theme_rel}" ]]; then
+    theme_file="${input_base_dir}/${theme_rel}"
+  else
+    theme_file="${template_dir}/${theme_rel}"
+  fi
+
+  [[ -f "$theme_file" ]] || fail "theme file not found: ${theme_file}"
+  printf '%s\n' "$theme_file"
+}
+
+read_font_var() {
+  local theme_file="$1"
+  local var_name="$2"
+  local value
+
+  value="$(
+    sed -nE "s/^[[:space:]]*\\\$${var_name}[[:space:]]*:[[:space:]]*['\"]([^'\"]+)['\"].*/\\1/p" "$theme_file" |
+      head -n 1
+  )"
+
+  [[ -n "$value" ]] || fail "could not read \$${var_name} from ${theme_file}"
+  printf '%s\n' "$value"
+}
+
+active_font_dirs() {
+  local theme_file="$1"
+  local source_dir="${template_dir}/assets/fonts"
+  local english_font chinese_font family dir
+  local -a active_dirs
+
+  english_font="$(read_font_var "$theme_file" "theme-font-en")"
+  chinese_font="$(read_font_var "$theme_file" "theme-font-cn")"
+
+  for family in "$english_font" "$chinese_font"; do
+    dir="${FONT_DIRS[$family]:-}"
+    if [[ -n "$dir" && -d "${source_dir}/${dir}" ]]; then
+      active_dirs+=("$dir")
+    fi
+  done
+
+  # Source Han Sans SC is a local alias CSS that reuses bundled Noto Sans CJK SC
+  # font files.
+  if printf '%s\n' "${active_dirs[@]}" | grep -qx "source-han-sans-sc"; then
+    active_dirs+=("noto-sans-cjk-sc")
+  fi
+
+  if [[ ${#active_dirs[@]} -eq 0 ]]; then
+    fail "no matching font directories found for '${english_font}' / '${chinese_font}'."
+  fi
+
+  printf '%s\n' "${active_dirs[@]}" | sort -u
+}
+
+referenced_template_assets() {
+  local input_file="$1"
+
+  grep -Eoh 'assets/(images|videos)/[^][(){}<>"'\'',[:space:]]+' "$input_file" 2>/dev/null |
+    sed 's/[[:punct:]]*$//' |
+    sort -u
+}
+
+copy_referenced_template_assets() {
+  local asset_path source_path target_path
+
+  while IFS= read -r asset_path; do
+    [[ -n "$asset_path" ]] || continue
+    source_path="${template_dir}/${asset_path}"
+    [[ -f "$source_path" ]] || continue
+
+    target_path="${input_dir}/${asset_path}"
+    if [[ ! -e "$target_path" ]]; then
+      copy_file_fast "$source_path" "$target_path"
+    fi
+  done < <(referenced_template_assets "${tmp_dir}/${input_name}")
+}
+
+tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/qpre.XXXXXX")"
+cleanup() {
+  rm -rf "$tmp_dir"
+}
+trap cleanup EXIT
+
+cp "$input_abs" "${tmp_dir}/${input_name}"
+ln -s "${template_dir}/assets" "${tmp_dir}/assets"
+
+# Let single-file decks use short template theme names such as:
+#   theme: claude
+# Quarto otherwise treats these as built-in revealjs themes.
+case "$(uname -s)" in
+  Darwin*)
+    sed -i '' -E 's/^([[:space:]]*theme:[[:space:]]*)(default|claude|minimal|sustech)([[:space:]]*(#.*)?)$/\1assets\/themes\/\2.scss\3/' "${tmp_dir}/${input_name}"
+    ;;
+  *)
+    sed -i -E 's/^([[:space:]]*theme:[[:space:]]*)(default|claude|minimal|sustech)([[:space:]]*(#.*)?)$/\1assets\/themes\/\2.scss\3/' "${tmp_dir}/${input_name}"
+    ;;
+esac
+
+cat > "${tmp_dir}/_quarto.yaml" <<'EOF'
+tbl-cap-location: top
+fig-cap-location: margin
+lightbox: true
+include-after-body:
+  - text: |
+      <script src="assets/include_after_body.js"></script>
+EOF
+
+copy_outputs() {
+  local stem="$1"
+  local theme_file font_dir
+
+  theme_file="$(resolve_theme_file "${tmp_dir}/${input_name}" "$tmp_dir")"
+
+  [[ -f "${tmp_dir}/${stem}.html" ]] && cp "${tmp_dir}/${stem}.html" "${input_dir}/"
+  [[ -d "${tmp_dir}/${stem}_files" ]] && {
+    rm -rf "${input_dir}/${stem}_files"
+    copy_tree_fast "${tmp_dir}/${stem}_files" "${input_dir}/${stem}_files"
+  }
+  [[ -d "${tmp_dir}/${stem}_cache" ]] && {
+    rm -rf "${input_dir}/${stem}_cache"
+    copy_tree_fast "${tmp_dir}/${stem}_cache" "${input_dir}/${stem}_cache"
+  }
+  mkdir -p "${input_dir}/assets"
+  if [[ -f "${tmp_dir}/assets/include_after_body.js" && ! -e "${input_dir}/assets/include_after_body.js" ]]; then
+    cp "${tmp_dir}/assets/include_after_body.js" "${input_dir}/assets/"
+  fi
+  if [[ -d "${tmp_dir}/assets/fonts" ]]; then
+    mkdir -p "${input_dir}/assets/fonts"
+    while IFS= read -r font_dir; do
+      [[ -n "$font_dir" ]] || continue
+      if [[ ! -e "${input_dir}/assets/fonts/${font_dir}" ]]; then
+        copy_tree_fast "${tmp_dir}/assets/fonts/${font_dir}" "${input_dir}/assets/fonts/${font_dir}"
+      fi
+    done < <(active_font_dirs "$theme_file")
+  fi
+  copy_referenced_template_assets
+}
+
+case "$command_name" in
+  clear)
+    "${template_dir}/clear.sh" "$@"
+    ;;
+  render)
+    quarto render "${tmp_dir}/${input_name}" "$@"
+    copy_outputs "$input_stem"
+    ;;
+  preview)
+    quarto preview "${tmp_dir}/${input_name}" "$@"
+    ;;
+  portable-html)
+    quarto render "${tmp_dir}/${input_name}" "$@"
+    copy_outputs "$input_stem"
+    "${template_dir}/export_portable_html.sh" "$input_abs"
+    ;;
+  pdf)
+    require_command node
+    quarto render "${tmp_dir}/${input_name}" "$@"
+    copy_outputs "$input_stem"
+    "${template_dir}/export_portable_html.sh" "$input_abs"
+
+    browser="${CHROME_BIN:-}"
+    if [[ -n "$browser" ]] && ! command -v "$browser" >/dev/null 2>&1; then
+      fail "CHROME_BIN is set to '${browser}', but it is not available in PATH."
+    fi
+    if [[ -z "$browser" ]]; then
+      for candidate in google-chrome-stable google-chrome chrome chromium chromium-browser microsoft-edge brave-browser; do
+        if command -v "$candidate" >/dev/null 2>&1; then
+          browser="$candidate"
+          break
+        fi
+      done
+    fi
+    [[ -n "$browser" ]] || fail "no Chrome/Chromium-compatible browser was found."
+    [[ -f "$output_html" ]] || fail "expected HTML was not created: ${output_html}"
+
+    node "${template_dir}/assets/export_reveal_pdf.mjs" "$browser" "file://${output_html}" "${input_dir}/${input_stem}.pdf"
+    echo "Output created: ${input_dir}/${input_stem}.pdf"
+    ;;
+esac

@@ -29,8 +29,28 @@
 
 ## :page_with_curl: Scripts
 
+- `bin/qpre`:
+    - global entry for rendering a single `.qmd` slide file from any directory with this template.
+    - install once:
+      ```bash
+      ln -sf "$PWD/bin/qpre" ~/.local/bin/qpre
+      ```
+      Make sure `~/.local/bin` is in `PATH`.
+    - usage:
+      ```bash
+      qpre talk.md
+      qpre preview talk.md --port 6111
+      qpre pdf talk.md
+      qpre portable-html talk.md
+      ```
+    - if this repo moves, either recreate the symlink or set:
+      ```bash
+      export QPRE_TEMPLATE_DIR=/path/to/quarto_template
+      ```
+    - template theme aliases are `default`, `claude`, `minimal`, and `sustech`.
 - `clear.sh`:
     - clear exported files. 
+    - also available through `qpre clear`.
 - `preview.sh`
     - preview rendered html.
 - `export_pdf.sh`
@@ -72,6 +92,12 @@
     format:
       revealjs:
         theme: assets/themes/claude.scss
+    ```
+    With `qpre`, you can also use the shorter alias:
+    ```yaml
+    format:
+      revealjs:
+        theme: claude
     ```
 
 - Theme font selection is controlled at the top of each theme entry:

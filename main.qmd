@@ -10,6 +10,7 @@ bibliography: assets/references.bib
 format: 
     revealjs: 
         theme: assets/themes/default.scss # default, claude, sustech, minimal
+        # theme: default # you can use theme alias when using qpre cli
         smaller: true
         scrollable: true # recommended to be true
         auto-stretch: false # recommended to be false when scrollable
@@ -19,8 +20,8 @@ format:
         # reference-location: document # Put the footnotes or references at the end of the document
         slide-number: c/t
         toc: true  # recommended to be false, and set an additional toc slide manually
-        toc-depth: 1
-        toc-title: Contents
+        toc-depth: 2
+        toc-title: Table of Contents
         transition: fade # fade, slide
         transition-speed: fast # fast, default, slow
         chalkboard: false  # see: https://prerelease.quarto.org/docs/presentations/revealjs/presenting.html#chalkboard
