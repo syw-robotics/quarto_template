@@ -1,0 +1,2031 @@
+// === RL locomotion early works ===
+@INPROCEEDINGS{tan_sim2real_2018, 
+    AUTHOR    = {Jie Tan AND Tingnan Zhang AND Erwin Coumans AND Atil Iscen AND Yunfei Bai AND Danijar Hafner AND Steven Bohez AND Vincent Vanhoucke}, 
+    TITLE     = {Sim-to-Real: Learning Agile Locomotion For Quadruped Robots}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2018}, 
+    ADDRESS   = {Pittsburgh, Pennsylvania}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2018.XIV.010} 
+} 
+
+@article{hwangbo_learning_2019,
+	title = {Learning agile and dynamic motor skills for legged robots},
+	volume = {4},
+	issn = {2470-9476},
+	url = {https://www.science.org/doi/10.1126/scirobotics.aau5872},
+	doi = {10.1126/scirobotics.aau5872},
+	language = {en},
+	number = {26},
+	urldate = {2025-02-14},
+	journal = {Science Robotics},
+	author = {Hwangbo, Jemin and Lee, Joonho and Dosovitskiy, Alexey and Bellicoso, Dario and Tsounis, Vassilios and Koltun, Vladlen and Hutter, Marco},
+	month = jan,
+	year = {2019},
+	keywords = {Quadrupedal robots, RSL-EthZ, ScienceRobotics},
+	pages = {eaau5872},
+}
+
+@article{lee_learning_2020,
+	title = {Learning {Quadrupedal} {Locomotion} over {Challenging} {Terrain}},
+	volume = {5},
+	issn = {2470-9476},
+	url = {http://arxiv.org/abs/2010.11251},
+	doi = {10.1126/scirobotics.abc5986},
+	language = {en},
+	number = {47},
+	urldate = {2025-02-14},
+	journal = {Science Robotics},
+	author = {Lee, Joonho and Hwangbo, Jemin and Wellhausen, Lorenz and Koltun, Vladlen and Hutter, Marco},
+	month = oct,
+	year = {2020},
+	note = {arXiv:2010.11251 [cs]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Robotics, Computer Science - Systems and Control, Electrical Engineering and Systems Science - Systems and Control, PMTG (Policies Modulating Trajectory Generators), Quadrupedal robots, RSL-EthZ, ScienceRobotics},
+	pages = {eabc5986},
+}
+// === RL locomotion early works ===
+
+// === pre-rl, static method, model-based control ===
+// 关节位控（纯静态规划落脚点），简化模型，到后面的MIT开始用准直驱电机是一个突破，可以时间较为精准的关节力控，然后用MPC作为平衡控制器
+@article{mcgeer_passive_dynamic_walking_1990,
+  author = {McGeer, Tad},
+  title = {Passive Dynamic Walking},
+  journal = {The International Journal of Robotics Research},
+  volume = {9},
+  number = {2},
+  pages = {62--82},
+  year = {1990},
+  doi = {10.1177/027836499000900206},
+  url = {https://doi.org/10.1177/027836499000900206}
+}
+
+// Legged Robots That Balance: raibert祖师爷
+@article{1986LeggedRobotThatBalence,
+  title={Legged Robots That Balance},
+  author={ Raibert, Marc H.  and  Tello, Ernest R. },
+  journal={IEEE Expert},
+  volume={1},
+  number={4},
+  pages={89-89},
+  year={1986},
+}
+
+// VMC
+@article{pratt_virtual_model_control_2001,
+  author = {Pratt, Jerry and Chew, Chee-Meng and Torres, Ann and Dilworth, Peter and Pratt, Gill},
+  title = {Virtual Model Control: An Intuitive Approach for Bipedal Locomotion},
+  journal = {The International Journal of Robotics Research},
+  volume = {20},
+  number = {2},
+  pages = {129--143},
+  year = {2001},
+  doi = {10.1177/02783640122067309},
+  url = {https://doi.org/10.1177/02783640122067309}
+}
+
+// HZD
+@article{sreenath_mabel_hzd_walking_2011,
+  author = {Sreenath, Koushil and Park, Hae-Won and Poulakakis, Ioannis and Grizzle, J. W.},
+  title = {A Compliant Hybrid Zero Dynamics Controller for Stable, Efficient and Fast Bipedal Walking on {MABEL}},
+  journal = {The International Journal of Robotics Research},
+  volume = {30},
+  number = {9},
+  pages = {1170--1193},
+  year = {2011},
+  doi = {10.1177/0278364910379882},
+  url = {https://doi.org/10.1177/0278364910379882}
+}
+
+// HZD
+@article{sreenath_mabel_hzd_running_2013,
+  author = {Sreenath, Koushil and Park, Hae-Won and Poulakakis, Ioannis and Grizzle, J. W.},
+  title = {Embedding Active Force Control within the Compliant Hybrid Zero Dynamics to Achieve Stable, Fast Running on {MABEL}},
+  journal = {The International Journal of Robotics Research},
+  volume = {32},
+  number = {3},
+  pages = {324--345},
+  year = {2013},
+  doi = {10.1177/0278364912473344},
+  url = {https://doi.org/10.1177/0278364912473344}
+}
+
+// DCM位控，简化模型，规划落脚点
+@article{2013DCM,
+  title={Three-dimensional bipedal walking control using Divergent Component of Motion},
+  author={ Englsberger, Johannes  and  Ott, Christian  and Alin Albu-Schäffer},
+  journal={IEEE},
+  year={2013},
+}
+
+// 人形机器人位置控制
+@article{2014Introduction,
+  title={Introduction to humanoid robotics},
+  author={ Kajita, Shuuji  and  Hirukawa, Hirohisa  and  Harada, Kensuke  and  Yokoi, Kazuhito },
+  journal={Springer Publishing Company, Incorporated},
+  year={2014},
+}
+
+// 2006 Capture Point, Static Method, joint position control
+@inproceedings{pratt2006capture,
+  title={Capture point: A step toward humanoid push recovery},
+  author={Pratt, Jerry and Carff, John and Drakunov, Sergey and Goswami, Ambarish},
+  booktitle={2006 6th IEEE-RAS international conference on humanoid robots},
+  pages={200--207},
+  year={2006},
+  organization={IEEE}
+}
+
+// SLIP
+@inproceedings{wensing20143d,
+  title={3d-slip steering for high-speed humanoid turns},
+  author={Wensing, Patrick M and Orin, David E},
+  booktitle={2014 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  pages={4008--4013},
+  year={2014},
+  organization={IEEE}
+}
+
+// 2018 cheetah3
+@inproceedings{bledt2018-cheetah3,
+  title={Mit cheetah 3: Design and control of a robust, dynamic quadruped robot},
+  author={Bledt, Gerardo and Powell, Matthew J and Katz, Benjamin and Di Carlo, Jared and Wensing, Patrick M and Kim, Sangbae},
+  booktitle={2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={2245--2252},
+  year={2018},
+  organization={IEEE}
+}
+
+// 2018 cheetah3 convex MPC
+@inproceedings{di2018-convexMPC,
+  title={Dynamic locomotion in the mit cheetah 3 through convex model-predictive control},
+  author={Di Carlo, Jared and Wensing, Patrick M and Katz, Benjamin and Bledt, Gerardo and Kim, Sangbae},
+  booktitle={2018 IEEE/RSJ international conference on intelligent robots and systems (IROS)},
+  pages={1--9},
+  year={2018},
+  organization={IEEE}
+}
+
+// 2019 mini-cheetah MPC+WBIC
+@article{kim2019MPC+WBIC,
+  title={Highly dynamic quadruped locomotion via whole-body impulse control and model predictive control},
+  author={Kim, Donghyun and Di Carlo, Jared and Katz, Benjamin and Bledt, Gerardo and Kim, Sangbae},
+  journal={arXiv preprint arXiv:1909.06586},
+  year={2019}
+}
+
+// MPC
+@inproceedings{li2021quadruped,
+  title={Quadruped robot hopping on two legs},
+  author={Li, Shenggao and Chen, Hua and Zhang, Wei and Wensing, Patrick M},
+  booktitle={2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={7448--7455},
+  year={2021},
+  organization={IEEE}
+}
+// === pre-rl, static method (joint position control), then model-based control (joint torque control) ===
+// but mpc has problems: rely on acurate modelling (Good System ID), acurate joint torque control; -> acurate modelling!
+// While RL based controller do not need acurate modelling, RL solves uncertainty well
+
+// === perceptive locomotion other than vision ===
+@article{miki_learning_2022,
+	title = {Learning robust perceptive locomotion for quadrupedal robots in the wild},
+	volume = {7},
+	issn = {2470-9476},
+	url = {http://arxiv.org/abs/2201.08117},
+	doi = {10.1126/scirobotics.abk2822},
+	language = {en},
+	number = {62},
+	urldate = {2025-02-14},
+	journal = {Science Robotics},
+	author = {Miki, Takahiro and Lee, Joonho and Hwangbo, Jemin and Wellhausen, Lorenz and Koltun, Vladlen and Hutter, Marco},
+	month = jan,
+	year = {2022},
+	note = {arXiv:2201.08117 [cs]},
+	keywords = {Computer Science - Robotics, Quadrupedal robots, RSL-EthZ, ScienceRobotics},
+	pages = {eabk2822},
+}
+
+@inproceedings{he_abs_2024,
+  author    = {He, Tairan and Zhang, Chong and Xiao, Wenli and He, Guanqi and Liu, Changliu and Shi, Guanya},
+  title     = {Agile But Safe: Learning Collision-Free High-Speed Legged Locomotion},
+  booktitle = {Robotics: Science and Systems (RSS)},
+  year      = {2024},
+}
+
+@article{nahrendra2026dreamwaq++,
+  title={DreamWaQ++: Obstacle-Aware Quadrupedal Locomotion With Resilient Multimodal Reinforcement Learning},
+  author={Nahrendra, I Made Aswin and Yu, Byeongho and Oh, Minho and Lee, Dongkyu and Lee, Seunghyun and Lee, Hyeonwoo and Lim, Hyungtae and Myung, Hyun},
+  journal={IEEE Transactions on Robotics},
+  volume={42},
+  pages={819--836},
+  year={2026},
+  publisher={IEEE}
+}
+
+@article{hoeller_anymal_parkour_2024,
+  title = {{ANYmal} Parkour: Learning Agile Navigation for Quadrupedal Robots},
+  author = {Hoeller, David and Rudin, Nikita and Sako, Dhionis V. and Hutter, Marco},
+  journal = {Science Robotics},
+  volume = {9},
+  number = {88},
+  pages = {eadi7566},
+  year = {2024},
+  doi = {10.1126/scirobotics.adi7566},
+  url = {https://www.science.org/doi/10.1126/scirobotics.adi7566},
+  eprint = {2306.14874},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO}
+}
+
+@article{rudin_parkour_2025,
+  title={Parkour in the wild: Learning a general and extensible agile locomotion policy using multi-expert distillation and rl fine-tuning},
+  author={Rudin, Nikita and He, Junzhe and Aurand, Joshua and Hutter, Marco},
+  journal={The International Journal of Robotics Research},
+  pages={02783649261455067},
+  year={2025},
+  publisher={SAGE Publications Sage UK: London, England}
+}
+
+@InProceedings{gallant_2026_CVPR,
+    author    = {Ben, Qingwei and Xu, Botian and Li, Kailin and Jia, Feiyu and Zhang, Wentao and Wang, Jingping and Wang, Jingbo and Lin, Dahua and Pang, Jiangmiao},
+    title     = {Gallant: Voxel Grid-based Humanoid Locomotion and Local-navigation across 3-D Constrained Terrains},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {28086-28095}
+}
+
+@article{ssr_zju_2026,
+  title={SSR: Scaling Surefooted and Symmetric Humanoid Traversal to the Open World},
+  author={Yu, Ruiqi and Wang, Yiwen and Hao, Yuan and Wu, Jun and Zhu, Qiuguo},
+  journal={arXiv preprint arXiv:2605.30770},
+  year={2026}
+}
+
+@article{cref_zju_2026,
+  title={CReF: Cross-modal and Recurrent Fusion for Depth-conditioned Humanoid Locomotion},
+  author={Hao, Yuan and Yu, Ruiqi and Luo, Shixin and Zhang, Guoteng and Wu, Jun and Zhu, Qiuguo},
+  journal={arXiv preprint arXiv:2603.29452},
+  year={2026},
+  url={https://arxiv.org/abs/2603.29452}
+}
+
+@misc{fast_stair_limx_2026,
+      title={FastStair: Learning to Run Up Stairs with Humanoid Robots}, 
+      author={Yan Liu and Tao Yu and Haolin Song and Hongbo Zhu and Nianzong Hu and Yuzhi Hao and Xiuyong Yao and Xizhe Zang and Hua Chen and Jie Zhao},
+      year={2026},
+      eprint={2601.10365},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2601.10365}, 
+}
+// === perceptive locomotion other than vision ===
+
+// === motion tracking ===
+@misc{beyondmimic_2025,
+      title={BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion}, 
+      author={Qiayuan Liao and Takara E. Truong and Xiaoyu Huang and Yuman Gao and Guy Tevet and Koushil Sreenath and C. Karen Liu},
+      year={2025},
+      eprint={2508.08241},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2508.08241}, 
+}
+
+@misc{zest_2026,
+      title={ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control}, 
+      author={Jean Pierre Sleiman and He Li and Alphonsus Adu-Bredu and Robin Deits and Arun Kumar and Kevin Bergamin and Mohak Bhardwaj and Scott Biddlestone and Nicola Burger and Matthew A. Estrada and Francesco Iacobelli and Twan Koolen and Alexander Lambert and Erica Lin and M. Eva Mungai and Zach Nobles and Shane Rozen-Levy and Yuyao Shi and Jiashun Wang and Jakob Welner and Fangzhou Yu and Mike Zhang and Alfred Rizzi and Jessica Hodgins and Sylvain Bertrand and Yeuhi Abe and Scott Kuindersma and Farbod Farshidian},
+      year={2026},
+      eprint={2602.00401},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2602.00401}, 
+}
+
+// HOI
+@misc{resmimic_2025,
+        title={ResMimic: From General Motion Tracking to Humanoid Whole-body Loco-Manipulation via Residual Learning}, 
+        author={Siheng Zhao and Yanjie Ze and Yue Wang and C. Karen Liu and Pieter Abbeel and Guanya Shi and Rocky Duan},
+        year={2025},
+        eprint={2510.05070},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO},
+        url={https://arxiv.org/abs/2510.05070}, 
+}
+
+// HOI
+@InProceedings{skillmimic_2025,
+    author    = {Wang, Yinhuai and Zhao, Qihan and Yu, Runyi and Tsui, Hok Wai and Zeng, Ailing and Lin, Jing and Luo, Zhengyi and Yu, Jiwen and Li, Xiu and Chen, Qifeng and Zhang, Jian and Zhang, Lei and Tan, Ping},
+    title     = {SkillMimic: Learning Basketball Interaction Skills from Demonstrations},
+    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {17540-17549}
+}
+
+// general_motion_tracker, teleop
+@article{rgmt_2026,
+    title   = {Robust and Generalized Humanoid Motion Tracking},
+    author  = {Ma, Yubiao and Yu, Han and Xie, Jiayin and Lv, Changtai and Luo, Qiang and Zhang, Chi and Yin, Yunpeng and Xing, Boyang and Ren, Xuemei and Zheng, Dongdong},
+    journal = {arXiv:2601.23080},
+    year    = {2026}
+}
+
+// general_motion_tracker, teleop
+@misc{humanoid_gpt_2026,
+      title={Humanoid-GPT: Scaling Data and Structure for Zero-Shot Motion Tracking}, 
+      author={Zekun Qi and Xuchuan Chen and Dairu Liu and Chenghuai Lin and Yunrui Lian and Sikai Liang and Zhikai Zhang and Yu Guan and Jilong Wang and Wenyao Zhang and Xinqiang Yu and He Wang and Li Yi},
+      year={2026},
+      eprint={2606.03985},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.03985}, 
+}
+
+// general_motion_tracker, teleop
+@article{sonic_nvidia_2025,
+    title={SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control},
+    author={Luo, Zhengyi and Yuan, Ye and Wang, Tingwu and Li, Chenran and Chen, Sirui and Casta\~neda, Fernando and Cao, Zi-Ang and Li, Jiefeng and Minor, David and Ben, Qingwei and Da, Xingye and Ding, Runyu and Hogg, Cyrus and Song, Lina and Lim, Edy and Jeong, Eugene and He, Tairan and Xue, Haoru and Xiao, Wenli and Wang, Zi and Yuen, Simon and Kautz, Jan and Chang, Yan and Iqbal, Umar and Fan, Linxi and Zhu, Yuke},
+    journal={arXiv preprint arXiv:2511.07820},
+    year={2025}
+}
+
+// HOI
+@misc{hdmi_2025,
+      title={HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos}, 
+      author={Haoyang Weng and Yitang Li and Nikhil Sobanbabu and Zihan Wang and Zhengyi Luo and Tairan He and Deva Ramanan and Guanya Shi},
+      year={2025},
+      eprint={2509.16757},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.16757}, 
+}
+
+// HOI, teleop
+@InProceedings{twist_2025,
+	title = {TWIST: Teleoperated Whole-Body Imitation System},
+	author = {Ze, Yanjie and Chen, Zixuan and Araujo, Joao Pedro and Cao, Zi-ang and Peng, Xue Bin and Wu, Jiajun and Liu, Karen},
+	booktitle = {Proceedings of The 9th Conference on Robot Learning},
+	pages = {2143--2154},
+	year = {2025},
+	editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+	volume = {305},
+	series = {Proceedings of Machine Learning Research},
+	month = {27--30 Sep},
+	publisher = {PMLR},
+	pdf = {https://raw.githubusercontent.com/mlresearch/v305/main/assets/ze25a/ze25a.pdf},
+	url = {https://proceedings.mlr.press/v305/ze25a.html},
+}
+
+// HOI
+@article{lessmimic_2026,
+  title={LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations},
+  author={Lin, Yutang and Cui, Jieming and Li, Yixuan and Jia, Baoxiong and Zhu, Yixin and Huang, Siyuan},
+  journal={arXiv preprint arXiv:2602.21723},
+  year={2026}
+}
+// general_motion_tracker
+@misc{any2track_2025,
+  title={Track Any Motions under Any Disturbances}, 
+  author={Zhikai Zhang and Jun Guo and Chao Chen and Jilong Wang and Chenghuai Lin and Yunrui Lian and Han Xue and Zhenrong Wang and Maoqi Liu and Jiangran Lyu and Huaping Liu and He Wang and Li Yi},
+  year={2025},
+  eprint={2509.13833},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2509.13833}, 
+}
+  
+// general_motion_tracker
+@article{gmt_2025,
+title={GMT: General Motion Tracking for Humanoid Whole-Body Control},
+author={Chen, Zixuan and Ji, Mazeyu and Cheng, Xuxin and Peng, Xuanbin and Peng, Xue Bin and Wang, Xiaolong},
+journal={arXiv:2506.14770},
+year={2025}
+}
+
+// general_motion_tracker, teleop
+@InProceedings{clone_2025,
+  title = 	 {CLONE: Closed-Loop Whole-Body Humanoid Teleoperation for Long-Horizon Tasks},
+  author =       {Li, Yixuan and Lin, Yutang and Cui, Jieming and Liu, Tengyu and Liang, Wei and Zhu, Yixin and Huang, Siyuan},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {4493--4505},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/li25h/li25h.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/li25h.html},
+}
+// teleop, general_motion_tracker
+@article{omniclone_2026,
+  title={OmniClone: Engineering a Robust, All-Rounder Whole-Body Humanoid Teleoperation System},
+  author={Li, Yixuan and Ma, Le and Lin, Yutang and Du, Yushi and Liu, Mengya and Hu, Kaizhe and Cui, Jieming and Zhu, Yixin and Liang, Wei and Jia, Baoxiong and Huang, Siyuan},
+  journal={arXiv preprint arXiv:2603.14327},
+  year={2026}
+}
+
+// HOI, teleop
+@article{twist2_2025,
+title={TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System},
+author= {Yanjie Ze and Siheng Zhao and Weizhuo Wang and Angjoo Kanazawa and Rocky Duan and Pieter Abbeel and Guanya Shi and Jiajun Wu and C. Karen Liu},
+year= {2025},
+journal= {arXiv preprint arXiv:2511.02832}
+}
+
+// force adaptive
+@misc{gentle_humanoid_2025,
+      title={GentleHumanoid: Learning Upper-body Compliance for Contact-rich Human and Object Interaction}, 
+      author={Qingzhou Lu and Yao Feng and Baiyu Shi and Michael Piseno and Zhenan Bao and C. Karen Liu},
+      year={2025},
+      eprint={2511.04679},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2511.04679}, 
+}
+
+// force adaptive
+@article{softmimic_pulkit_2025,
+  title={{SoftMimic}: Learning Compliant Whole-body Control from Examples},
+  author={Margolis, Gabriel B. and Wang, Michelle and Fey, Nolan and Agrawal, Pulkit},
+  journal={arXiv preprint arXiv:2510.17792},
+  year={2025}
+}
+
+// force adaptive, teleop, HOI, general_motion_tracker
+@article{chip_nvidia_2025,
+    title={CHIP: Learning Adaptive Compliance for Humanoid Control through Hindsight Perturbation},
+    author={Chen, Sirui and Cao, Zi-ang and Luo, Zhengyi and Castañeda, Fernando and Li, Chenran and Wang, Tingwu and Yuan, Ye and Fan, Linxi and Liu, C Karen and Zhu, Yuke},
+    journal={arXiv preprint arXiv:2512.14689},
+    year={2025}
+}
+// === motion tracking ===
+
+
+// === legged manipulator ===
+@inproceedings{fu_deep_whole_body_control_2023,
+  title={Deep whole-body control: learning a unified policy for manipulation and locomotion},
+  author={Fu, Zipeng and Cheng, Xuxin and Pathak, Deepak},
+  booktitle={Conference on Robot Learning},
+  pages={138--149},
+  year={2023},
+  organization={PMLR}
+}
+
+@article{vbc_2024,
+title={Visual Whole-Body Control for Legged Loco-Manipulation},
+author={Liu, Minghuan and Chen, Zixuan and Cheng, Xuxin and Ji, Yandong and Qiu, Rizhao and Yang, Ruihan and Wang, Xiaolong},
+journal={The 8th Conference on Robot Learning},
+year={2024}
+}
+
+@misc{bridging_sim2real_pulkit_2025,
+  title={Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation}, 
+  author={Nolan Fey and Gabriel B. Margolis and Martin Peticco and Pulkit Agrawal},
+  year={2025},
+  eprint={2502.10894},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2502.10894}, 
+}       
+
+// force adaptive
+@INPROCEEDINGS{force_legged_manip_pulkit_2024,
+  author={Portela, Tifanny and Margolis, Gabriel B. and Ji, Yandong and Agrawal, Pulkit},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Learning Force Control for Legged Manipulation}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={15366-15372},
+  keywords={Legged locomotion;Robot kinematics;Force;Reinforcement learning;Manipulators;Task analysis;Force control},
+  doi={10.1109/ICRA57147.2024.10611066}
+}
+
+// force adaptive
+@InProceedings{facet_2025_CORL,
+  title = 	 {FACET: Force-Adaptive Control via Impedance Reference Tracking for Legged Robots},
+  author =       {Xu, Botian and Weng, Haoyang and Lu, Qingzhou and Gao, Yang and Xu, Huazhe},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {705--720},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/xu25c/xu25c.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/xu25c.html},
+}
+
+// force adaptive
+@InProceedings{zhi_learning_unifp_2025,
+  title = 	 {Learning a Unified Policy for Position and Force Control in Legged Loco-Manipulation},
+  author =       {Zhi, Peiyuan and Li, Peiyang and Yin, Jianqin and Jia, Baoxiong and Huang, Siyuan},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {652--669},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/zhi25a/zhi25a.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/zhi25a.html},
+}
+
+// === legged manipulator ===
+
+// === blind locomotion ===
+@inproceedings{kumar_rma_2021,
+title={Rma: Rapid motor adaptation for legged robots},
+author={Kumar, Ashish and Fu, Zipeng and Pathak, Deepak and Malik, Jitendra},
+journal={Robotics: Science and Systems},
+year={2021}
+}
+
+
+@article{wu_jinze_2023,
+	title = {Learning {Robust} and {Agile} {Legged} {Locomotion} {Using} {Adversarial} {Motion} {Priors}},
+	volume = {8},
+	copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+	issn = {2377-3766, 2377-3774},
+	url = {https://ieeexplore.ieee.org/document/10167753/},
+	doi = {10.1109/LRA.2023.3290509},
+	language = {en},
+	number = {8},
+	urldate = {2025-02-14},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Wu, Jinze and Xin, Guiyang and Qi, Chenkun and Xue, Yufei},
+	month = aug,
+	year = {2023},
+	keywords = {DAgger, Jinze Wu - SJTU},
+	pages = {4975--4982},
+}
+
+@inproceedings{himloco_2024,
+ author = {Long, Junfeng and Wang, ZiRui and Li, Quanyi and Cao, Liu and Gao, Jiawei and Pang, Jiangmiao},
+ booktitle = {International Conference on Learning Representations},
+ editor = {B. Kim and Y. Yue and S. Chaudhuri and K. Fragkiadaki and M. Khan and Y. Sun},
+ pages = {14084--14100},
+ title = {Hybrid Internal Model: Learning Agile Legged Locomotion with Simulated Robot Response},
+ url = {https://proceedings.iclr.cc/paper_files/paper/2024/file/3c6bd2021c10462c5164638d22f3d5d8-Paper-Conference.pdf},
+ volume = {2024},
+ year = {2024}
+}
+
+@article{kaist_concurrent_2022,
+	title = {Concurrent {Training} of a {Control} {Policy} and a {State} {Estimator} for {Dynamic} and {Robust} {Legged} {Locomotion}},
+	volume = {7},
+	issn = {2377-3766},
+	url = {https://ieeexplore.ieee.org/document/9714001/?arnumber=9714001},
+	doi = {10.1109/LRA.2022.3151396},
+	language = {en-US},
+	number = {2},
+	urldate = {2025-03-15},
+	journal = {IEEE Robotics and Automation Letters},
+	author = {Ji, Gwanghyeon and Mun, Juhyeok and Kim, Hyeongjun and Hwangbo, Jemin},
+	month = apr,
+	year = {2022},
+	note = {Conference Name: IEEE Robotics and Automation Letters},
+	keywords = {Legged locomotion, Concurrent training policy and state estimator, KAIST-RaiLab, Estimator Net},
+	pages = {4630--4637},
+}
+
+@inproceedings{nahrendra_dreamwaq_2023,
+  title={Dreamwaq: Learning robust quadrupedal locomotion with implicit terrain imagination via deep reinforcement learning},
+  author={Nahrendra, I Made Aswin and Yu, Byeongho and Myung, Hyun},
+  booktitle={2023 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={5078--5084},
+  year={2023},
+  organization={IEEE}
+}
+
+
+@inproceedings{walk_these_ways_2023,
+  title={Walk these ways: Tuning robot control for generalization with multiplicity of behavior},
+  author={Margolis, Gabriel B and Agrawal, Pulkit},
+  booktitle={Conference on Robot Learning},
+  pages={22--31},
+  year={2023},
+  organization={PMLR}
+}
+
+// humanoid version of walk these way
+@InProceedings{zhang_hub_2025,
+  title = {{HuB}: Learning Extreme Humanoid Balance},
+  author = {Zhang, Tong and Zheng, Boyuan and Nai, Ruiqian and Hu, Yingdong and Wang, Yen-Jen and Chen, Geng and Lin, Fanqi and Li, Jiongye and Hong, Chuye and Sreenath, Koushil and Gao, Yang},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {686--704},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/zhang25b.html}
+}
+
+@article{kim_not_only_but_also_2024,
+  title={Not only rewards but also constraints: Applications on legged robot locomotion},
+  author={Kim, Yunho and Oh, Hyunsik and Lee, Jeonghyun and Choi, Jinhyeok and Ji, Gwanghyeon and Jung, Moonkyu and Youm, Donghoon and Hwangbo, Jemin},
+  journal={IEEE Transactions on Robotics},
+  volume={40},
+  pages={2984--3003},
+  year={2024},
+  publisher={IEEE}
+}
+
+@article{margolis_ripid_locomotion_cheetah_2024,
+  title={Rapid locomotion via reinforcement learning},
+  author={Margolis, Gabriel B and Yang, Ge and Paigwar, Kartik and Chen, Tao and Agrawal, Pulkit},
+  journal={The International Journal of Robotics Research},
+  volume={43},
+  number={4},
+  pages={572--587},
+  year={2024},
+  publisher={SAGE Publications Sage UK: London, England}
+}
+
+@article{wang_cts_2024,
+  title={Cts: Concurrent teacher-student reinforcement learning for legged locomotion},
+  author={Wang, Hongxi and Luo, Haoxiang and Zhang, Wei and Chen, Hua},
+  journal={IEEE Robotics and Automation Letters},
+  volume={9},
+  number={11},
+  pages={9191--9198},
+  year={2024},
+  publisher={IEEE}
+}
+
+@article{hwangbo_deformable_2023,
+  title = {Learning Quadrupedal Locomotion on Deformable Terrain},
+  author = {Choi, Suyoung and Ji, Gwanghyeon and Park, Jeongsoo and Kim, Hyeongjun and Mun, Juhyeok and Lee, Jeong Hyun and Hwangbo, Jemin},
+  journal = {Science Robotics},
+  volume = {8},
+  number = {74},
+  pages = {eade2256},
+  year = {2023},
+  doi = {10.1126/scirobotics.ade2256},
+  url = {https://www.science.org/doi/10.1126/scirobotics.ade2256}
+}
+
+// differentiable simulator
+@InProceedings{song_quadruped_diffsim_2025,
+  title = {Learning Quadruped Locomotion Using Differentiable Simulation},
+  author = {Song, Yunlong and Kim, Sang bae and Scaramuzza, Davide},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {258--271},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/song25a.html}
+}
+
+// diffusion locomotion
+@InProceedings{huang_diffuseloco_2025,
+  title = {{DiffuseLoco}: Real-Time Legged Locomotion Control with Diffusion from Offline Datasets},
+  author = {Huang, Xiaoyu and Chi, Yufeng and Wang, Ruofeng and Li, Zhongyu and Peng, Xue Bin and Shao, Sophia and Nikolic, Borivoje and Sreenath, Koushil},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {1567--1589},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/huang25a.html}
+}
+
+// multi_embodiment
+@InProceedings{yang_multiloco_2025,
+  title = {Multi-Loco: Unifying Multi-Embodiment Legged Locomotion via Reinforcement Learning Augmented Diffusion},
+  author = {Yang, Shunpeng and Fu, Zhen and Cao, Zhefeng and Junde, Guo and Wensing, Patrick and Zhang, Wei and Chen, Hua},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {1030--1048},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/yang25a.html}
+}
+
+@INPROCEEDINGS{barrier_loco_2025,
+  author={Kim, Gijeong and Lee, Yong-Hoon and Park, Hae-Won},
+  booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={A Learning Framework for Diverse Legged Robot Locomotion Using Barrier-Based Style Rewards}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={10004-10010},
+  keywords={Legged locomotion;Reinforcement learning;Quadrupedal robots;Foot},
+  doi={10.1109/ICRA55743.2025.11128517}
+}
+// === blind locomotion ===
+
+// === vision locomotion ===
+@article{chane2024soloparkour,
+  title={Soloparkour: Constrained reinforcement learning for visual locomotion from privileged experience},
+  author={Chane-Sane, Elliot and Amigo, Joseph and Flayols, Thomas and Righetti, Ludovic and Mansard, Nicolas},
+  journal={arXiv preprint arXiv:2409.13678},
+  year={2024}
+}
+
+@ARTICLE{renet_2025,
+  author={Zhang, Yueqi and Qian, Quancheng and Hou, Taixian and Zhai, Peng and Wei, Xiaoyi and Hu, Kangmai and Yi, Jiafu and Zhang, Lihua},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={RENet: Fault-Tolerant Motion Control for Quadruped Robots via Redundant Estimator Networks Under Visual Collapse}, 
+  year={2025},
+  volume={10},
+  number={11},
+  pages={11172-11179},
+  keywords={Training;Robots;Robot sensing systems;Visualization;Switches;Quadrupedal robots;Robustness;Noise;Vectors;Prediction algorithms;Legged robots;reinforcement learning},
+  doi={10.1109/LRA.2025.3608633}
+}
+
+@InProceedings{zhuang_robot_parkour_learning_2023,
+  title = 	 {Robot Parkour Learning},
+  author =       {Zhuang, Ziwen and Fu, Zipeng and Wang, Jianren and Atkeson, Christopher G. and Schwertfeger, S\"{o}ren and Finn, Chelsea and Zhao, Hang},
+  booktitle = 	 {Proceedings of The 7th Conference on Robot Learning},
+  pages = 	 {73--92},
+  year = 	 {2023},
+  editor = 	 {Tan, Jie and Toussaint, Marc and Darvish, Kourosh},
+  volume = 	 {229},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {06--09 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v229/zhuang23a/zhuang23a.pdf},
+  url = 	 {https://proceedings.mlr.press/v229/zhuang23a.html},
+}
+
+@inproceedings{cheng_extreme_2023,
+  title = {Extreme Parkour with Legged Robots},
+  author = {Cheng, Xuxin and Shi, Kexin and Agarwal, Ananye and Pathak, Deepak},
+  booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation},
+  pages = {11443--11450},
+  year = {2024},
+  doi = {10.1109/ICRA57147.2024.10610200},
+  url = {https://doi.org/10.1109/ICRA57147.2024.10610200},
+  eprint = {2309.14341},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO}
+}
+
+@inproceedings{duan_learningvisionbasedbipedallocomotion_2024,
+  title={Learning vision-based bipedal locomotion for challenging terrain},
+  author={Duan, Helei and Pandit, Bikram and Gadde, Mohitvishnu S and Van Marum, Bart and Dao, Jeremy and Kim, Chanho and Fern, Alan},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={56--62},
+  year={2024},
+  organization={IEEE}
+}
+
+@INPROCEEDINGS{lai_wmp_2024,
+  author={Lai, Hang and Cao, Jiahang and Xu, Jiafeng and Wu, Hongtao and Lin, Yunfeng and Kong, Tao and Yu, Yong and Zhang, Weinan},
+  booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={World Model-Based Perception for Visual Legged Locomotion}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={11531-11537},
+  keywords={Legged locomotion;Visualization;Animals;Decision making;Predictive models;Robot sensing systems;Data models;Robustness;Trajectory;Videos},
+  doi={10.1109/ICRA55743.2025.11128762}}
+
+@article{yang2021learning,
+  title = {Learning Vision-Guided Quadrupedal Locomotion End-to-End with Cross-Modal Transformers},
+  author = {Yang, Ruihan and Zhang, Minghao and Hansen, Nicklas and Xu, Huazhe and Wang, Xiaolong},
+  journal = {arXiv preprint arXiv:2107.03996},
+  year = {2021},
+  doi = {10.48550/arXiv.2107.03996},
+  url = {https://arxiv.org/abs/2107.03996},
+  eprint = {2107.03996},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO}
+}
+
+@inproceedings{agarwal_egovision_2023,
+  title = {Legged Locomotion in Challenging Terrains Using Egocentric Vision},
+  author = {Agarwal, Ananye and Kumar, Ashish and Malik, Jitendra and Pathak, Deepak},
+  booktitle = {Proceedings of the 6th Conference on Robot Learning},
+  pages = {403--415},
+  year = {2023},
+  editor = {Liu, Karen and Kulic, Dana and Ichnowski, Jeff},
+  volume = {205},
+  series = {Proceedings of Machine Learning Research},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v205/agarwal23a.html},
+  eprint = {2211.07638},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.RO}
+}
+
+@article{luo_pie_2024,
+  title={Pie: Parkour with implicit-explicit learning framework for legged robots},
+  author={Luo, Shixin and Li, Songbo and Yu, Ruiqi and Wang, Zhicheng and Wu, Jun and Zhu, Qiuguo},
+  journal={IEEE Robotics and Automation Letters},
+  volume={9},
+  number={11},
+  pages={9986--9993},
+  year={2024},
+  publisher={IEEE}
+}
+
+@inproceedings{loquercio_cross_model_2023,
+  title={Learning visual locomotion with cross-modal supervision},
+  author={Loquercio, Antonio and Kumar, Ashish and Malik, Jitendra},
+  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={7295--7302},
+  year={2023},
+  organization={IEEE}
+}
+
+@InProceedings{jump_from_pixels_pulkit_2021,
+  title = 	 {Learning to Jump from Pixels},
+  author =       {Margolis, Gabriel B and Chen, Tao and Paigwar, Kartik and Fu, Xiang and Kim, Donghyun and Kim, Sang bae and Agrawal, Pulkit},
+  booktitle = 	 {Proceedings of the 5th Conference on Robot Learning},
+  pages = 	 {1025--1034},
+  year = 	 {2022},
+  editor = 	 {Faust, Aleksandra and Hsu, David and Neumann, Gerhard},
+  volume = 	 {164},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {08--11 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v164/margolis22a/margolis22a.pdf},
+  url = 	 {https://proceedings.mlr.press/v164/margolis22a.html},
+}
+
+@InProceedings{zhuang_2025_embrace,
+  title = 	 {Embrace Contacts: humanoid shadowing with full body ground contacts},
+  author =       {Zhuang, Ziwen and Zhao, Hang},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {3720--3735},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/zhuang25b/zhuang25b.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/zhuang25b.html},
+}
+
+@misc{zhuang_deep_2026,
+	title = {Deep {Whole}-body {Parkour}},
+	url = {http://arxiv.org/abs/2601.07701},
+	doi = {10.48550/arXiv.2601.07701},
+	language = {en-US},
+	urldate = {2026-01-15},
+	publisher = {arXiv},
+	author = {Zhuang, Ziwen and Zhu, Shaoting and Zhao, Mengjie and Zhao, Hang},
+	month = jan,
+	year = {2026},
+	note = {arXiv:2601.07701 [cs]},
+	keywords = {Computer Science - Robotics, Computer Science - Artificial Intelligence},
+}
+
+@InProceedings{zhuang_humanoid_parkour_2024,
+  title = 	 {Humanoid Parkour Learning},
+  author =       {Zhuang, Ziwen and Yao, Shenzhe and Zhao, Hang},
+  booktitle = 	 {Proceedings of The 8th Conference on Robot Learning},
+  pages = 	 {1975--1991},
+  year = 	 {2025},
+  editor = 	 {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = 	 {270},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {06--09 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v270/main/assets/zhuang25a/zhuang25a.pdf},
+  url = 	 {https://proceedings.mlr.press/v270/zhuang25a.html},
+}
+
+@misc{php_parkour_2026,
+      title={Perceptive Humanoid Parkour: Chaining Dynamic Human Skills via Motion Matching}, 
+      author={Zhen Wu and Xiaoyu Huang and Lujie Yang and Yuanhang Zhang and Xi Chen and Pieter Abbeel and Rocky Duan and Angjoo Kanazawa and Carmelo Sferrazza and Guanya Shi and C. Karen Liu},
+      year={2026},
+      eprint={2602.15827},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2602.15827}, 
+}
+
+@misc{hiking_2026,
+      title={Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids}, 
+      author={Shaoting Zhu and Ziwen Zhuang and Mengjie Zhao and Kun-Ying Lee and Hang Zhao},
+      year={2026},
+      eprint={2601.07718},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2601.07718}, 
+}
+
+@article{yang2025sru,
+  author = {Yang, Fan and Frivik, Per and Hoeller, David and Wang, Chen and Cadena, Cesar and Hutter, Marco},
+  title = {Spatially-enhanced recurrent memory for long-range mapless navigation via end-to-end reinforcement learning},
+  journal = {The International Journal of Robotics Research},
+  year = {2025},
+  doi = {10.1177/02783649251401926},
+  url = {https://doi.org/10.1177/02783649251401926}
+}
+\\ === vision locomotion ===
+
+@inproceedings{rudin_learning_2022,
+  title={Learning to walk in minutes using massively parallel deep reinforcement learning},
+  author={Rudin, Nikita and Hoeller, David and Reist, Philipp and Hutter, Marco},
+  booktitle={Conference on robot learning},
+  pages={91--100},
+  year={2022},
+  organization={PMLR}
+}
+
+\\ === tools ===
+@misc{isaaclab,
+      title={Isaac Lab: A GPU-Accelerated Simulation Framework for Multi-Modal Robot Learning}, 
+      author={NVIDIA and : and Mayank Mittal and Pascal Roth and James Tigue and Antoine Richard and Octi Zhang and Peter Du and Antonio Serrano-Muñoz and Xinjie Yao and René Zurbrügg and Nikita Rudin and Lukasz Wawrzyniak and Milad Rakhsha and Alain Denzler and Eric Heiden and Ales Borovicka and Ossama Ahmed and Iretiayo Akinola and Abrar Anwar and Mark T. Carlson and Ji Yuan Feng and Animesh Garg and Renato Gasoto and Lionel Gulich and Yijie Guo and M. Gussert and Alex Hansen and Mihir Kulkarni and Chenran Li and Wei Liu and Viktor Makoviychuk and Grzegorz Malczyk and Hammad Mazhar and Masoud Moghani and Adithyavairavan Murali and Michael Noseworthy and Alexander Poddubny and Nathan Ratliff and Welf Rehberg and Clemens Schwarke and Ritvik Singh and James Latham Smith and Bingjie Tang and Ruchik Thaker and Matthew Trepte and Karl Van Wyk and Fangzhou Yu and Alex Millane and Vikram Ramasamy and Remo Steiner and Sangeeta Subramanian and Clemens Volk and CY Chen and Neel Jawale and Ashwin Varghese Kuruttukulam and Michael A. Lin and Ajay Mandlekar and Karsten Patzwaldt and John Welsh and Huihua Zhao and Fatima Anes and Jean-Francois Lafleche and Nicolas Moënne-Loccoz and Soowan Park and Rob Stepinski and Dirk Van Gelder and Chris Amevor and Jan Carius and Jumyung Chang and Anka He Chen and Pablo de Heras Ciechomski and Gilles Daviet and Mohammad Mohajerani and Julia von Muralt and Viktor Reutskyy and Michael Sauter and Simon Schirm and Eric L. Shi and Pierre Terdiman and Kenny Vilella and Tobias Widmer and Gordon Yeoman and Tiffany Chen and Sergey Grizan and Cathy Li and Lotus Li and Connor Smith and Rafael Wiltz and Kostas Alexis and Yan Chang and David Chu and Linxi "Jim" Fan and Farbod Farshidian and Ankur Handa and Spencer Huang and Marco Hutter and Yashraj Narang and Soha Pouya and Shiwei Sheng and Yuke Zhu and Miles Macklin and Adam Moravanszky and Philipp Reist and Yunrong Guo and David Hoeller and Gavriel State},
+      year={2025},
+      eprint={2511.04831},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2511.04831}, 
+}
+
+@misc{mjlab,
+  title={mjlab: A Lightweight Framework for GPU-Accelerated Robot Learning},
+  author={Kevin Zakka and Qiayuan Liao and Brent Yi and Louis Le Lay and Koushil Sreenath and Pieter Abbeel},
+  year={2026},
+  eprint={2601.22074},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2601.22074},
+}
+
+@inproceedings{mujoco,
+  title={MuJoCo: A physics engine for model-based control},
+  author={Todorov, Emanuel and Erez, Tom and Tassa, Yuval},
+  booktitle={2012 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+  pages={5026--5033},
+  year={2012},
+  organization={IEEE},
+  doi={10.1109/IROS.2012.6386109}
+}
+
+@misc{warp,
+author = {Macklin, Miles},
+month = mar,
+note = {NVIDIA GPU Technology Conference (GTC)},
+title = {{Warp: A High-performance Python Framework for GPU Simulation and Graphics}},
+url = {https://github.com/NVIDIA/warp},
+year = {2022}
+}
+\\ === tools ===
+
+// === retarget ===
+// motion tracking, HOI
+@misc{omniretarget_2026,
+      title={OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction}, 
+      author={Lujie Yang and Xiaoyu Huang and Zhen Wu and Angjoo Kanazawa and Pieter Abbeel and Carmelo Sferrazza and C. Karen Liu and Rocky Duan and Guanya Shi},
+      year={2026},
+      eprint={2509.26633},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.26633}, 
+}
+
+@misc{spider_retarget_2025,
+    title={SPIDER: Scalable Physics-Informed Dexterous Retargeting},
+    author={Chaoyi Pan and Changhao Wang and Haozhi Qi and Zixi Liu and Homanga Bharadhwaj and Akash Sharma and Tingfan Wu and Guanya Shi and Jitendra Malik and Francois Hogan},
+    year={2025},
+    eprint={2511.09484},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO},
+    url={https://arxiv.org/abs/2511.09484},
+}
+
+@misc{gmr_2025,
+      title={Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking}, 
+      author={Joao Pedro Araujo and Yanjie Ze and Pei Xu and Jiajun Wu and C. Karen Liu},
+      year={2025},
+      eprint={2510.02252},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2510.02252}, 
+}
+
+@article{ReActor_retarget_2026,
+   title={ReActor: Reinforcement Learning for Physics-Aware Motion Retargeting},
+   volume={45},
+   ISSN={1557-7368},
+   url={http://dx.doi.org/10.1145/3811378},
+   DOI={10.1145/3811378},
+   number={4},
+   journal={ACM Transactions on Graphics},
+   publisher={Association for Computing Machinery (ACM)},
+   author={Müller, David and Serifi, Agon and Christen, Sammy and Grandia, Ruben and Knoop, Espen and Bächer, Moritz},
+   year={2026},
+   month=July, pages={1–11}
+}
+// === retarget ===
+
+// === human motion dataset ===
+
+@article{omomo_2023,
+author = {Li, Jiaman and Wu, Jiajun and Liu, C. Karen},
+title = {Object Motion Guided Human Motion Synthesis},
+year = {2023},
+issue_date = {December 2023},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {42},
+number = {6},
+issn = {0730-0301},
+url = {https://doi.org/10.1145/3618333},
+doi = {10.1145/3618333},
+journal = {ACM Trans. Graph.},
+month = dec,
+articleno = {197},
+numpages = {11},
+keywords = {animation, conditional diffusion model, contact, human-object interaction}
+}
+
+@conference{AMASS_ICCV_2019,
+  title = {{AMASS}: Archive of Motion Capture as Surface Shapes},
+  author = {Mahmood, Naureen and Ghorbani, Nima and Troje, Nikolaus F. and Pons-Moll, Gerard and Black, Michael J.},
+  booktitle = {International Conference on Computer Vision},
+  pages = {5442--5451},
+  month = oct,
+  year = {2019},
+  month_numeric = {10}
+}
+
+@article{SMPL_2015,
+      author = {Loper, Matthew and Mahmood, Naureen and Romero, Javier and Pons-Moll, Gerard and Black, Michael J.},
+      title = {{SMPL}: A Skinned Multi-Person Linear Model},
+      journal = {ACM Trans. Graphics (Proc. SIGGRAPH Asia)},
+      month = oct,
+      number = {6},
+      pages = {248:1--248:16},
+      publisher = {ACM},
+      volume = {34},
+      year = {2015}
+}
+
+@inproceedings{SMPL-X_2019,
+  title = {Expressive Body Capture: {3D} Hands, Face, and Body from a Single Image},
+  author = {Pavlakos, Georgios and Choutas, Vasileios and Ghorbani, Nima and Bolkart, Timo and Osman, Ahmed A. A. and Tzionas, Dimitrios and Black, Michael J.},
+  booktitle = {Proceedings IEEE Conf. on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {10975--10985},
+  year = {2019}
+}
+
+@misc{cmu_graphics_lab_mocap,
+  author = {{Carnegie Mellon University Graphics Lab}},
+  title = {Carnegie Mellon University Graphics Lab Motion Capture Database},
+  year = {2003},
+  url = {http://mocap.cs.cmu.edu/},
+  note = {Accessed 2026-07-10}
+}
+
+@article{100-styles_2022,
+    author = {Mason, Ian and Starke, Sebastian and Komura, Taku},
+    title = {Real-Time Style Modelling of Human Locomotion via Feature-Wise Transformations and Local Motion Phases},
+    year = {2022},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {5},
+    number = {1},
+    doi = {10.1145/3522618},
+    journal = {Proceedings of the ACM on Computer Graphics and Interactive Techniques},
+    month = {may},
+    articleno = {6}
+}
+@article{holden_motion_synthesis_editing_2016,
+  author = {Holden, Daniel and Saito, Jun and Komura, Taku},
+  title = {A Deep Learning Framework for Character Motion Synthesis and Editing},
+  journal = {ACM Transactions on Graphics},
+  volume = {35},
+  number = {4},
+  pages = {1--11},
+  year = {2016},
+  doi = {10.1145/2897824.2925975},
+  url = {https://doi.org/10.1145/2897824.2925975}
+}
+
+@article{harvey_lafan1_2020,
+  author = {Harvey, F{\'e}lix G. and Yurick, Mike and Nowrouzezahrai, Derek and Pal, Christopher},
+  title = {Robust Motion In-Betweening},
+  journal = {ACM Transactions on Graphics},
+  volume = {39},
+  number = {4},
+  pages = {60:1--60:12},
+  year = {2020},
+  doi = {10.1145/3386569.3392480},
+  url = {https://doi.org/10.1145/3386569.3392480}
+}
+
+@article{ionescu_human36m_2014,
+  author = {Ionescu, Catalin and Papava, Dragos and Olaru, Vlad and Sminchisescu, Cristian},
+  title = {{Human3.6M}: Large Scale Datasets and Predictive Methods for 3D Human Sensing in Natural Environments},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume = {36},
+  number = {7},
+  pages = {1325--1339},
+  year = {2014},
+  doi = {10.1109/TPAMI.2013.248},
+  url = {https://doi.org/10.1109/TPAMI.2013.248}
+}
+
+@article{plappert_kit_motion_language_2016,
+  author = {Plappert, Matthias and Mandery, Christian and Asfour, Tamim},
+  title = {The {KIT} Motion-Language Dataset},
+  journal = {Big Data},
+  volume = {4},
+  number = {4},
+  pages = {236--252},
+  year = {2016},
+  doi = {10.1089/big.2016.0028},
+  url = {https://doi.org/10.1089/big.2016.0028}
+}
+
+@inproceedings{punnakkal_babel_2021,
+  author = {Punnakkal, Abhinanda R. and Chandrasekaran, Arjun and Athanasiou, Nikos and Quiros-Ramirez, Alejandra and Black, Michael J.},
+  title = {{BABEL}: Bodies, Action and Behavior with English Labels},
+  booktitle = {2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages = {722--731},
+  year = {2021},
+  doi = {10.1109/CVPR46437.2021.00078},
+  url = {https://doi.org/10.1109/CVPR46437.2021.00078}
+}
+
+@inproceedings{guo_humanml3d_2022,
+  author = {Guo, Chuan and Zou, Shihao and Zuo, Xinxin and Wang, Sen and Ji, Wei and Li, Xingyu and Cheng, Li},
+  title = {Generating Diverse and Natural 3D Human Motions from Text},
+  booktitle = {2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages = {5142--5151},
+  year = {2022},
+  doi = {10.1109/CVPR52688.2022.00509},
+  url = {https://doi.org/10.1109/CVPR52688.2022.00509}
+}
+
+@inproceedings{taheri_grab_2020,
+  author = {Taheri, Omid and Ghorbani, Nima and Black, Michael J. and Tzionas, Dimitrios},
+  title = {{GRAB}: A Dataset of Whole-Body Human Grasping of Objects},
+  booktitle = {Computer Vision -- ECCV 2020},
+  pages = {581--600},
+  year = {2020},
+  publisher = {Springer International Publishing},
+  doi = {10.1007/978-3-030-58548-8_34},
+  url = {https://doi.org/10.1007/978-3-030-58548-8_34}
+}
+
+@techreport{mueller_hdm05_2007,
+  author = {M{\"u}ller, Meinard and R{\"o}der, Tido and Clausen, Michael and Eberhardt, Bernhard and Kr{\"u}ger, Bj{\"o}rn and Weber, Andreas},
+  title = {Documentation {Mocap} Database {HDM05}},
+  institution = {Universit{\"a}t Bonn},
+  number = {CG-2007-2},
+  year = {2007},
+  url = {http://resources.mpi-inf.mpg.de/HDM05/}
+}
+// === human motion dataset ===
+
+
+// === learning algo ===
+@misc{sac_2019,
+	title = {Soft {Actor}-{Critic} {Algorithms} and {Applications}},
+	url = {http://arxiv.org/abs/1812.05905},
+	doi = {10.48550/arXiv.1812.05905},
+	language = {en},
+	urldate = {2025-02-14},
+	publisher = {arXiv},
+	author = {Haarnoja, Tuomas and Zhou, Aurick and Hartikainen, Kristian and Tucker, George and Ha, Sehoon and Tan, Jie and Kumar, Vikash and Zhu, Henry and Gupta, Abhishek and Abbeel, Pieter and Levine, Sergey},
+	month = jan,
+	year = {2019},
+	note = {arXiv:1812.05905 [cs]},
+	keywords = {Computer Science - Robotics, Computer Science - Machine Learning, Computer Science - Artificial Intelligence, Statistics - Machine Learning},
+	annote = {Comment: arXiv admin note: substantial text overlap with arXiv:1801.01290},
+	file = {PDF:/home/syw/Zotero/storage/IRRJS2XY/Haarnoja 等 - 2019 - Soft Actor-Critic Algorithms and Applications.pdf:application/pdf},
+}
+
+// fast sac
+@misc{fast_sac_fast_td3,
+      title={Learning Sim-to-Real Humanoid Locomotion in 15 Minutes}, 
+      author={Younggyo Seo and Carmelo Sferrazza and Juyue Chen and Guanya Shi and Rocky Duan and Pieter Abbeel},
+      year={2025},
+      eprint={2512.01996},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2512.01996}, 
+}
+
+// flash sac
+@article{2026flashsac,
+  title={FlashSAC: Fast and Stable Off-Policy Reinforcement Learning for High-Dimensional Robot Control},
+  author={Kim, Donghu and Lee, Youngdo and Park, Minho and Kim, Kinam and Nahendra, I Made Aswin and Seno, Takuma and Min, Sehee and Palenicek, Daniel and Vogt, Florian and Kragic, Danica and Peters, Jan and Choo, Jaegul and Lee, Hojoon},
+  journal={arXiv preprint arXiv:2604.04539},
+  year={2026}
+}
+
+@article{deepmimic_2018,
+	author = {Peng, Xue Bin and Abbeel, Pieter and Levine, Sergey and van de Panne, Michiel},
+	title = {DeepMimic: Example-guided Deep Reinforcement Learning of Physics-based Character Skills},
+	journal = {ACM Trans. Graph.},
+	issue_date = {August 2018},
+	volume = {37},
+	number = {4},
+	month = jul,
+	year = {2018},
+	issn = {0730-0301},
+	pages = {143:1--143:14},
+	articleno = {143},
+	numpages = {14},
+	url = {http://doi.acm.org/10.1145/3197517.3201311},
+	doi = {10.1145/3197517.3201311},
+	acmid = {3201311},
+	publisher = {ACM},
+	address = {New York, NY, USA},
+	keywords = {motion control, physics-based character animation, reinforcement learning},
+}
+
+@article{peng_amp_2021,
+	title = {{AMP}: {Adversarial} {Motion} {Priors} for {Stylized} {Physics}-{Based} {Character} {Control}},
+	volume = {40},
+	issn = {0730-0301, 1557-7368},
+	shorttitle = {{AMP}},
+	url = {http://arxiv.org/abs/2104.02180},
+	doi = {10.1145/3450626.3459670},
+	language = {en},
+	number = {4},
+	urldate = {2025-02-14},
+	journal = {ACM Transactions on Graphics},
+	author = {Peng, Xue Bin and Ma, Ze and Abbeel, Pieter and Levine, Sergey and Kanazawa, Angjoo},
+	month = aug,
+	year = {2021},
+	note = {arXiv:2104.02180 [cs]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Graphics},
+	pages = {1--20},
+}
+
+@article{peng_ase_2022,
+	title = {{ASE}: {Large}-{Scale} {Reusable} {Adversarial} {Skill} {Embeddings} for {Physically} {Simulated} {Characters}},
+	volume = {41},
+	issn = {0730-0301, 1557-7368},
+	shorttitle = {{ASE}},
+	url = {http://arxiv.org/abs/2205.01906},
+	doi = {10.1145/3528223.3530110},
+	language = {en},
+	number = {4},
+	urldate = {2025-02-14},
+	journal = {ACM Transactions on Graphics},
+	author = {Peng, Xue Bin and Guo, Yunrong and Halper, Lina and Levine, Sergey and Fidler, Sanja},
+	month = jul,
+	year = {2022},
+	note = {arXiv:2205.01906 [cs]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Artificial Intelligence, Computer Science - Graphics, ASE},
+	pages = {1--17},
+}
+
+@InProceedings{dagger,
+  title = 	 {A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning},
+  author = 	 {Ross, Stephane and Gordon, Geoffrey and Bagnell, Drew},
+  booktitle = 	 {Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {627--635},
+  year = 	 {2011},
+  editor = 	 {Gordon, Geoffrey and Dunson, David and Dudík, Miroslav},
+  volume = 	 {15},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Fort Lauderdale, FL, USA},
+  month = 	 {11--13 Apr},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v15/ross11a/ross11a.pdf},
+  url = 	 {https://proceedings.mlr.press/v15/ross11a.html},
+}
+
+@misc{ppo,
+      title={Proximal Policy Optimization Algorithms}, 
+      author={John Schulman and Filip Wolski and Prafulla Dhariwal and Alec Radford and Oleg Klimov},
+      year={2017},
+      eprint={1707.06347},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/1707.06347}, 
+}
+
+// general jepa
+@misc{lejapa_2025,
+      title={LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics}, 
+      author={Randall Balestriero and Yann LeCun},
+      year={2025},
+      eprint={2511.08544},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2511.08544}, 
+}
+
+// image jepa
+@INPROCEEDINGS{i-jepa,
+  author={Assran, Mahmoud and Duval, Quentin and Misra, Ishan and Bojanowski, Piotr and Vincent, Pascal and Rabbat, Michael and LeCun, Yann and Ballas, Nicolas},
+  booktitle={2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+  title={Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={15619-15629},
+  keywords={Semantics;Computer architecture;Self-supervised learning;Image representation;Transformer cores;Reconstruction algorithms;Transformers;Self-supervised or unsupervised representation learning},
+  doi={10.1109/CVPR52729.2023.01499}
+}
+
+// video jepa
+@article{v-jepa,
+  title={V-JEPA~2: Self-Supervised Video Models Enable Understanding, Prediction and Planning},
+  author={Assran, Mahmoud and Bardes, Adrien and Fan, David and Garrido, Quentin and Howes, Russell and
+Komeili, Mojtaba and Muckley, Matthew and Rizvi, Ammar and Roberts, Claire and Sinha, Koustuv and Zholus, Artem and
+Arnaud, Sergio and Gejji, Abha and Martin, Ada and Robert Hogan, Francois and Dugas, Daniel and
+Bojanowski, Piotr and Khalidov, Vasil and Labatut, Patrick and Massa, Francisco and Szafraniec, Marc and
+Krishnakumar, Kapil and Li, Yong and Ma, Xiaodong and Chandar, Sarath and Meier, Franziska and LeCun, Yann and
+Rabbat, Michael and Ballas, Nicolas},
+  journal={arXiv preprint arXiv:2506.09985},
+  year={2025}
+}
+
+// model-based rl, world model
+@article{dreamerv3,
+	title = {Mastering diverse control tasks through world models},
+	volume = {640},
+	issn = {1476-4687},
+	url = {https://doi.org/10.1038/s41586-025-08744-2},
+	doi = {10.1038/s41586-025-08744-2},
+	number = {8059},
+	journal = {Nature},
+	author = {Hafner, Danijar and Pasukonis, Jurgis and Ba, Jimmy and Lillicrap, Timothy},
+	month = apr,
+	year = {2025},
+	pages = {647--653},
+}
+
+// model-based rl, world model
+@inproceedings{dreamerv2,
+    title={Mastering Atari with Discrete World Models},
+    author={Danijar Hafner and Timothy P Lillicrap and Mohammad Norouzi and Jimmy Ba},
+    booktitle={International Conference on Learning Representations},
+    year={2021},
+    url={https://openreview.net/forum?id=0oabwyZbOu}
+}
+
+// model-based rl, world model
+@article{dreamerv1,
+  title={Dream to Control: Learning Behaviors by Latent Imagination},
+  author={Hafner, Danijar and Lillicrap, Timothy and Ba, Jimmy and Norouzi, Mohammad},
+  journal={arXiv preprint arXiv:1912.01603},
+  year={2019}
+}
+
+// model-based rl, world model
+@InProceedings{tdmpc,
+  title = 	 {Temporal Difference Learning for Model Predictive Control},
+  author =       {Hansen, Nicklas A and Su, Hao and Wang, Xiaolong},
+  booktitle = 	 {Proceedings of the 39th International Conference on Machine Learning},
+  pages = 	 {8387--8406},
+  year = 	 {2022},
+  editor = 	 {Chaudhuri, Kamalika and Jegelka, Stefanie and Song, Le and Szepesvari, Csaba and Niu, Gang and Sabato, Sivan},
+  volume = 	 {162},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {17--23 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v162/hansen22a/hansen22a.pdf},
+  url = 	 {https://proceedings.mlr.press/v162/hansen22a.html},
+}
+
+// model-based rl, world model
+@misc{2024tdmpc2,
+	title={TD-MPC2: Scalable, Robust World Models for Continuous Control}, 
+	author={Nicklas Hansen and Hao Su and Xiaolong Wang},
+	booktitle={International Conference on Learning Representations (ICLR)},
+	year={2024}
+}
+
+// SAC, realworld_rl
+@InProceedings{rlpd,
+  title = 	 {Efficient Online Reinforcement Learning with Offline Data},
+  author =       {Ball, Philip J. and Smith, Laura and Kostrikov, Ilya and Levine, Sergey},
+  booktitle = 	 {Proceedings of the 40th International Conference on Machine Learning},
+  pages = 	 {1577--1594},
+  year = 	 {2023},
+  editor = 	 {Krause, Andreas and Brunskill, Emma and Cho, Kyunghyun and Engelhardt, Barbara and Sabato, Sivan and Scarlett, Jonathan},
+  volume = 	 {202},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {23--29 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v202/ball23a/ball23a.pdf},
+  url = 	 {https://proceedings.mlr.press/v202/ball23a.html},
+}
+
+// SAC, realworld_rl
+@article{HIL_SERL_2025,
+    author = {Jianlan Luo  and Charles Xu  and Jeffrey Wu  and Sergey Levine },
+    title = {Precise and dexterous robotic manipulation via human-in-the-loop reinforcement learning},
+    journal = {Science Robotics},
+    volume = {10},
+    number = {105},
+    pages = {eads5033},
+    year = {2025},
+    doi = {10.1126/scirobotics.ads5033},
+    URL = {https://www.science.org/doi/abs/10.1126/scirobotics.ads5033},
+    eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.ads5033},
+}
+
+// realworld_rl
+@InProceedings{pmlr-v205-wu23c,
+  title = 	 {DayDreamer: World Models for Physical Robot Learning},
+  author =       {Wu, Philipp and Escontrela, Alejandro and Hafner, Danijar and Abbeel, Pieter and Goldberg, Ken},
+  booktitle = 	 {Proceedings of The 6th Conference on Robot Learning},
+  pages = 	 {2226--2240},
+  year = 	 {2023},
+  editor = 	 {Liu, Karen and Kulic, Dana and Ichnowski, Jeff},
+  volume = 	 {205},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {14--18 Dec},
+  publisher =    {PMLR},
+  pdf = 	 {https://proceedings.mlr.press/v205/wu23c/wu23c.pdf},
+  url = 	 {https://proceedings.mlr.press/v205/wu23c.html},
+}
+// === learning algo ===
+
+
+// === additional humanoid and locomotion papers ===
+
+// perceptive locomotion, stair, non-rl controller, planning foothold
+@ARTICLE{eth_rsl_stair_2020,
+  author={Jenelten, Fabian and Miki, Takahiro and Vijayan, Aravind E and Bjelonic, Marko and Hutter, Marco},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Perceptive Locomotion in Rough Terrain – Online Foothold Optimization}, 
+  year={2020},
+  volume={5},
+  number={4},
+  pages={5370-5376},
+  keywords={Legged locomotion;Optimization;Foot;Robot sensing systems;End effectors;Pipelines;Legged robots;motion control;optimization and optimal control;foothold optimization;perceptive locomotion},
+  doi={10.1109/LRA.2020.3007427}
+}
+
+// perceptive locomotion, stair, non-rl controller, mpc controller, planning foothold
+@INPROCEEDINGS{clearlab_2021_iros_stair_climbing,
+  author={Qi, Shuhao and Lin, Wenchun and Hong, Zejun and Chen, Hua and Zhang, Wei},
+  booktitle={2021 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Perceptive Autonomous Stair Climbing for Quadrupedal Robots}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={2313-2320},
+  keywords={Heuristic algorithms;Stairs;Prediction algorithms;Hardware;Quadrupedal robots;Reliability;Task analysis},
+  doi={10.1109/IROS51168.2021.9636302}
+}
+
+// perceptive locomotion bad example
+@misc{sjtu_stair_master_bad_example_2026,
+      title={StairMaster: Learning to Conquer Risky Hollow Stairs for Agile Quadrupedal Robots}, 
+      author={Xincheng Tang and Youhan Xie and Zhengjie Shu and Wanyu Li and Lai Jiang and Wenkang Hu and Yitong Li and Ruigang Yang},
+      year={2026},
+      eprint={2606.25765},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.25765}, 
+}
+
+// perceptive locomotion
+@article{ame,
+    author = {Junzhe He  and Chong Zhang  and Fabian Jenelten  and Ruben Grandia  and Moritz Bächer  and Marco Hutter },
+    title = {Attention-based map encoding for learning generalized legged locomotion},
+    journal = {Science Robotics},
+    volume = {10},
+    number = {105},
+    pages = {eadv3604},
+    year = {2025},
+    doi = {10.1126/scirobotics.adv3604},
+    URL = {https://www.science.org/doi/abs/10.1126/scirobotics.adv3604},
+    eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.adv3604},
+}
+
+// attention_is_all_you_need
+@inproceedings{attention_is_all_you_need,
+     author = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+     booktitle = {Advances in Neural Information Processing Systems},
+     editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+     pages = {},
+     publisher = {Curran Associates, Inc.},
+     title = {Attention is All you Need},
+     url = {https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf},
+     volume = {30},
+     year = {2017}
+}
+
+// perceptive locomotion
+@misc{ame2,
+      title={AME-2: Agile and Generalized Legged Locomotion via Attention-Based Neural Map Encoding}, 
+      author={Chong Zhang and Victor Klemm and Fan Yang and Marco Hutter},
+      year={2026},
+      eprint={2601.08485},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2601.08485}, 
+}
+// contact_planning
+@InProceedings{zhang_wococo_2025,
+  title = {{WoCoCo}: Learning Whole-Body Humanoid Control with Sequential Contacts},
+  author = {Zhang, Chong and Xiao, Wenli and He, Tairan and Shi, Guanya},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {455--472},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/zhang25a.html}
+}
+
+// contact_planning, HOI
+@misc{omnicontact_2026,
+      title={OmniContact: Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation}, 
+      author={Runyi Yu and Xiaoyi Lin and Ji Ma and Yinhuai Wang and Koukou Luo and Jiahao Ji and Huayi Wang and Wenjia Wang and Runhan Zhang and Ping Tan and Ting Wu and Ruoli Dai and Qifeng Chen and Lei Han},
+      year={2026},
+      eprint={2606.26201},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.26201}, 
+}
+
+// bfm, new_learning_paradigm
+@inproceedings{meta_motivo,
+    title={Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models},
+    author={Andrea Tirinzoni and Ahmed Touati and Jesse Farebrother and Mateusz Guzek and Anssi Kanervisto and Yingchen Xu and Alessandro Lazaric and Matteo Pirotta},
+    booktitle={The Thirteenth International Conference on Learning Representations},
+    year={2025},
+    url={https://openreview.net/forum?id=9sOR0nYLtz}
+}
+
+// bfm, new_learning_paradigm
+@misc{bfm_zero_2025,
+      title={BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning}, 
+      author={Yitang Li and Zhengyi Luo and Tonghe Zhang and Cunxi Dai and Anssi Kanervisto and Andrea Tirinzoni and Haoyang Weng and Kris Kitani and Mateusz Guzek and Ahmed Touati and Alessandro Lazaric and Matteo Pirotta and Guanya Shi},
+      year={2025},
+      eprint={2511.04131},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2511.04131}, 
+}
+
+// bfm
+@misc{bfm_humanoid_ailab_2025,
+      title={Behavior Foundation Model for Humanoid Robots}, 
+      author={Weishuai Zeng and Shunlin Lu and Kangning Yin and Xiaojie Niu and Minyue Dai and Jingbo Wang and Jiangmiao Pang},
+      year={2025},
+      eprint={2509.13780},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2509.13780}, 
+}
+// learn_HOI_from_video
+@misc{humanX_2026,
+      title={HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos}, 
+      author={Yinhuai Wang and Qihan Zhao and Yuen Fui Lau and Runyi Yu and Hok Wai Tsui and Qifeng Chen and Jingbo Wang and Jiangmiao Pang and Ping Tan},
+      year={2026},
+      eprint={2602.02473},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2602.02473}, 
+}
+
+// loco_manip
+@InProceedings{hold_my_beer_2025,
+  title = 	 {Hold My Beer: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control},
+  author =       {Li, Yitang and Zhang, Yuanhang and Xiao, Wenli and Pan, Chaoyi and Weng, Haoyang and He, Guanqi and He, Tairan and Shi, Guanya},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {4506--4523},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/li25i/li25i.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/li25i.html},
+}
+
+// loco_manip
+@article{falcon_2025_l4dc,
+          title={FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation},
+          author={Zhang, Yuanhang and Yuan, Yifu and Gurunath, Prajwal and Gupta, Ishita and Omidshafiei, Shayegan and Agha-mohammadi, Ali-akbar and Vazquez-Chanlatte, Marcell and Pedersen, Liam and He, Tairan and Shi, Guanya},
+          journal={arXiv preprint arXiv:2505.06776},
+          year={2025}
+}
+
+// HOI, human_robot_collaboration
+// similar to halo_2026_icml
+@article{cola_2026_icra,
+  title={Learning Human-Humanoid Coordination for Collaborative Object Carrying},
+  author={Yushi Du and Yixuan Li and Baoxiong Jia and Yutang Lin and Pei Zhou and Wei Liang and Yanchao Yang and Siyuan Huang},
+  journal={arXiv preprint arXiv:2510.14293},
+  year={2025}
+}
+
+// HOI, human_robot_collaboration
+// similar to cola_2026_icra
+@misc{halo_2026_icml,
+      title={HALO: Learning Human-Robot Collaboration via Heterogeneous-Agent Lyapunov Policy Optimization}, 
+      author={Hao Zhang and Yaru Niu and Yikai Wang and Ding Zhao and H. Eric Tseng},
+      year={2026},
+      eprint={2603.03741},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2603.03741}, 
+}
+
+// HOI, contact_planning
+@misc{scene_bota_2026,
+      title={SceneBot: Contact-Prompted General Humanoid Whole Body Tracking with Scene-Interaction}, 
+      author={Sirui Chen and Shibo Zhao and Zhen Wu and Jiaman Li and Guanya Shi and C. Karen Liu},
+      year={2026},
+      eprint={2606.27581},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.27581}, 
+}
+
+// teleop
+@INPROCEEDINGS{he_h2o_2024,
+  author={He, Tairan and Luo, Zhengyi and Xiao, Wenli and Zhang, Chong and Kitani, Kris and Liu, Changliu and Shi, Guanya},
+  booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={8944-8951},
+  keywords={Water;Legged locomotion;Robot vision systems;Dynamics;Humanoid robots;Reinforcement learning;Turning;Cameras;Real-time systems;Intelligent robots},
+  doi={10.1109/IROS58592.2024.10801984}
+}
+
+// teleop
+@InProceedings{he_omnih2o_2025,
+  title = {{OmniH2O}: Universal and Dexterous Human-to-Humanoid Whole-Body Teleoperation and Learning},
+  author = {He, Tairan and Luo, Zhengyi and He, Xialin and Xiao, Wenli and Zhang, Chong and Zhang, Weinan and Kitani, Kris M. and Liu, Changliu and Shi, Guanya},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {1516--1540},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/he25b.html}
+}
+
+// teleop, motion_tracking
+@INPROCEEDINGS{he_hover_2025,
+  author={He, Tairan and Xiao, Wenli and Lin, Toru and Luo, Zhengyi and Xu, Zhenjia and Jiang, Zhenyu and Kautz, Jan and Liu, Changliu and Shi, Guanya and Wang, Xiaolong and Fan, Linxi Jim and Zhu, Yuke},
+  booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={HOVER: Versatile Neural Whole-Body Controller for Humanoid Robots}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={9989-9996},
+  keywords={Limiting;Tracking;Navigation;Buildings;Humanoid robots;Kinematics;Aerospace electronics;Motors;Robotics and automation},
+  doi={10.1109/ICRA55743.2025.11128549}
+}
+
+// HOI
+@misc{grail_2026,
+  title         = {GRAIL: Generating Humanoid Loco-Manipulation from 3D Assets and Video Priors},
+  author        = {Tianyi Xie and Haotian Zhang and Jinhyung Park and Zi Wang and Bowen Wen and Jiefeng Li and Xueting Li and Qingwei Ben and Haoyang Weng and Yufei Ye and David Minor and Tingwu Wang and Chenfanfu Jiang and Sanja Fidler and Jan Kautz and Linxi Fan and Yuke Zhu and Zhengyi Luo and Umar Iqbal and Ye Yuan},
+  year          = {2026},
+  eprint        = {2606.05160},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  doi           = {10.48550/arXiv.2606.05160},
+  url           = {https://arxiv.org/abs/2606.05160},
+}
+
+// teleop, motion_tracking
+@misc{extremecontrol_2026,
+      title={ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control}, 
+      author={Ziyan Xiong and Lixing Fang and Junyun Huang and Kashu Yamazaki and Hao Zhang and Chuang Gan},
+      year={2026},
+      eprint={2602.11321},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2602.11321}, 
+}
+// motion_tracking
+@article{wang2026omnixtreme,
+  title={OmniXtreme: Breaking the Generality Barrier in High-Dynamic Humanoid Control},
+  author={Yunshen Wang and Shaohang Zhu and Peiyuan Zhi and Yuhan Li and Jiaxin Li and Yong-Lu Li and Yuchen Xiao and Xingxing Wang and Baoxiong Jia and Siyuan Huang},
+  journal={arXiv preprint arXiv:2602.23843},
+  year={2026},
+  url={https://arxiv.org/abs/2602.23843}
+}
+
+// HOI
+@article{interprior_2026,
+      title={InterPrior: Scaling Generative Control for Physics-Based Human-Object Interactions},
+      author={Xu, Sirui and Schulter, Samuel and Ziyadi, Morteza and He, Xialin and Fei, Xiaohan and Wang, Yu-Xiong and Gui, Liang-Yan},
+      journal={arXiv preprint arxiv:2602.06035},
+      year={2026}
+}
+// teleop
+@InProceedings{fu_humanplus_2025,
+  title = {{HumanPlus}: Humanoid Shadowing and Imitation from Humans},
+  author = {Fu, Zipeng and Zhao, Qingqing and Wu, Qi and Wetzstein, Gordon and Finn, Chelsea},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {2828--2844},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/fu25a.html}
+}
+
+// HOI
+@InProceedings{pandit_multibiped_payload_2025,
+  title = {Learning Decentralized Multi-Biped Control for Payload Transport},
+  author = {Pandit, Bikram and Gupta, Ashutosh and Gadde, Mohitvishnu S. and Johnson, Addison and Shrestha, Aayam Kumar and Duan, Helei and Dao, Jeremy and Fern, Alan},
+  booktitle = {Proceedings of The 8th Conference on Robot Learning},
+  pages = {1021--1034},
+  year = {2025},
+  editor = {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = {270},
+  series = {Proceedings of Machine Learning Research},
+  month = {06--09 Nov},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v270/pandit25a.html}
+}
+
+// multi_embodiment
+@InProceedings{liu_locoformer_2025,
+  title = {{LocoFormer}: Generalist Locomotion via Long-context Adaptation},
+  author = {Liu, Min and Pathak, Deepak and Agarwal, Ananye},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {532--546},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/liu25a.html}
+}
+
+// learn motion_tracking from video
+@InProceedings{videomimic_2025,
+  title = 	 {Visual Imitation Enables Contextual Humanoid Control},
+  author =       {Allshire, Arthur and Choi, Hongsuk and Zhang, Junyi and McAllister, David and Zhang, Anthony and Kim, Chung Min and Darrell, Trevor and Abbeel, Pieter and Malik, Jitendra and Kanazawa, Angjoo},
+  booktitle = 	 {Proceedings of The 9th Conference on Robot Learning},
+  pages = 	 {794--815},
+  year = 	 {2025},
+  editor = 	 {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = 	 {305},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {27--30 Sep},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v305/main/assets/allshire25a/allshire25a.pdf},
+  url = 	 {https://proceedings.mlr.press/v305/allshire25a.html},
+}
+
+// perceptive
+@INPROCEEDINGS{beamdojo_rss_2025, 
+    AUTHOR    = {Huayi Wang AND Zirui Wang AND Junli Ren AND Qingwei Ben AND Tao Huang AND Weinan Zhang AND Jiangmiao Pang}, 
+    TITLE     = {{BeamDojo: Learning Agile Humanoid Locomotion on Sparse Footholds}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.068} 
+} 
+
+// perceptive
+@article{zhang2026rpl,
+          title={RPL: Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains},
+          author={Zhang, Yuanhang and Seo, Younggyo and Chen, Juyue and Yuan, Yifu and Sreenath, Koushil and Abbeel, Pieter and Sferrazza, Carmelo and Liu, Karen and Duan, Rocky and Shi, Guanya},
+          journal={arXiv preprint arXiv:2602.03002},
+          year={2026}
+}
+
+// system id
+@InProceedings{sobanbabu_spi_active_2025,
+  title = {Sampling-based System Identification with Active Exploration for Legged Sim2Real Learning},
+  author = {Sobanbabu, Nikhil and He, Guanqi and He, Tairan and Yang, Yuxiang and Shi, Guanya},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {578--598},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/sobanbabu25a.html}
+}
+
+// system id
+@article{bjelonic2025towards,
+  title         = {Towards Bridging the Gap: Systematic Sim-to-Real Transfer for Diverse Legged Robots},
+  author        = {Bjelonic, Filip and Tischhauser, Fabian and Hutter, Marco},
+  journal       = {arXiv preprint arXiv:2509.06342},
+  year          = {2025},
+  eprint        = {2509.06342},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+}
+
+// lidar simulation
+@InProceedings{wang_omni_perception_2025,
+  title = {Omni-Perception: Omnidirectional Collision Avoidance of Legged Robots in Dynamic Environments},
+  author = {Wang, Zifan and Ma, Teli and Jia, Yufei and Yang, Xun and Zhou, Jiaming and Ouyang, Wenlong and Zhang, Qiang and Liang, Junwei},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {670--685},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/wang25b.html}
+}
+
+@article{jemin_kaist_high_speed_2025,
+    author = {Hyeongjun Kim  and Hyunsik Oh  and Jeongsoo Park  and Yunho Kim  and Donghoon Youm  and Moonkyu Jung  and Minho Lee  and Jemin Hwangbo },
+    title = {High-speed control and navigation for quadrupedal robots on complex and discrete terrain},
+    journal = {Science Robotics},
+    volume = {10},
+    number = {102},
+    pages = {eads6192},
+    year = {2025},
+    doi = {10.1126/scirobotics.ads6192},
+    URL = {https://www.science.org/doi/abs/10.1126/scirobotics.ads6192},
+    eprint = {https://www.science.org/doi/pdf/10.1126/scirobotics.ads6192},
+}
+
+// intrinsic reward
+@InProceedings{cathomen_divide_discover_deploy_2025,
+  title = {Divide, Discover, Deploy: Factorized Skill Learning with Symmetry and Style Priors},
+  author = {Cathomen, Rafael and Mittal, Mayank and Vlastelica, Marin and Hutter, Marco},
+  booktitle = {Proceedings of The 9th Conference on Robot Learning},
+  pages = {750--768},
+  year = {2025},
+  editor = {Lim, Joseph and Song, Shuran and Park, Hae-Won},
+  volume = {305},
+  series = {Proceedings of Machine Learning Research},
+  month = {27--30 Sep},
+  publisher = {PMLR},
+  url = {https://proceedings.mlr.press/v305/cathomen25a.html}
+}
+
+// motion imitation
+@INPROCEEDINGS{peng_animal_motions_rss_2020,
+    AUTHOR    = {Xue Bin Peng AND Erwin Coumans AND Tingnan Zhang AND Tsang-Wei Lee AND Jie Tan AND Sergey Levine}, 
+    TITLE     = {{Learning Agile Robotic Locomotion Skills by Imitating Animals}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2020}, 
+    ADDRESS   = {Corvalis, Oregon, USA}, 
+    MONTH     = {July}, 
+    DOI       = {10.15607/RSS.2020.XVI.064} 
+} 
+
+@INPROCEEDINGS{fanshi_rethinking_robustness_rss_2024,
+    AUTHOR    = {Fan Shi AND Chong Zhang AND Takahiro Miki AND Joonho Lee AND Marco Hutter AND Stelian Coros}, 
+    TITLE     = {{Rethinking Robustness Assessment: Adversarial Attacks on Learning-based Quadrupedal Locomotion Controllers}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2024}, 
+    ADDRESS   = {Delft, Netherlands}, 
+    MONTH     = {July}, 
+    DOI       = {10.15607/RSS.2024.XX.057} 
+} 
+
+// loco_manip
+@INPROCEEDINGS{liu_amo_rss_2025,
+    AUTHOR    = {Jialong Li AND Xuxin Cheng AND Tianshu Huang AND Shiqi Yang AND Ri-Zhao Qiu AND Xiaolong Wang}, 
+    TITLE     = {{AMO: Adaptive Motion Optimization for Hyper-Dexterous Humanoid Whole-Body Control}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.061} 
+} 
+  
+@INPROCEEDINGS{jiang_standing_up_rss_2025,
+    AUTHOR    = {Tao Huang AND Junli Ren AND Huayi Wang AND Zirui Wang AND Qingwei Ben AND Muning Wen AND Xiao Chen AND Jianan Li AND Jiangmiao Pang}, 
+    TITLE     = {{Learning Humanoid Standing-up Control across Diverse Postures}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.064} 
+} 
+
+@INPROCEEDINGS{trabucco_asap_rss_2025,
+    AUTHOR    = {Tairan He AND Jiawei Gao AND Wenli Xiao AND Yuanhang Zhang AND Zi Wang AND Jiashun Wang AND Zhengyi Luo AND Guanqi He AND Nikhil Sobanbabu AND Chaoyi Pan AND Zeji Yi AND Guannan Qu AND Kris Kitani AND Jessica K. Hodgins AND Linxi Fan AND Yuke Zhu AND Changliu Liu AND Guanya Shi}, 
+    TITLE     = {{ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.066} 
+} 
+
+@INPROCEEDINGS{xie_huga_wbc_rss_2025,
+    AUTHOR    = {Yufei Xue AND Wentao Dong AND Minghuan Liu AND Weinan Zhang AND Jiangmiao Pang}, 
+    TITLE     = {{A Unified and General Humanoid Whole-Body Controller for Fine-Grained Locomotion}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.067} 
+} 
+
+// teleop
+@INPROCEEDINGS{homie_rss_2025,
+    AUTHOR    = {Qingwei Ben AND Feiyu Jia AND Jia Zeng AND Junting Dong AND Dahua Lin AND Jiangmiao Pang}, 
+    TITLE     = {{HOMIE: Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.070} 
+} 
+
+@INPROCEEDINGS{zhongyu_li_icra_biped_2021,
+  author={Li, Zhongyu and Cheng, Xuxin and Peng, Xue Bin and Abbeel, Pieter and Levine, Sergey and Berseth, Glen and Sreenath, Koushil},
+  booktitle={2021 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Reinforcement Learning for Robust Parameterized Locomotion Control of Bipedal Robots}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={2811-2817},
+  keywords={Legged locomotion;Training;Learning systems;Target tracking;Automation;System dynamics;Conferences},
+  doi={10.1109/ICRA48506.2021.9560769}
+}
+
+@article{zhongyu_li_ijrr_2025,
+    title = {Reinforcement learning for versatile, dynamic, and robust bipedal locomotion control},
+    author = {Li, Zhongyu and Peng, Xue Bin and Abbeel, Pieter and Levine, Sergey and Berseth, Glen and Sreenath, Koushil}, 
+    url = {https://par.nsf.gov/biblio/10600767},
+    DOI = {10.1177/02783649241285161}, 
+    journal = {The International Journal of Robotics Research}, volume = {44}, number = {5}, publisher = {Sage},
+}
+
+// imitation learning
+@inproceedings{dp,
+  author={Cheng Chi and Siyuan Feng and Yilun Du and Zhenjia Xu and Eric Cousineau and Benjamin Burchfiel and Shuran Song},
+  title={Diffusion Policy: Visuomotor Policy Learning via Action Diffusion},
+  year={2023},
+  url={https://doi.org/10.15607/RSS.2023.XIX.026},
+  booktitle= {Proceedings of Robotics: Science and Systems}, 
+  crossref={conf/rss/2023}
+}
+@INPROCEEDINGS{dp3, 
+    AUTHOR    = {Yanjie Ze AND Gu Zhang AND Kangning Zhang AND Chenyuan Hu AND Muhan Wang AND Huazhe Xu}, 
+    TITLE     = {{3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations}}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2024}, 
+    ADDRESS   = {Delft, Netherlands}, 
+    MONTH     = {July}, 
+    DOI       = {10.15607/RSS.2024.XX.067} 
+} 
+  
+@InProceedings{umi_on_legs,
+  title = 	 {UMI-on-Legs: Making Manipulation Policies Mobile with Manipulation-Centric Whole-body Controllers},
+  author =       {Ha, Huy and Gao, Yihuai and Fu, Zipeng and Tan, Jie and Song, Shuran},
+  booktitle = 	 {Proceedings of The 8th Conference on Robot Learning},
+  pages = 	 {5254--5270},
+  year = 	 {2025},
+  editor = 	 {Agrawal, Pulkit and Kroemer, Oliver and Burgard, Wolfram},
+  volume = 	 {270},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {06--09 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v270/main/assets/ha25a/ha25a.pdf},
+  url = 	 {https://proceedings.mlr.press/v270/ha25a.html},
+}
+
+@INPROCEEDINGS{doggybot,
+  author={Wu, Qi and Fu, Zipeng and Cheng, Xuxin and Wang, Xiaolong and Finn, Chelsea},
+  booktitle={2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
+  title={Helpful DoggyBot: Open-World Object Fetching using Legged Robots and Vision-Language Models}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={8826-8833},
+  keywords={Training;Legged locomotion;Learning systems;Semantics;Toy manufacturing industry;End effectors;Indoor environment;Quadrupedal robots;Grippers;Intelligent robots},
+  doi={10.1109/IROS60139.2025.11246368}
+}
+
+// rl locomotion learning tricks
+@inproceedings{warl_2025_iros,
+  author    = {Yoneda, Keita and Kawaharazuka, Kento and Okada, Kei},
+  title     = {WARL: Wrench-Augmented Reinforcement Learning for Task-Agnostic Learning in Legged Robots},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2026}
+}
+

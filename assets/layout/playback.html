@@ -1,0 +1,15 @@
+<style>
+.reveal .slides section :is(div, figure, p, li, a):has(.layout-moved) { overflow: visible !important; }
+.reveal .layout-deleted, .reveal .layout-deleted * { visibility: hidden !important; pointer-events: none !important; }
+.reveal .slides .layout-added { position: absolute; box-sizing: border-box; z-index: 5; margin: 0; padding: 0; }
+.reveal .layout-textbox { min-height: 1em; white-space: pre-wrap; overflow-wrap: anywhere; }
+.reveal .layout-added > :is(img,video) { display: block; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; }
+.reveal .layout-added > :is(.layout-media-tag,.layout-media-status,.layout-media-bottom) { position: absolute; pointer-events: none; font-size: 18px; line-height: 1.2; font-weight: 700; }
+.reveal .layout-media-tag, .reveal .layout-media-status { top: 12px; padding: 5px 9px; border-radius: 4px; background: #fffffff0; color: #27353e; }
+.reveal .layout-media-tag { left: 12px; border-left: 4px solid #4f6f64; }
+.reveal .layout-media-status { right: 12px; }
+.reveal .layout-media-bottom { inset: auto 0 0; padding: 7px; background: #111a; color: white; text-align: center; }
+</style>
+<script src="assets/layout/edits.js"></script>
+<script src="assets/layout/citations.js"></script>
+<script src="assets/layout/playback.js"></script>

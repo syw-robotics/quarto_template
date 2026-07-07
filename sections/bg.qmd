@@ -1,0 +1,55 @@
+## 研究背景 {.bg-slide footer=false}
+
+### 足式机器人：从“稳定移动”到“与环境交互”
+
+::: {.research-premise}
+**近年来足式机器人运动控制突飞猛进，技术路线收敛至[强化学习]{.bg-accent}**
+
+Sim-to-real 的强化学习已主导足式机器人运动控制，大规模物理仿真、域随机化与策略学习正在规避对精确模型的强依赖。
+:::
+
+:::: {.research-columns .research-directions}
+::: {.column}
+![](assets/kaiti/background/perceptive-climb.jpg){.nolightbox alt="四足机器人利用感知攀上平台"}
+
+**从“盲走”到“融合感知”**
+
+盲走策略可依靠接触反馈保持稳定，无法在接触前感知地形，观测中加入感知信息完成“感控一体”的运动控制
+:::
+
+::: {.column}
+![](assets/kaiti/background/mobile-manipulation.jpg){.nolightbox alt="人形机器人协调行走与上肢操作，推动载物车"}
+
+**从“单纯移动”到“移动操作”**
+
+足臂构型机器人/人形机器人：不再只有下半身，需要协调下半身移动和上半身交互
+:::
+::::
+
+## 研究现状 {.bg-slide footer=false}
+
+### 基于强化学习的感知运动和移动操作仍面临挑战
+
+:::: {.research-columns .research-challenges}
+::: {.column}
+**感知运动的挑战**\
+Perceptive locomotion
+
+遮挡与反光
+: 开放环境中外部感知在遮挡、反光等情况下感知信息劣化，影响策略表现
+
+安全落脚
+: 端到端的范式仍是黑盒，难以完成传统方法“规划落脚点 + 落脚点追踪”的路径，限制了系统的安全性
+:::
+
+::: {.column}
+**移动操作的挑战**\
+Loco-Manipulation
+
+全身协调
+: 全身移动操作需要同时处理上下肢平衡和协调，移动操作控制器更难训练
+
+技能复用
+: 现有强化学习范式对移动操作的复杂任务采样效率低，学习的技能难以复用和泛化
+:::
+::::

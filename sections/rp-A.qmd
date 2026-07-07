@@ -1,0 +1,80 @@
+## 研究内容一 {.section-divider background-color="#1d2024" footer=false}
+
+### Perceptive Locomotion
+
+::::: {.two-columns}
+
+:::: {.section-intro}
+
+[SECTION ONE]{.section-label}
+
+**融合外部感知的运动策略**
+
+感知 → 控制（弱化规划环节）
+
+::: {.content-hidden}
+可靠性感知与行为回退 → 结构化地形表征与安全落脚
+:::
+::::
+
+::: {.tracks}
+- [一]{.index .current} **融合外部感知的运动策略**\
+  感控一体的运动策略 ![Robust perceptive locomotion](assets/kaiti/proof/proof_teaser.png){.nolightbox}
+- [二]{.index} **全身移动操作**\
+  协调移动、平衡、操作与接触 ![Whole-body teleoperation](assets/kaiti/humanoid/teleop/teaser.png){.nolightbox}
+- [三]{.index} **高效多技能强化学习算法和学习机制**\
+  探索强化学习新范式 ![HOI skill learning](assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg){.nolightbox}
+:::
+:::::
+
+## 研究内容一：融合外部感知的运动策略 {footer=false}
+
+### 两部分研究：感知失效时保持鲁棒，感知可靠时实现安全落脚
+
+::::: {.card-grid}
+:::: {.card}
+
+::: {.card-header}
+**01 · 感知退化时的系统鲁棒性** [已开展]{.status}
+:::
+
+::: {.video-pair}
+- [Baseline End-to-End Policy](assets/kaiti/proof/real-world/65-real-motivation-e2e-web.mp4){.bad}
+- [PROOF Policy](assets/kaiti/proof/real-world/65-real-motivation-proof-web.mp4){.good}
+:::
+
+::: {.card-note}
+**核心问题：**感知变得不可靠时，如何避免劣化的信息导致危险动作？
+:::
+
+::: {.content-hidden}
+估计感知信息的可靠性，通过门控抑制不可靠感知，使策略平滑回退到本体感觉行为。
+:::
+::::
+
+:::: {.card}
+
+::: {.card-header}
+**02 · 复杂地形下安全落脚点行为** [拟开展]{.status .planned}
+:::
+
+::: {.video-pair}
+- [End-to-End RL](assets/kaiti/quad/2026_sjtu_stair_master-web.mp4){.bad}\
+  端到端深度视觉强化学习（SJTU, 2026）[@sjtu_stair_master_bad_example_2026]
+- [Structured Foothold Planning](assets/kaiti/quad/2020_eth_stair.webm){.good}\
+  传统落脚点规划和最优控制（ETH, 2020）[@eth_rsl_stair_2020]
+:::
+
+::: {.card-note .planned}
+**核心问题：**如何让 RL 显式利用地形结构，学习到更安全的落脚点？
+:::
+
+::: {.content-hidden}
+**拟研究：**融合结构化地形表征、落脚先验与策略优化，兼顾显式规划的可解释性和学习控制的鲁棒性。
+:::
+::::
+:::::
+
+::: {.content-hidden}
+感知可靠性决定“是否使用视觉” → 结构化落脚决定“如何使用视觉”
+:::

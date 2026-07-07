@@ -1,0 +1,32 @@
+---
+title: "我的演示"
+author: "<img src='assets/media/logo.svg' alt=''><br>作者"
+bibliography: assets/ref.bib
+csl: assets/ieee.csl
+filters:
+  - assets/filters/caption.lua
+  - assets/filters/editor-bibliography.lua
+format:
+  revealjs:
+    theme: assets/themes/keynote.scss
+    css: assets/slides.css
+    html-math-method: mathml
+    include-after-body: assets/layout/playback.html
+    revealjs-plugins:
+      - name: SlideShortcuts
+        register: false
+        path: assets/layout
+        script:
+          - path: shortcuts.js
+        config:
+          pdfExportShortcut: P
+    width: 1600
+    height: 900
+    center: false
+    auto-stretch: false
+    slide-number: c/t
+    logo: assets/media/logo.svg
+    transition: fade
+---
+
+{{< include sections/intro.qmd >}}

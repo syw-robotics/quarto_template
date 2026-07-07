@@ -1,0 +1,83 @@
+---
+# subtitle: "Towards Learning for Perceptive Agile Locomotion and Whole-Body Loco-Manipulation on Legged Robots"
+# title: "足式机器人感知运动与全身移动操作的学习方法研究"
+title: "面向足式机器人协同移动与操作任务的强化学习方法研究"
+subtitle: "Whole-Body Motor Skill Learning and Control for Legged Robots"
+include-in-header:
+  - text: '<meta name="slide-cover" content="assets/kaiti/background/cover-field.jpg" data-alt="实地实验">'
+author: "<img src='assets/images/SUSTech_PCL.png' style='height: 98px; margin-bottom: 1.2em;'><br> Siyuan Wang <br> Advisors: Jiankun Wang, Wenjun Xu"
+institute: "Southern University of Science and Technology & Pengcheng Lab"
+date: last-modified
+# date: 03/07/2025
+date-format: long # full, long, medium, short, iso
+bibliography: assets/ref.bib
+csl: assets/ieee.csl
+filters:
+    - assets/filters/caption.lua
+    - assets/filters/editor-bibliography.lua
+crossref:
+    fig-title: Fig     # (default is "Figure")
+    tbl-title: Table     # (default is "Table")
+    chapters: true
+format: 
+    revealjs: 
+        theme: assets/themes/keynote.scss
+        html-math-method: mathml
+        # theme: default # you can use theme alias when using qpre cli
+        css: assets/slides.css
+        include-after-body: assets/layout/playback.html
+        revealjs-plugins:
+          - name: SlideShortcuts
+            register: false
+            path: assets/layout
+            script:
+              - path: shortcuts.js
+            config:
+              pdfExportShortcut: P
+        smaller: true
+        scrollable: false # recommended to be true
+        auto-stretch: false # recommended to be false when scrollable
+        # center-title-slide: true
+        # footer: "Siyuan Wang  |  Learning Legged Robot Whole-Body Agile Motor Skills"
+        logo: "assets/images/SUSTech_PCL.png"
+        # reference-location: document # Put the footnotes or references at the end of the document
+        slide-number: c/t
+        toc: false  # recommended to be false, and set an additional toc slide manually
+        toc-depth: 2
+        toc-title: Table of Contents
+        transition: fade # fade, slide
+        transition-speed: fast # fast, default, slow
+        chalkboard: false  # see: https://prerelease.quarto.org/docs/presentations/revealjs/presenting.html#chalkboard
+        crossrefs-hover: true # whether show cross-references on hover
+        center: false # center every slide
+        controls: false # whether show navigation control buttons
+        # width: 1200 # set width to 1200 for 4:3 aspect ratio
+        width: 1600 # set width to 1600 for 16:9 aspect ratio
+        height: 900 # set height to 900, do not change this
+---
+
+{{< include sections/total-toc.qmd >}}
+
+{{< include sections/bg.qmd >}}
+
+{{< include sections/rp-toc.qmd >}}
+
+{{< include sections/rp-A.qmd >}}
+
+{{< include sections/proof.qmd >}}
+
+{{< include sections/rp-B.qmd >}}
+
+{{< include sections/teleop.qmd >}}
+
+{{< include sections/rp-C.qmd >}}
+
+{{< include sections/algo.qmd >}}
+
+{{< include sections/rp-D.qmd >}}
+
+{{< include sections/infra.qmd >}}
+
+{{< include sections/summary.qmd >}}
+
+{{< include sections/reference.qmd >}}

@@ -1,0 +1,70 @@
+@mixin footnote-bracket-marker {
+  sup {
+    vertical-align: baseline;
+    font-size: 0.8em;
+
+    &::before {
+      content: "[ ";
+    }
+
+    &::after {
+      content: " ]";
+    }
+  }
+}
+
+@mixin footnote-badge-marker {
+  sup {
+    position: relative;
+    top: -0.15em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4em;
+    height: 1.4em;
+    margin-left: 0.15em;
+    padding: 0 0.25em;
+    border-radius: 999px;
+    background: $theme-accent;
+    color: $theme-bg;
+    font-size: 0.45em;
+    line-height: 1;
+    vertical-align: baseline;
+  }
+}
+
+@mixin footnote-hidden-marker {
+  sup {
+    display: none;
+  }
+}
+
+@if $theme-footnote-mode == "bracket" {
+  .reveal .slide {
+    @include footnote-bracket-marker;
+  }
+}
+
+@if $theme-footnote-mode == "badge" {
+  .reveal .slide {
+    @include footnote-badge-marker;
+  }
+}
+
+@if $theme-footnote-mode == "hidden" {
+  .reveal .slide {
+    @include footnote-hidden-marker;
+  }
+}
+
+.reveal .slide.footnote-bracket {
+  @include footnote-bracket-marker;
+}
+
+.reveal .slide.footnote-badge {
+  @include footnote-badge-marker;
+}
+
+.reveal .slide.footnote-hidden {
+  @include footnote-hidden-marker;
+}

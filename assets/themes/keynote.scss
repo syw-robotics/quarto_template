@@ -1,0 +1,20 @@
+// Type and palette for the bilingual research presentation.
+$theme-font-en: "Montserrat";
+$theme-font-cn: "Noto Sans CJK SC";
+@import "base/fonts";
+
+/*-- scss:defaults --*/
+$theme-fg: #1d1d1f;
+$theme-heading: #161618;
+$theme-accent: #146ab3;
+$theme-link: #1268ab;
+$theme-muted: #53585e;
+$theme-selection: #d4eaff;
+$theme-inline-bg: #eef5fb;
+$theme-heading-weight: 600;
+$theme-title-weight: 700;
+$theme-body-weight: 400;
+@import "base/defaults";
+
+/*-- scss:rules --*/
+@import "base/rules";

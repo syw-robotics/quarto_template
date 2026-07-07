@@ -1,0 +1,131 @@
+## [P]{.acronym-letter}erceptive [R]{.acronym-letter}obustness via [O]{.acronym-letter}ut-[o]{.acronym-letter}f-[D]{.acronym-letter}istribution for Legged Robot Locomotion {footer=false}
+
+### 01 · 感知退化时的系统鲁棒性的探索
+
+::::: {.two-columns}
+:::: {.text-column}
+
+[CoRL 2026 in submission]{.section-label}
+
+[PROOF探索了在真实世界部署中当感知信息变为分布外(OOD)时的策略鲁棒性。]{.lead-text}
+
+控制策略应主动决定何时感知信息足够可靠并利用，以及何时应忽略不可靠的感知以保持系统稳定性。
+
+::: {.cards}
+- **感知信息可靠**\
+  利用外部感知信息以足够执行激进的跑酷行为，如跳跃沟壑、攀爬高处平台
+- **感知信息不可靠**\
+  抑制OOD的视觉特征，回退到“盲走”
+:::
+::::
+
+::: {.image-panel}
+![](assets/kaiti/proof/proof_teaser.png){.nolightbox alt="PROOF teaser"}
+:::
+:::::
+
+## PROOF 研究动机 {footer=false}
+
+### 开放世界中感知信息往往不是完美的
+
+:::: {.stack}
+
+::: {.panel .numbered-list}
+1. 深度图是非常轻量的感知模态，方便集成，但是容易受到遮挡、光照变化、反射表面等的影响而失真
+2. 传统的端到端策略持续使用不可靠的感知信息，若感知信息退化系统可能导致严重的后果
+3. 仿真中无法穷举真实环境中深度图的复杂OOD情况，策略需要自主去适应
+:::
+
+::: {.video-pair}
+- [Baseline End-to-End Policy](assets/kaiti/proof/real-world/65-real-motivation-e2e-web.mp4){.bad}\
+  Baseline在视觉干扰下导致策略出现危险行为[@zhuang_robot_parkour_learning_2023;@cheng_extreme_2023]
+- [PROOF Policy](assets/kaiti/proof/real-world/65-real-motivation-proof-web.mp4){.good}\
+  PROOF保持敏捷跑酷能力的同时对视觉干扰具有鲁棒性
+:::
+::::
+
+## PROOF 方法 {footer=false}
+
+### 同时学习带感知的(跑酷)行为和盲走行为，并在感知信息不可靠的时候自动回退到盲走行为
+
+::::: {.two-columns .wide-left}
+:::: {.panel .diagram-panel}
+
+::: {.figure-header}
+**两阶段Teacher-Student框架**
+
+**Teacher** 使用准确的地形elevation map\
+**Student** 使用机载深度相机获取深度图
+:::
+
+![](assets/kaiti/proof/proof_method-pipeline.png){.nolightbox alt="PROOF method pipeline"}
+::::
+
+::: {.steps}
+1. **Teacher同时学习带感知和不带感知的行为**\
+   非跑酷地形下，随机置零地形特征向量\
+   Teacher用于引导student学习两种行为模式，提供良好的监督信号
+2. **Student蒸馏teacher的行为,同时预测地形特征向量**\
+   非跑酷地形下，随机注入不同视觉干扰模式，触发时对应teacher地形特征向量置零\
+   蒸馏teacher的action，同时预测teacher的地形特征向量：建模为高斯分布, 使用”负对数似然”训练:\
+   **“预测方差高代表不确定性高，方差低代表不确定性低”**
+3. **感知不确定性门控**\
+   单纯蒸馏action可能不足以保证鲁棒性，因此多设置一个感知特征门控自主过滤不可靠感知信息的流入\
+   通过二元交叉熵监督训练
+:::
+:::::
+
+## PROOF 实验结果 {footer=false}
+
+### Student学习到的感知不确定性预测和不确定性门控的行为符合预期
+
+::: {.gallery}
+- [Gap](assets/kaiti/proof/sim/sim_gap_stage-web.mp4)
+- [High Platform](assets/kaiti/proof/sim/sim_climb-web.mp4)
+- [Slope + Visual Corruption](assets/kaiti/proof/sim/sim_slope-web.mp4)
+- [Stairs + Visual Corruption](assets/kaiti/proof/sim/sim_stair-web.mp4)
+:::
+
+::: {.gallery-caption}
+左侧曲线为不确定性预测，中间曲线为不确定性门控
+:::
+
+## PROOF 实验结果 {footer=false}
+
+### 实现敏捷的真机跑酷 & 保持感知退化时的鲁棒
+
+::::: {.two-columns .wide-right}
+::: {.gallery .compact}
+- [70 cm gap](assets/kaiti/proof/real-world/65-real-gap-70_exported-web.mp4)
+- [50 cm platform](assets/kaiti/proof/real-world/65-real-climb-50-web.mp4)
+- [climb then blind](assets/kaiti/proof/real-world/65-real-climb-then-blind-web.mp4)
+- [leaf occlusion](assets/kaiti/proof/real-world/64-real-leaf-occulusion-then-stair_exported-web.mp4)
+- [slope](assets/kaiti/proof/real-world/64-real-downhill-uphill_exported-web.mp4)
+- [dim light](assets/kaiti/proof/real-world/dim_light-web.mp4)
+- [stairs + climb](assets/kaiti/proof/real-world/64-real-downstair-then-48cm-climb_exported-web.mp4)
+- [tall grass](assets/kaiti/proof/real-world/64-real-high-grass_exported-web.mp4)
+:::
+
+:::: {.figure-column}
+
+::: {.panel .figure-panel}
+**实机跑酷性能**
+
+![](assets/kaiti/proof/proof_parkour_real_result.png){.nolightbox alt="PROOF real-world parkour result"}
+:::
+
+::: {.panel .table-panel}
+[强视觉随机干扰随机化下的速度追踪奖励/地形通过率]{.table-title}
+
+| Method | Flat | Up | Down | Stair+ | Stair- |
+| --------------------- | -------- | -------- | -------- | -------- | -------- |
+| Baseline 1: w/o mask | 0.28 / 0 | 0.11 / 0 | 0.35 / 0 | 0.15 / 0 | 0.22 / 0 |
+| Baseline 2: MSE latent distill. | 0.83 / 96 | 0.76 / 79 | 0.75 / 84 | 0.69 / 73 | 0.71 / 91 |
+| PROOF | 0.86 / 100 | 0.79 / 99 | 0.78 / 100 | 0.72 / 95 | 0.93 / 100 |
+:::
+::::
+:::::
+
+::: {.content-hidden}
+[ velocity-tracking reward / traversal success rate ]
+:::

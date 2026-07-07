@@ -1,0 +1,123 @@
+## Whole-Body Teleoperation for Humanoid Loco-Manipulation {footer=false}
+
+### 01 · 双臂柔顺力交互的人形机器人全身遥操作系统
+
+::::: {.two-columns}
+:::: {.text-column}
+
+[将人形机器人遥操作视为全身参考运动追踪，并在训练中模拟双臂力交互实现双臂柔顺]{.lead-text}
+
+在仿真中追踪离线动作，部署时追踪操作者动作
+
+::: {.cards}
+- **全身运动控制**\
+  全身追踪运动参考轨迹
+- **双臂柔顺力交互**\
+  模拟“阻抗控制”行为，实现双臂柔顺
+:::
+::::
+
+::: {.panel .image-panel .inset}
+![](assets/kaiti/humanoid/teleop/teaser.png){.nolightbox alt="Humanoid teleoperation framework"}
+:::
+:::::
+
+::: {.content-hidden}
+Humanoid Whole-Body Control
+
+Training side: retargeting and teacher-student RL. Deployment side: VR / UDP / offline reference to PD control.
+:::
+
+## 系统框架 {footer=false}
+
+### 将遥操作视为全身参考运动追踪
+
+:::: {.image-above-steps}
+::: {.panel .wide-image}
+![](assets/kaiti/humanoid/teleop/teleop-framework-1.png){.nolightbox alt="Humanoid teleoperation training and deployment framework"}
+:::
+
+::: {.steps .across}
+1. **人体运动数据集预处理**\
+   使用AMASS、LAFAN1、100STYLE人类运动数据集，重定向后转换为G1机器人根位姿和关节参考
+2. **全身运动追踪训练**\
+   采用teacher-student三阶段训练，并加入双臂力交互模拟机制，得到可部署的student策略
+3. **VR全身实时遥操作**\
+   VR数据经过实时重定向得到参考运动轨迹观测，实现全身遥操作
+:::
+::::
+
+::: {.content-hidden}
+训练端和部署端使用同一个“机器人参考运动”接口
+:::
+
+## 全身运动追踪训练流程 {footer=false}
+
+### 让teacher利用更丰富准确的完成运动追踪，再让student适配真实部署可拿到的观测
+
+:::: {.two-columns .wide-left}
+::: {.diagram-panel}
+![](assets/kaiti/humanoid/teleop/teleop-teacher-student-1.png){.nolightbox alt="Teacher-student training architecture"}
+:::
+
+::: {.steps}
+1. **Teacher强化学习训练**\
+   利用仿真中特权观测学习高质量全身运动追踪和稳定控制行为
+2. **Student状态估计适应**\
+   仅根据部署可获得观测估计teacher依赖的隐变量，适配student自身数据分布
+3. **Student强化学习微调**\
+   使用student策略继续PPO训练，最终导出可在实机运行的部署策略
+:::
+::::
+
+## 柔顺力交互训练 {footer=false}
+
+### 不是阻抗控制器，而是“模拟”阻抗行为
+
+::::: {.two-columns .wide-left}
+:::: {.panel .chart-panel}
+
+::: {.figure-header}
+**平cd修改上肢参考，并由偏移生成外力** $\Delta x_{\mathrm{ref}}\rightarrow F_{\mathrm{external}}$
+:::
+
+::: {.chart}
+![](assets/kaiti/humanoid/teleop/reference-force.svg){.inline-svg}
+
+触发后进入 $[A,C]$ 窗口，从$q_A$平滑插值到随机上肢姿态 $q_B$，再平滑回到原参考
+
+计算FK 后得到手/腕末端偏移，并按末端任务空间偏移计算并施加外力
+
+类似工作：[@force_legged_manip_pulkit_2024;@facet_2025_CORL;@gentle_humanoid_2025;@softmimic_pulkit_2025;@chip_nvidia_2025;@zhi_learning_unifp_2025]
+:::
+::::
+
+:::: {.panel .steps-panel}
+**训练阶段的柔顺力交互流程**
+
+仅在平稳动作片段随机启用
+
+::: {.steps}
+1. **修改肩 / 肘参考**\
+   平滑修改上肢关节参考，不直接修改手部位置
+2. **重新计算手臂FK**\
+   得到手部 / 腕部末端的位置偏差，计算外力 F = Kp · Δx
+3. **手部 / 腕部末端 连杆写入外力**\
+   根据末端偏移生成外力，并在仿真中施加于 hand / wrist link
+:::
+
+**额外加入力交互条件观测**\
+\[Compliance Flag, Force Threshold, Kp]: 部署时可以自定义力柔顺行为参数
+::::
+:::::
+
+## 遥操结效果展示 {footer=false}
+
+### 全身遥操的同时双臂呈现柔顺的力交互行为
+
+::: {.gallery}
+- [Outdoor](assets/kaiti/humanoid/teleop/teleop_outdoor.mp4)
+- [Cart Push / Pull](assets/kaiti/humanoid/teleop/cart_push_pull.mp4)
+- [Carry Box](assets/kaiti/humanoid/teleop/carry_box.mp4)
+- [Heavy Door](assets/kaiti/humanoid/teleop/heavy_door.mp4)
+:::

@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../noto-sans-cjk-sc/NotoSansCJKsc-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../noto-sans-cjk-sc/NotoSansCJKsc-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Source Han Sans SC';
+    src: url('../noto-sans-cjk-sc/NotoSansCJKsc-Bold.otf');
+    font-weight: bold;
+    font-style: normal;
+}

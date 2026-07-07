@@ -1,0 +1,97 @@
+## 高效多技能强化学习算法和学习机制 {footer=false}
+
+### PPO 训练稳定，但采样效率低
+
+::::: {.two-columns}
+:::: {.text-column}
+
+::: {.section-label}
+Motivation
+:::
+
+PPO必须使用On-Policy的数据
+
+On-Policy限制了更高效的技能学习和技能复用的可能性
+
+::: {.steps}
+1. **数据复用**\
+   专家数据、遥操作轨迹等轨迹应能直接参与训练引导策略学习
+2. **技能复用**\
+   在线蒸馏效率太低，需要花费大量成本重新采样
+:::
+::::
+
+:::: {.list-panel}
+
+[Off-Policy 的强化学习算法更灵活]{.panel-title}
+
+::: {.body-text}
+Off-Policy算法正在逐渐被关注[@sac_2019;@fast_sac_fast_td3;@2026flashsac;@rlpd;@HIL_SERL_2025]
+:::
+
+- **采样效率高，学得更快**\
+  旧的、新的采样数据、专家数据都可以使用
+- **不依赖 On-Policy 轨迹**\
+  策略更新不再必须等待当前策略重新采样完整轨迹
+- **训练稳定性更难**\
+  连续且高维动作空间中，Q 值估计容易过估计或难以收敛
+::::
+:::::
+
+::: {.content-hidden}
+On-Policy（当前策略轨迹）→ Off-Policy（复用历史数据）
+
+**Off-Policy 强化学习与先验数据复用**
+
+复杂任务可以用专家数据引导学习
+
+1. **复用先验数据**。专家策略、遥操作、成功片段和人工纠错轨迹进入 replay buffer
+2. **保持在线适应**。当前策略继续交互，适应新的地形、物体参数和接触不确定性
+3. **控制训练偏差**。重点处理 Q 函数过估计、数据质量差异和长时程奖励传播
+:::
+
+## 事后重标注与目标条件策略学习 {footer=false}
+
+:::: {.derivation}
+::: {.step-title}
+**Step 1:** Task A的轨迹
+:::
+
+::: {.equation .large}
+$\displaystyle p^{\pi^{(A)}}(\tau \mid s_0)=\prod_{t=0}^{T-1}\pi^{(A)}(a_t \mid s_t)\,p(s_{t+1}\mid s_t,a_t)$
+:::
+
+::: {.step-title}
+**Step 2:** 为每条轨迹分配目标 $g=g(\tau)$
+:::
+
+::: {.equation}
+$\displaystyle p(\tau \mid s_0)=\int p(\tau,g\mid s_0)\,dg$
+:::
+
+::: {.equation .compact}
+$\displaystyle p(\tau,g\mid s_0)= \underbrace{p(g\mid s_0)}_{\text{goal proposal}}\, {p(\tau\mid s_0,g)}$
+:::
+
+::: {.equation .compact}
+$\displaystyle p(\tau\mid s_0,g)=\prod_{t=0}^{T-1} \underbrace{\pi^{(B)}(a_t\mid s_t,g)}_{\text{goal-conditioned policy}}\, p(s_{t+1}\mid s_t,a_t)$
+:::
+
+::: {.takeaway}
+**核心思想:** [从$\pi^{(A)}$ 挖掘多样化轨迹 $\tau$；训练 $\pi^{(B)}$ 在给定目标 $g$ 下复现这些轨迹。]{.accent}
+:::
+::::
+
+## 事后重标注与目标条件策略学习 {footer=false}
+
+:::: {.diagram-and-videos}
+
+::: {.diagram}
+![](assets/kaiti/research_proposal/hindsight-relabelling.png){alt="Hindsight relabelling workflow" .nolightbox}
+:::
+
+::: {.video-pair}
+- [Task A: 四足机器人移动操作（靠奖励实现）](assets/kaiti/research_proposal/hoi_tracking_quad.mp4)
+- [Task A: 人形机器人移动操作（跟踪HOI数据集）](assets/kaiti/research_proposal/hoi_tracking_humanoid-web.webm){poster="assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg" fallback="assets/kaiti/research_proposal/hoi_tracking_humanoid-web.mp4"}
+:::
+::::

@@ -1,0 +1,104 @@
+## 研究内容二 {.section-divider background-color="#1d2024" footer=false}
+
+### Whole-Body Loco-Manipulation
+
+::::: {.two-columns}
+
+:::: {.section-intro}
+
+[SECTION TWO]{.section-label}
+
+**全身移动操作**
+
+面向四足加臂构型机器人与人形机器人
+
+稳定的全身遥操作 → 学习移动操作交互
+
+<!-- <div class="proposal-question">全身遥操作控制 → 交互数据采集 → 物体条件化技能</div> -->
+::::
+
+::: {.tracks}
+- [一]{.index} **融合外部感知的运动策略**\
+  感控一体的运动策略 ![Robust perceptive locomotion](assets/kaiti/proof/proof_teaser.png){.nolightbox}
+- [二]{.index .current} **全身移动操作**\
+  协调移动、平衡、操作与接触 ![Whole-body teleoperation](assets/kaiti/humanoid/teleop/teaser.png){.nolightbox}
+- [三]{.index} **高效多技能强化学习算法和学习机制**\
+  探索强化学习新范式 ![HOI skill learning](assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg){.nolightbox}
+:::
+:::::
+
+## 研究内容二：全身移动操作 {footer=false}
+
+### 两部分研究：两种构型下的全身遥操作，以及面向物体交互的自主移动操作
+
+```{=html}
+<br>
+<div class="card-grid">
+  <div class="card">
+    <div class="card-header">
+      <strong>01 · 两种构型下的全身遥操作</strong>
+      <span class="status">人形遥操已开展</span>
+    </div>
+```
+
+::: {.video-pair}
+- [四足加机械臂遥操作（暂未实现全身控制）](assets/kaiti/humanoid/teleop/b2z1_teleop.mp4)
+- [人形机器人全身遥操作（全身控制）](assets/kaiti/humanoid/teleop/carry_box.mp4)
+:::
+
+```{=html}
+    <div class="card-note"><strong>核心问题：</strong>如何同时协调移动、支撑平衡、末端或双臂跟踪？</div>
+    <br>
+    <p><strong>四足加臂构型遥操作</strong>：采样base移动速度和end-effector位姿，训练命令追踪控制器
+    <br> <strong>人形机器人构型遥操作</strong>：利用人类运动数据集，训练全身运动追踪控制器</p>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <strong>02 · 学习自主移动操作任务</strong>
+      <span class="status planned">拟开展</span>
+    </div>
+    <div class="card-media double">
+      <img src="assets/kaiti/research_proposal/hoi-mocap.jpg" alt="Human-object interaction motion capture">
+      <!-- <img src="assets/kaiti/research_proposal/hoi_tracking_quad.jpg" alt="Robot-object interaction motion tracking"> -->
+      <img src="assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg" alt="Robot-object">
+    </div>
+    <!-- <div class="video-caption" style="margin-top: 30px;">如何从HOI (Human Object Interaction) 数据中学习移动操作技能？</div> -->
+    <div class="card-note planned"><strong>核心问题：</strong>如何从交互轨迹数据有效学习可泛化的移动操作技能？</div>
+    <br>
+    <p><strong>拟研究：</strong>通过耦合物体状态的HOI运动数据、接触关系建模，使用强化学习，学习Goal-Conditioned 移动操作策略</p>
+  </div>
+</div>
+<!-- <div class="card-footer">全身遥操作提供“可执行控制与交互数据” → 自主策略学习“物体条件化任务技能”</div> -->
+```
+
+<!-- ## 从遥操作数据到自主技能 {footer=false} -->
+<!--  -->
+<!-- ### 低层控制保证可执行性，任务层学习物体状态、接触阶段与目标变化 -->
+<!--  -->
+<!-- ```{=html} -->
+<!-- <br> -->
+<!-- <div class="proposal-data-grid"> -->
+<!--   <div class="proposal-data-visual"> -->
+<!--     <img src="assets/kaiti/humanoid/teleop/teaser.png" alt="Humanoid teleoperation data collection"> -->
+<!--   </div> -->
+<!--   <div class="proposal-panel proposal-pipeline"> -->
+<!--     <div class="proposal-pipeline-step"> -->
+<!--       <div class="proposal-pipeline-num">1</div> -->
+<!--       <div><strong>采集交互轨迹</strong><span>同步记录操作者输入、机器人状态、末端轨迹、物体位姿与接触事件。</span></div> -->
+<!--     </div> -->
+<!--     <div class="proposal-pipeline-step"> -->
+<!--       <div class="proposal-pipeline-num">2</div> -->
+<!--       <div><strong>构建任务阶段</strong><span>将长时程任务组织为接近、接触、施力、搬运和释放等可解释阶段。</span></div> -->
+<!--     </div> -->
+<!--     <div class="proposal-pipeline-step"> -->
+<!--       <div class="proposal-pipeline-num">3</div> -->
+<!--       <div><strong>学习物体条件技能</strong><span>策略根据物体状态与任务目标选择全身参考或末端目标，而非复现固定动作。</span></div> -->
+<!--     </div> -->
+<!--     <div class="proposal-pipeline-step"> -->
+<!--       <div class="proposal-pipeline-num">4</div> -->
+<!--       <div><strong>在线适应与闭环验证</strong><span>通过仿真扰动和有限真实交互，适应质量、接触位置与任务目标变化。</span></div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- ``` -->

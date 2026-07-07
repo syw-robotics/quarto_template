@@ -1,0 +1,26 @@
+## 研究内容与技术路线 {footer=false}
+
+### 面向真实开放环境的足式机器人鲁棒运动与全身移动操作
+
+::::: {.two-columns}
+
+:::: {.section-intro}
+
+[RESEARCH PROPOSAL]{.section-label}
+
+**“两类任务” 和 “共性方法”**
+
+围绕强化学习的技术栈
+
+硬件平台聚焦四足、足臂式与人形机器人
+::::
+
+::: {.tracks}
+- [A]{.index} **融合外部感知的运动策略**\
+  感控一体的运动策略 ![Robust perceptive locomotion](assets/kaiti/proof/proof_teaser.png){.nolightbox}
+- [B]{.index} **全身移动操作**\
+  协调移动、平衡、操作与接触 ![Whole-body teleoperation](assets/kaiti/humanoid/teleop/teaser.png){.nolightbox}
+- [C]{.index} **高效多技能强化学习算法和学习机制**\
+  探索强化学习新范式 ![HOI skill learning](assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg){.nolightbox}
+:::
+:::::

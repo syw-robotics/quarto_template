@@ -1,0 +1,14 @@
+// Theme font interface.
+// Keep family names in sync with export_portable_html.sh.
+$theme-font-en: "Latin Modern Sans" !default;
+$theme-font-cn: "LXGW WenKai" !default;
+
+@if $theme-font-en == "Latin Modern Sans" { @import url('../../../../../assets/fonts/latinmodern-sans/latinmodern-sans.css'); }
+@if $theme-font-en == "Gelasio" { @import url('../../../../../assets/fonts/gelasio/gelasio.css'); }
+@if $theme-font-en == "Newsreader" { @import url('../../../../../assets/fonts/newsreader/newsreader.css'); }
+@if $theme-font-en == "Nunito" { @import url('../../../../../assets/fonts/nunito/nunito.css'); }
+@if $theme-font-en == "Montserrat" { @import url('../../../../../assets/fonts/montserrat/montserrat.css'); }
+@if $theme-font-en == "PT Serif" { @import url('../../../../../assets/fonts/pt-serif/pt-serif.css'); }
+@if $theme-font-cn == "LXGW WenKai" { @import url('../../../../../assets/fonts/lxgw-wenkai/lxgw-wenkai.css'); }
+@if $theme-font-cn == "Source Han Sans SC" { @import url('../../../../../assets/fonts/source-han-sans-sc/source-han-sans-sc.css'); }
+@if $theme-font-cn == "Noto Sans CJK SC" { @import url('../../../../../assets/fonts/noto-sans-cjk-sc/noto-sans-cjk-sc.css'); }

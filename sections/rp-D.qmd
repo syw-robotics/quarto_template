@@ -1,0 +1,28 @@
+## 研究内容与技术路线 {.section-divider background-color="#1d2024" footer=false}
+
+### We need well-written engineering infrastractures !
+
+::::: {.two-columns}
+
+:::: {.section-intro}
+
+[SECTION ZERO]{.section-label}
+
+**好的工程基础设施和工程管理**
+
+"提高开发、部署、调试效率"
+
+<!-- <div class="proposal-question">PPO</div> -->
+::::
+
+::: {.tracks}
+- [一]{.index} **融合外部感知的运动策略**\
+  感控一体的运动策略 ![Robust perceptive locomotion](assets/kaiti/proof/proof_teaser.png){.nolightbox}
+- [二]{.index} **全身移动操作**\
+  协调移动、平衡、操作与接触 ![Whole-body teleoperation](assets/kaiti/humanoid/teleop/teaser.png){.nolightbox}
+- [三]{.index} **高效多技能强化学习算法和学习机制**\
+  探索强化学习新范式 ![HOI skill learning](assets/kaiti/research_proposal/hoi_tracking_humanoid.jpg){.nolightbox}
+- [零]{.index .current} **好的工程基础设施和工程管理**\
+  好的工程可以大大加速迭代效率
+:::
+:::::
