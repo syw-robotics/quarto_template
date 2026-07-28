@@ -12,3 +12,4 @@ $theme-font-cn: "LXGW WenKai" !default;
 @if $theme-font-cn == "LXGW WenKai" { @import url('../../../../../assets/fonts/lxgw-wenkai/lxgw-wenkai.css'); }
 @if $theme-font-cn == "Source Han Sans SC" { @import url('../../../../../assets/fonts/source-han-sans-sc/source-han-sans-sc.css'); }
 @if $theme-font-cn == "Noto Sans CJK SC" { @import url('../../../../../assets/fonts/noto-sans-cjk-sc/noto-sans-cjk-sc.css'); }
+@if $theme-font-cn == "Microsoft YaHei" { @import url('../../../../../assets/fonts/microsoft-yahei/microsoft-yahei.css'); }
